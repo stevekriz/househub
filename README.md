@@ -4,10 +4,9 @@
 
 ## Related Projects
 
-  - https://github.com/teamName/repo
-  - https://github.com/teamName/repo
-  - https://github.com/teamName/repo
-  - https://github.com/teamName/repo
+  - https://github.com/The-Casuals/photo_carousel
+  - https://github.com/The-Casuals/photo_gallery
+  - https://github.com/The-Casuals/checkout-service
 
 ## Table of Contents
 
