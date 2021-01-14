@@ -19,11 +19,13 @@ for (let i = 1; i <= 100; i += 1) {
   };
 
   const sum = listing.cleanliness + listing.accuracy + listing.communication
-  + listing.location + listing.checkIn + listing.value;
+    + listing.location + listing.checkIn + listing.value;
 
-  const average = sum / 6;
+  const ratingCategories = 6;
 
-  listing.averageRating = Number.parseFloat(average).toFixed(2);
+  const average = (sum / ratingCategories).toFixed(2);
+
+  listing.averageRating = average;
 
   for (let j = 1; j <= listing.reviewCount; j += 1) {
     listing.reviews.push({

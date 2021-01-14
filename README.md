@@ -16,7 +16,11 @@
 
 ## Usage
 
-> Some usage instructions
+1. Install dependencies, npm install.
+2. If you need to seed the database (i.e., database is empty), npm run seed.
+3. Run webpack build, npm run build.
+4. Run webpack watch, npm run watch.
+5. Run server, npm start. Open http://localhost:3000.
 
 ## Requirements
 

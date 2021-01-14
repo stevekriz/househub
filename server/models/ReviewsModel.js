@@ -1,7 +1,7 @@
-const Review = require('../../database/index.js');
+const Review = require('../../database/index');
 
-const getReviews = (req, callback) => {
-  Review.findById(req.params.id, callback);
+const getReviews = (id, callback) => {
+  Review.findById(id, callback);
 };
 
 module.exports = {
