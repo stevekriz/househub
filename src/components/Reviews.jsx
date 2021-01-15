@@ -1,11 +1,11 @@
 import React from 'react';
-import axios from 'axios';
+// import axios from 'axios';
 
 class Reviews extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      reviews: [],
+      // reviews: [],
     };
   }
 
@@ -13,13 +13,12 @@ class Reviews extends React.Component {
     this.getReviews();
   }
 
-  getReviews() {
-    axios.get('/api/reviews/1')
-      .then(({ data }) => this.setState({
-        reviews: data,
-      }))
-      .catch((err) => console.log(err));
-  }
+  // getReviews() {
+  //   axios.get('/api/reviews/1')
+  //     .then(({ data }) => this.setState({
+  //       reviews: data,
+  //     }));
+  // }
 
   render() {
     return (
