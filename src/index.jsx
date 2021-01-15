@@ -1,9 +1,9 @@
 import React from 'react';
-import { render } from 'react-dom';
+import ReactDOM from 'react-dom';
 
 import Reviews from './components/Reviews';
 
-render(
+ReactDOM.render(
   <Reviews />,
   document.getElementById('root'),
 );

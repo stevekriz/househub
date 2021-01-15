@@ -1,8 +1,12 @@
 const path = require('path');
 
 module.exports = {
-  entry: './src/index.jsx',
   mode: 'development',
+  entry: './src/index.jsx',
+  output: {
+    filename: 'main.js',
+    path: path.resolve(__dirname, 'public'),
+  },
   module: {
     rules: [
       {
@@ -16,10 +20,6 @@ module.exports = {
         },
       },
     ],
-  },
-  output: {
-    filename: 'main.js',
-    path: path.resolve(__dirname, 'public'),
   },
   resolve: {
     extensions: ['*', '.js', '.jsx'],
