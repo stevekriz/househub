@@ -1,22 +1,31 @@
-import { useState, useEffect } from 'react';
+import React from 'react';
 import axios from 'axios';
 
-const Reviews = () => {
-  const [reviews, setReviews] = useState([]);
+class Reviews extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      reviews: [],
+    };
+  }
 
-  const getReviews = () => {
+  componentDidMount() {
+    this.getReviews();
+  }
+
+  getReviews() {
     axios.get('/api/reviews/1')
-      .then(({ data }) => setReviews(data))
+      .then(({ data }) => this.setState({
+        reviews: data,
+      }))
       .catch((err) => console.log(err));
-  };
+  }
 
-  useEffect(() => {
-    getReviews();
-  }, []);
-
-  return (
-    'Hello from Reviews'
-  );
-};
+  render() {
+    return (
+      <h1>Reviews</h1>
+    );
+  }
+}
 
 export default Reviews;
