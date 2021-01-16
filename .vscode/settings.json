@@ -10,7 +10,7 @@
   "javascript.suggest.enabled": false,
   "javascript.updateImportsOnFileMove.enabled": "never",
   "javascript.validate.enable": false,
-  "git.ignoreLimitWarning": true
+  "git.ignoreLimitWarning": true,
   "files.exclude": {
     "**/.git": false
   }

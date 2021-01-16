@@ -2,6 +2,7 @@ module.exports = {
   env: {
     browser: true,
     es2021: true,
+    jest: true,
     node: true,
   },
   extends: [
@@ -19,5 +20,7 @@ module.exports = {
     'react',
   ],
   rules: {
+    'no-underscore-dangle': ['error', { allow: ['_id'] }],
   },
+
 };
