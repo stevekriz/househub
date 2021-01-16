@@ -1,30 +1,24 @@
-import React from 'react';
-// import axios from 'axios';
+import React, { useState, useEffect, Fragment } from 'react';
+import axios from 'axios';
 
-class Reviews extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      // reviews: [],
-    };
-  }
+const Reviews = () => {
+  const [reviews, setReviews] = useState([]);
 
-  componentDidMount() {
-    this.getReviews();
-  }
+  const getReviews = () => {
+    axios.get('/api/reviews/1')
+      .then(({ data }) => setReviews(data));
+  };
 
-  // getReviews() {
-  //   axios.get('/api/reviews/1')
-  //     .then(({ data }) => this.setState({
-  //       reviews: data,
-  //     }));
-  // }
+  useEffect(() => {
+    getReviews();
+  }, []);
 
-  render() {
-    return (
+  return (
+    <>
       <h1>Reviews</h1>
-    );
-  }
-}
+      <div>{reviews}</div>
+    </>
+  );
+};
 
 export default Reviews;

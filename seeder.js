@@ -1,6 +1,6 @@
 const faker = require('faker');
 
-const Review = require('./database/index.js');
+const db = require('./database/index.js');
 
 const seed = [];
 
@@ -41,10 +41,10 @@ for (let i = 1; i <= 100; i += 1) {
   seed.push(listing);
 }
 
-Review.insertMany(seed, (err, success) => {
+db.Review.insertMany(seed, (err) => {
   if (err) {
-    console.log(err);
+    throw new Error(err);
   } else {
-    console.log(success);
+    db.connection.close();
   }
 });
