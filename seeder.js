@@ -30,7 +30,7 @@ for (let i = 1; i <= 100; i += 1) {
   for (let j = 1; j <= listing.reviewCount; j += 1) {
     listing.reviews.push({
       _id: j,
-      profilePicture: faker.image.people(),
+      profilePicture: `https://airbnbfec.s3-us-west-1.amazonaws.com/${j}.jpeg`,
       userName: faker.internet.userName(),
       date: faker.date.between('2015-01-01', '2020-12-31'),
       comment: faker.lorem.sentences(),
