@@ -1,17 +1,12 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
-
-import Modal from './modal';
-
-const FooterContainer = styled.div`
-`;
 
 const ShowAllReviewsButton = styled.div`
   display: flex;
   height: 48px;
-  padding: 13px, 23px;
   width: 199.578px;
+  padding: 13px, 23px;
   font-size: 16px;
   font-weight: 600;
   align-items: center;
@@ -28,18 +23,17 @@ const ShowAllReviewsButton = styled.div`
   }
 `;
 
-const Footer = ({ reviewCount }) => {
-  const [displayModal, setDisplayModal] = useState(false);
+const Footer = ({ reviewCount, openModal }) => {
+  const handleClick = () => {
+    openModal();
+  };
 
   return (
-    <>
-      <FooterContainer>
-        <ShowAllReviewsButton onClick={() => setDisplayModal(true)}>
-          {`Show all ${reviewCount} reviews`}
-        </ShowAllReviewsButton>
-      </FooterContainer>
-      <Modal displayModal={displayModal} setDisplayModal={() => setDisplayModal(false)} />
-    </>
+    <div>
+      <ShowAllReviewsButton onClick={handleClick}>
+        {`Show all ${reviewCount} reviews`}
+      </ShowAllReviewsButton>
+    </div>
   );
 };
 
@@ -47,4 +41,5 @@ export default Footer;
 
 Footer.propTypes = {
   reviewCount: PropTypes.number.isRequired,
+  openModal: PropTypes.func.isRequired,
 };

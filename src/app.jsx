@@ -1,67 +1,48 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
 import styled from 'styled-components';
+import axios from 'axios';
 
-import Header from './components/header';
-import Ratings from './components/ratings';
-import Reviews from './components/reviews';
-import Footer from './components/footer';
-
-const Loading = styled.div`
-  color: rgb(34, 34, 34);
-  font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
-  -webkit-font-smoothing: antialiased;
-`;
+import Header from './components/Header';
+import Ratings from './components/Ratings';
+import Reviews from './components/Reviews';
+import Footer from './components/Footer';
+import Modal from './components/Modal';
 
 const AppContainer = styled.div`
   display: flex;
   flex-flow: column wrap;
-  justify-content: safe center;
-  align-items: safe center;
-  padding: 0 80px;
+  flex: 1 1 auto;
+  align-items: center;
+  margin: 0 5%;
   color: rgb(34, 34, 34);
   font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
   -webkit-font-smoothing: antialiased;
 `;
 
-const TopDummy = styled.div`
-  order: 1;
-  height: 500px;
-`;
-
-const TopLine = styled.div`
-  order: 2;
-  width: 1128px;
-  border-top: 1px solid rgb(221, 221, 221);
-`;
-
 const ReviewsContainer = styled.div`
-  order: 3;
-  width: 1128px;
+  display: flex;
+  flex-flow: column wrap;
+  flex: 1 1 auto;
+  max-width: 1128px;
+  width: 100%;
   padding: 48px 0;
-`;
-
-const BottomLine = styled.div`
-  order: 4;
-  width: 1128px;
   border-top: 1px solid rgb(221, 221, 221);
-`;
-
-const BottomDummy = styled.div`
-  order: 5;
-  height: 500px;
+  border-bottom: 1px solid rgb(221, 221, 221);
+  margin: 500px 0;
 `;
 
 const App = () => {
   const [isLoading, setLoading] = useState(true);
-  const [reviews, setReviews] = useState();
+  const [reviews, setReviews] = useState({});
+  const [displayModal, setDisplayModal] = useState(false);
 
   const getReviews = () => {
     axios.get('/api/reviews/1')
       .then(({ data }) => {
         setReviews(data);
         setLoading(false);
-      });
+      })
+      .catch((err) => console.log(err));
   };
 
   useEffect(() => {
@@ -69,13 +50,19 @@ const App = () => {
   }, []);
 
   if (isLoading) {
-    return <Loading>Loading...</Loading>;
+    return <AppContainer>Loading...</AppContainer>;
   }
+
+  const openModal = () => {
+    setDisplayModal(true);
+  };
+
+  const closeModal = () => {
+    setDisplayModal(false);
+  };
 
   return (
     <AppContainer>
-      <TopDummy />
-      <TopLine />
       <ReviewsContainer>
         <Header
           averageRating={reviews.averageRating}
@@ -83,10 +70,16 @@ const App = () => {
         />
         <Ratings ratings={reviews.ratings} />
         <Reviews reviews={reviews.reviews} />
-        <Footer reviewCount={reviews.reviewCount} />
+        <Footer reviewCount={reviews.reviewCount} openModal={openModal} />
       </ReviewsContainer>
-      <BottomLine />
-      <BottomDummy />
+      {displayModal
+        ? (
+          <Modal
+            reviews={reviews}
+            closeModal={closeModal}
+          />
+        )
+        : null}
     </AppContainer>
   );
 };

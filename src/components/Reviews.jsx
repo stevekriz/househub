@@ -2,43 +2,32 @@ import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
-import Review from './review';
+import Review from './Review';
 
-const Row = styled.div`
+const ReviewsContainer = styled.div`
   display: flex;
   flex-flow: row wrap;
-  width: 1144px;
+  flex: 1 1 auto;
+  width: 100%;
   font-size: 16px;
   font-weight: 400;
-  line-height: 20px;
 `;
 
-const MainColumn = styled.div`
-  display: flex;
-  flex-flow: column wrap;
-  width: 460.66px;
-  padding-right: 8px;
-  margin-right: 103.3281px;
-  margin-bottom: 40px;
-`;
-
-const Reviews = ({ reviews }) => {
-  const initialReviews = reviews.slice(0, 6);
-  const render = initialReviews.map((review) => (
-    <MainColumn key={review._id}>
-      <Review review={review} />
-    </MainColumn>
-  ));
-
-  return (
-    <Row>
-      {render}
-    </Row>
-  );
-};
+const Reviews = ({ reviews }) => (
+  <ReviewsContainer>
+    {reviews.slice(0, 6).map((review) => <Review key={review._id} review={review} />)}
+  </ReviewsContainer>
+);
 
 export default Reviews;
 
 Reviews.propTypes = {
-  reviews: PropTypes.arrayOf(PropTypes.object).isRequired,
+  reviews: PropTypes.arrayOf(PropTypes.shape({
+    _id: PropTypes.number.isRequired,
+    comment: PropTypes.string.isRequired,
+    date: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    ownerComment: PropTypes.string,
+    profilePicture: PropTypes.string.isRequired,
+  })).isRequired,
 };

@@ -2,25 +2,40 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
+const Column = styled.div`
+  display: flex;
+  flex-flow: column wrap;
+  width: 50%;
+  margin-bottom: 40px;
+`;
+
 const Header = styled.div`
   display: flex;
   flex-flow: row wrap;
-  height: 56px;
-  width: 460.66px;
-  margin-bottom: 16px;
   align-items: center;
+  height: 56px;
+  width: 82%;
+  margin-right: 18%;
+  margin-bottom: 16px;
+`;
+
+const PictureWrapper = styled.a`
+  height: 56px;
+  width: 56px;
 `;
 
 const Picture = styled.img`
+  height: 100%;
+  width: 100%;
   border-radius: 50%;
-  width: 56px;
   src: ${(props) => props.src || null}%;
 `;
 
 const NameDate = styled.div`
-  padding-left: 12px;
-  font-weight: 600;
   height: 40px;
+  padding-left: 12px;
+  line-height: 20px;
+  font-weight: 600;
 `;
 
 const Date = styled.div`
@@ -30,77 +45,48 @@ const Date = styled.div`
 `;
 
 const Comment = styled.div`
-  display: flex;
-  flex-flow: row wrap;
   min-height: min-content;
+  width: 82%;
+  margin-right: 18%;
   line-height: 24px;
 `;
 
 const ReadMore = styled.span`
-  display: inline-block;
   color: rgb(34, 34, 34);
   cursor: pointer;
-  font-family: Circular, -apple-system, system-ui, Roboto, "Helvetica Neue", sans-serif;
-  font-size: 16px;
   font-weight: 600;
-  height: 24px;
-  line-height: 24px;
-  text-decoration-color: rgb(34, 34, 34);
   text-decoration-line: underline;
-  text-decoration-style: solid;
-  width: 77.3594px;
-  -webkit-font-smoothing: antialiased;
-`;
-
-const Shown = styled.span`
-  min-height: min-content;
-  max-height: 96px;
-  line-height: 24px;
-`;
-
-const Hidden = styled.span`
-  min-height: min-content;
-  line-height: 24px;
 `;
 
 const Review = ({ review }) => {
   const [showAll, setShowAll] = useState(false);
 
-  const truncate = (str) => {
-    if (str.length > 180) {
-      return (
-        <Comment>
-          {showAll ? <Hidden>{str}</Hidden>
-            : (
-              <Shown>
-                {str.substring(0, 180)}
-                {'... '}
-                <ReadMore onClick={() => setShowAll(true)}>
-                  read more
-                </ReadMore>
-              </Shown>
-            )}
-        </Comment>
-      );
-    }
-    return str;
-  };
+  const handleClick = () => setShowAll(true);
 
   return (
-    <>
+    <Column key={review._id}>
       <Header>
-        <Picture src={review.profilePicture} />
+        <PictureWrapper href={review.profilePicture}>
+          <Picture src={review.profilePicture} />
+        </PictureWrapper>
         <NameDate>
           {review.name}
-          <Date>
-            {review.date}
-          </Date>
+          <Date>{review.date}</Date>
         </NameDate>
       </Header>
       <Comment>
-        {truncate(review.comment)}
+        {review.comment.length <= 180 || showAll ? review.comment
+          : (
+            <>
+              {review.comment.substring(0, 180)}
+              {'... '}
+              <ReadMore onClick={handleClick}>
+                read more
+              </ReadMore>
+            </>
+          )}
       </Comment>
-    </>
+    </Column>
   );
 };
 

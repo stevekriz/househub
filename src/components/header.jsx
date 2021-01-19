@@ -5,32 +5,24 @@ import PropTypes from 'prop-types';
 const HeaderContainer = styled.div`
   display: flex;
   flex-flow: row wrap;
-  justify-content: safe flex-start;
-  align-items: safe center;
+  flex: 1 1 auto;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 32px;
   font-size: 22px;
   font-weight: 600;
-  height: 27px;
-  padding-bottom: 32px;
 `;
 
 const Star = styled.span`
+  margin-right: 8px;
   color: rgb(255, 56, 92);
   font-size: 15.64px;
-  padding-right: 8px;
-`;
-
-const RatingReviews = styled.div`
-  line-height: 26px;
 `;
 
 const Header = ({ averageRating, reviewCount }) => (
   <HeaderContainer>
-    <Star>
-      <i className="fas fa-star" />
-    </Star>
-    <RatingReviews>
-      {`${averageRating} (${reviewCount} reviews)`}
-    </RatingReviews>
+    <Star><i className="fas fa-star" /></Star>
+    <span>{`${averageRating} (${reviewCount} reviews)`}</span>
   </HeaderContainer>
 );
 
