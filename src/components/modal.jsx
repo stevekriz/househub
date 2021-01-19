@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
@@ -23,7 +23,6 @@ const ModalContainer = styled.div`
   overflow-y: hidden;
   max-height: 100%;
   max-width: 1032px;
-  width: 1032px;
   border-top-right-radius: 12px;
   border-bottom-right-radius: 0;
   border-bottom-left-radius: 12px;
@@ -33,95 +32,69 @@ const ModalContainer = styled.div`
   background-color: white;
 `;
 
-class Modal extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      searchText: '',
-      filtered: [],
-      useFiltered: false,
-    };
-    this.ModalContainerRef = React.createRef();
-    this.handleClickOutside = this.handleClickOutside.bind(this);
-    this.handleChange = this.handleChange.bind(this);
-    this.handleKey = this.handleKey.bind(this);
-  }
+const Modal = ({ reviews, closeModal }) => {
+  const [searchText, setSearchText] = useState('');
+  const [filtered, setFiltered] = useState([]);
+  const [useFiltered, setUseFiltered] = useState(false);
 
-  componentDidMount() {
+  useEffect(() => {
     document.body.style.overflow = 'hidden';
     document.body.style.paddingRight = '15px';
-    document.addEventListener('mousedown', this.handleClickOutside);
-  }
 
-  componentWillUnmount() {
-    document.body.style.overflow = 'unset';
-    document.body.style.paddingRight = '0';
-    document.removeEventListener('mousedown', this.handleClickOutside);
-  }
+    return () => {
+      document.body.style.overflow = 'unset';
+      document.body.style.paddingRight = '0';
+    };
+  }, []);
 
-  handleClickOutside(event) {
-    if (this.ModalContainerRef && !this.ModalContainerRef.current.contains(event.target)) {
-      const { closeModal } = this.props;
-      closeModal();
-    }
-  }
+  const handleBackdropClick = () => {
+    closeModal();
+  };
 
-  handleChange(searchText) {
-    if (!searchText) {
-      this.setState({
-        useFiltered: false,
-        searchText,
-      });
-    } else {
-      this.setState({
-        searchText,
-      });
-    }
-  }
+  const handleModalClick = (e) => {
+    e.stopPropagation();
+  };
 
-  handleKey(e) {
-    const { reviews } = this.props;
-    const { searchText } = this.state;
-    if (e.keyCode === 13 && searchText) {
-      const filtered = reviews.reviews.filter(
+  const handleInputChange = (text) => {
+    setSearchText(text);
+  };
+
+  const handleEnterKeyDown = (e) => {
+    if (e.key === 'Enter' && searchText) {
+      const searchResults = reviews.reviews.filter(
         (review) => review.comment.split(' ').some(
           (element) => element.toLowerCase() === searchText.toLowerCase(),
         ),
       );
-      for (let i = 0; i < filtered.length; i += 1) {
-        const newText = filtered[i].comment.replace(new RegExp(searchText, 'gi'), (match) => `<mark>${match}</mark>`);
-        filtered[i].comment = newText;
+      for (let i = 0; i < searchResults.length; i += 1) {
+        const newText = searchResults[i].comment.replace(new RegExp(searchText, 'gi'), (match) => `<mark>${match}</mark>`);
+        searchResults[i].comment = newText;
       }
-      this.setState({
-        filtered,
-        useFiltered: true,
-      });
+      setFiltered(searchResults);
+      setUseFiltered(true);
     }
-  }
+  };
 
-  render() {
-    const { reviews, closeModal } = this.props;
-    const { searchText, filtered, useFiltered } = this.state;
-    return (
-      <Backdrop>
-        <ModalContainer ref={this.ModalContainerRef}>
-          <ModalHeader
-            reviews={reviews}
-            closeModal={closeModal}
-            searchText={searchText}
-            handleChange={this.handleChange}
-            handleKey={this.handleKey}
-          />
-          <ModalBody
-            reviews={reviews}
-            filtered={filtered}
-            useFiltered={useFiltered}
-          />
-        </ModalContainer>
-      </Backdrop>
-    );
-  }
-}
+  return (
+    <Backdrop onClick={handleBackdropClick}>
+      <ModalContainer onClick={handleModalClick}>
+        <ModalHeader
+          averageRating={reviews.averageRating}
+          reviewCount={reviews.reviewCount}
+          closeModal={closeModal}
+          searchText={searchText}
+          handleInputChange={handleInputChange}
+          handleEnterKeyDown={handleEnterKeyDown}
+        />
+        <ModalBody
+          reviews={reviews}
+          filtered={filtered}
+          useFiltered={useFiltered}
+        />
+      </ModalContainer>
+    </Backdrop>
+  );
+};
 
 export default Modal;
 

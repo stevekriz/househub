@@ -227,22 +227,23 @@ const X2 = styled.span`
 `;
 
 const ModalHeader = ({
-  reviews,
+  averageRating,
+  reviewCount,
   closeModal,
   searchText,
-  handleChange,
-  handleKey,
+  handleInputChange,
+  handleEnterKeyDown,
 }) => {
   const handleClick = () => {
     closeModal();
   };
 
-  const handleInputChange = (e) => {
-    handleChange(e.target.value);
+  const handleChange = (e) => {
+    handleInputChange(e.target.value);
   };
 
   const handleKeyDown = (e) => {
-    handleKey(e);
+    handleEnterKeyDown(e);
   };
 
   const handleDelete = () => {
@@ -264,7 +265,7 @@ const ModalHeader = ({
             <i className="fas fa-star" />
           </Star>
           <RatingReviews>
-            {`${reviews.averageRating} (${reviews.reviewCount} reviews)`}
+            {`${averageRating} (${reviewCount} reviews)`}
           </RatingReviews>
         </RatingReviewsContainer>
         <SearchContainer>
@@ -273,7 +274,7 @@ const ModalHeader = ({
               <MagnifyingGlass>
                 <i className="fas fa-search" />
               </MagnifyingGlass>
-              <Input placeholder="Search reviews" value={searchText} onChange={handleInputChange} onKeyDown={handleKeyDown} />
+              <Input placeholder="Search reviews" value={searchText} onChange={handleChange} onKeyDown={handleKeyDown} />
               { searchText
                 ? (
                   <DeleteButton onClick={handleDelete}>
@@ -294,9 +295,10 @@ const ModalHeader = ({
 export default ModalHeader;
 
 ModalHeader.propTypes = {
-  reviews: PropTypes.objectOf(PropTypes.arrayOf).isRequired,
+  averageRating: PropTypes.number.isRequired,
+  reviewCount: PropTypes.number.isRequired,
   closeModal: PropTypes.func.isRequired,
   searchText: PropTypes.string.isRequired,
-  handleChange: PropTypes.func.isRequired,
-  handleKey: PropTypes.func.isRequired,
+  handleInputChange: PropTypes.func.isRequired,
+  handleEnterKeyDown: PropTypes.func.isRequired,
 };
