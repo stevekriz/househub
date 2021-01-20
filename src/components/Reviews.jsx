@@ -1,10 +1,10 @@
 import React from 'react';
-import styled from 'styled-components';
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
 
 import Review from './Review';
 
-const ReviewsContainer = styled.div`
+const Container = styled.div`
   display: flex;
   flex-flow: row wrap;
   flex: 1 1 auto;
@@ -14,9 +14,9 @@ const ReviewsContainer = styled.div`
 `;
 
 const Reviews = ({ reviews }) => (
-  <ReviewsContainer>
+  <Container>
     {reviews.slice(0, 6).map((review) => <Review key={review._id} review={review} />)}
-  </ReviewsContainer>
+  </Container>
 );
 
 export default Reviews;

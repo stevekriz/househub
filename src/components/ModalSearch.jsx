@@ -1,90 +1,21 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
-const CloseModalContainer = styled.div`
-  box-sizing: border-box;
-  display: flex;
-  flex-flow: column wrap;
-  justify-content: safe center;
-  align-items: safe center;
-  width: 100%;
-  height: 72px;
-`;
-
-const Button = styled.div`
-  box-sizing: border-box;
-  display: flex;
-  height: 32px;
-  width: 32px;
-  position: absolute;
-  border-radius: 50%;
-  justify-content: safe center;
-  align-items: safe center;
-  top: 16px;
-  left: 16px;
-  cursor: pointer;
-  &:hover {
-    background-color: rgb(247, 247, 247);
-  }
-  &:active {
-    transform: scale(0.96) !important;
-    background-color: rgb(247, 247, 247);
-  }
-`;
-
-const X = styled.span`
-  box-sizing: border-box;
-  display: flex;
-  font-size: 18px;
-`;
-
-const MainHeaderContainer = styled.div`
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: safe flex-start;
-  align-items: safe flex-start;
-  width: 969px;
-  margin-right: 15px;
-  height: 44px;
-  padding-bottom: 24px;
-`;
-
-const RatingReviewsContainer = styled.div`
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: safe flex-start;
-  align-items: safe center;
-  width: 312.328px;
-  height: 38px;
-`;
-
-const Star = styled.span`
-  display: flex;
-  align-items: center;
-  color: rgb(255, 56, 92);
-  height: 38px;
-  font-size: 22.76px;
-  padding-right: 8px;
-`;
-
-const RatingReviews = styled.span`
-  display: flex;
-  align-items: center;
-  height: 38px;
-  font-size: 32px;
-  font-weight: 700;
-  font-family: Circular, -apple-system, system-ui, Roboto, "Helvetica Neue", sans-serif;
-  -webkit-font-smoothing: antialiased;
-`;
-
 const SearchContainer = styled.div`
-  width: 558.578px;
-  height: 44px;
-  margin-left: 98.04px;
+  display: flex;
+  flex-flow: row wrap;
+  flex: 1 1 60%;
+  justify-content: flex-end;
+  align-items: center;
+  max-width: 558.578px;
+  max-height: 44px;
+  margin-bottom: 24px;
 `;
 
 const InputContainer = styled.div`
+  display: flex;
+  justify-content: flex-start;
   align-items: center;
   background-color: rgb(247, 247, 247);
   border-radius: 100px;
@@ -100,20 +31,17 @@ const InputContainer = styled.div`
   box-sizing: border-box;
   color: rgb(34, 34, 34);
   cursor: text;
-  display: flex;
   font-family: Circular, -apple-system, system-ui, Roboto, "Helvetica Neue", sans-serif;
   font-size: 14px;
   font-weight: 400;
   height: 44px;
   line-height: 20.02px;
   margin: 0;
-  padding: 12px 16px 12px 0;
+  padding: 12px 12px 12px 16px;
   position: relative;
   text-size-adjust: 100%;
-  width: 558.578px;
-  -webkit-box-align: center;
-  -webkit-box-direction: normal;
-  -webkit-font-smoothing: antialiased;
+  max-width: 558.578px;
+  width: 100%;
   &:focus {
     outline: none !important;
     box-shadow: rgb(34, 34, 34) 0 0 0 2px inset !important;
@@ -137,9 +65,9 @@ const MagnifyingGlass = styled.div`
 
 const InputArea = styled.div`
   display: flex;
-  width: 530.578px;
+  width: 100%;
   height: 20px;
-  padding: 12px 12px 12px 16px;
+  padding: 12px 0 12px 0;
 `;
 
 const Input = styled.input`
@@ -192,7 +120,7 @@ const Input = styled.input`
   text-shadow: none;
   text-size-adjust: 100%;
   text-transform: none;
-  width: 498.578px;
+  width: 100%;
   word-spacing: 0;
   writing-mode: horizontal-tb;
   -webkit-box-direction: normal;
@@ -226,79 +154,62 @@ const X2 = styled.span`
   font-size: 12px;
 `;
 
-const ModalHeader = ({
-  averageRating,
-  reviewCount,
-  closeModal,
+const ModalBodyHeaderSearch = ({
   searchText,
   handleInputChange,
-  handleEnterKeyDown,
+  // handleEnterKeyDown,
 }) => {
+  const textInput = useRef(null);
   const handleClick = () => {
-    closeModal();
+    textInput.current.focus();
   };
 
   const handleChange = (e) => {
     handleInputChange(e.target.value);
   };
 
-  const handleKeyDown = (e) => {
-    handleEnterKeyDown(e);
-  };
+  // const handleKeyDown = (e) => {
+  //   handleEnterKeyDown(e);
+  // };
 
   const handleDelete = () => {
-    handleChange('');
+    handleInputChange('');
   };
 
   return (
-    <>
-      <CloseModalContainer>
-        <Button onClick={handleClick}>
-          <X>
-            <i className="fas fa-times" />
-          </X>
-        </Button>
-      </CloseModalContainer>
-      <MainHeaderContainer>
-        <RatingReviewsContainer>
-          <Star>
-            <i className="fas fa-star" />
-          </Star>
-          <RatingReviews>
-            {`${averageRating} (${reviewCount} reviews)`}
-          </RatingReviews>
-        </RatingReviewsContainer>
-        <SearchContainer>
-          <InputContainer>
-            <InputArea>
-              <MagnifyingGlass>
-                <i className="fas fa-search" />
-              </MagnifyingGlass>
-              <Input placeholder="Search reviews" value={searchText} onChange={handleChange} onKeyDown={handleKeyDown} />
-              { searchText
-                ? (
-                  <DeleteButton onClick={handleDelete}>
-                    <X2>
-                      <i className="fas fa-times" />
-                    </X2>
-                  </DeleteButton>
-                )
-                : null}
-            </InputArea>
-          </InputContainer>
-        </SearchContainer>
-      </MainHeaderContainer>
-    </>
+    <SearchContainer>
+      <InputContainer onClick={handleClick}>
+        <InputArea>
+          <MagnifyingGlass>
+            <i className="fas fa-search" />
+          </MagnifyingGlass>
+          <Input
+            ref={textInput}
+            type="text"
+            placeholder="Search reviews"
+            value={searchText}
+            onChange={handleChange}
+            // onKeyDown={handleKeyDown}
+          />
+          { searchText
+            ? (
+              <DeleteButton onClick={handleDelete}>
+                <X2>
+                  <i className="fas fa-times" />
+                </X2>
+              </DeleteButton>
+            )
+            : null}
+        </InputArea>
+      </InputContainer>
+    </SearchContainer>
   );
 };
 
-export default ModalHeader;
+export default ModalBodyHeaderSearch;
 
-ModalHeader.propTypes = {
-  averageRating: PropTypes.number.isRequired,
-  reviewCount: PropTypes.number.isRequired,
-  closeModal: PropTypes.func.isRequired,
+ModalBodyHeaderSearch.propTypes = {
   searchText: PropTypes.string.isRequired,
   handleInputChange: PropTypes.func.isRequired,
-  handleEnterKeyDown: PropTypes.func.isRequired,
+  // handleEnterKeyDown: PropTypes.func.isRequired,
 };

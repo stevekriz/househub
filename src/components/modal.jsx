@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react';
-import styled from 'styled-components';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
 
-import ModalHeader from './ModalHeader';
+import ModalClose from './ModalClose';
 import ModalBody from './ModalBody';
 
 const Backdrop = styled.div`
@@ -33,10 +33,6 @@ const ModalContainer = styled.div`
 `;
 
 const Modal = ({ reviews, closeModal }) => {
-  const [searchText, setSearchText] = useState('');
-  const [filtered, setFiltered] = useState([]);
-  const [useFiltered, setUseFiltered] = useState(false);
-
   useEffect(() => {
     document.body.style.overflow = 'hidden';
     document.body.style.paddingRight = '15px';
@@ -55,42 +51,11 @@ const Modal = ({ reviews, closeModal }) => {
     e.stopPropagation();
   };
 
-  const handleInputChange = (text) => {
-    setSearchText(text);
-  };
-
-  const handleEnterKeyDown = (e) => {
-    if (e.key === 'Enter' && searchText) {
-      const searchResults = reviews.reviews.filter(
-        (review) => review.comment.split(' ').some(
-          (element) => element.toLowerCase() === searchText.toLowerCase(),
-        ),
-      );
-      for (let i = 0; i < searchResults.length; i += 1) {
-        const newText = searchResults[i].comment.replace(new RegExp(searchText, 'gi'), (match) => `<mark>${match}</mark>`);
-        searchResults[i].comment = newText;
-      }
-      setFiltered(searchResults);
-      setUseFiltered(true);
-    }
-  };
-
   return (
     <Backdrop onClick={handleBackdropClick}>
       <ModalContainer onClick={handleModalClick}>
-        <ModalHeader
-          averageRating={reviews.averageRating}
-          reviewCount={reviews.reviewCount}
-          closeModal={closeModal}
-          searchText={searchText}
-          handleInputChange={handleInputChange}
-          handleEnterKeyDown={handleEnterKeyDown}
-        />
-        <ModalBody
-          reviews={reviews}
-          filtered={filtered}
-          useFiltered={useFiltered}
-        />
+        <ModalClose closeModal={closeModal} />
+        <ModalBody reviews={reviews} />
       </ModalContainer>
     </Backdrop>
   );

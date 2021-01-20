@@ -1,8 +1,8 @@
 import React from 'react';
-import styled from 'styled-components';
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
 
-const HeaderContainer = styled.div`
+const Container = styled.div`
   display: flex;
   flex-flow: row wrap;
   flex: 1 1 auto;
@@ -20,10 +20,10 @@ const Star = styled.span`
 `;
 
 const Header = ({ averageRating, reviewCount }) => (
-  <HeaderContainer>
+  <Container>
     <Star><i className="fas fa-star" /></Star>
     <span>{`${averageRating} (${reviewCount} reviews)`}</span>
-  </HeaderContainer>
+  </Container>
 );
 
 export default Header;

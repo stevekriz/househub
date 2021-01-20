@@ -45,13 +45,18 @@ for (let i = 1; i <= 100; i += 1) {
   };
 
   for (let j = 1; j <= listing.reviewCount; j += 1) {
+    const date = `${j < 13 ? month[j] : 'January'} ${j < 13 ? 2020 : 2019}`;
+    const ownerComment = Math.random() < 0.1 ? faker.lorem.sentences() : null;
     listing.reviews.push({
       _id: j,
       profilePicture: `https://airbnbfec.s3-us-west-1.amazonaws.com/${Math.floor(Math.random() * (41 - 1 + 1) + 1)}.jpeg`,
       name: faker.name.firstName(),
-      date: `${j < 13 ? month[j] : 'January'} ${j < 13 ? 2020 : 2019}`,
+      date,
       comment: faker.lorem.sentences(),
-      ownerComment: Math.random() < 0.1 ? faker.lorem.sentences() : null,
+      ownerProfilePicture: `https://airbnbfec.s3-us-west-1.amazonaws.com/${Math.floor(Math.random() * (41 - 1 + 1) + 1)}.jpeg`,
+      ownerName: ownerComment ? faker.name.firstName() : null,
+      ownerCommentDate: ownerComment ? date : null,
+      ownerComment,
     });
   }
 

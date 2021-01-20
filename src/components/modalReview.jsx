@@ -5,7 +5,8 @@ import PropTypes from 'prop-types';
 const Review = styled.div`
   display: flex;
   flex-flow: column wrap;
-  width: 558.578px;
+  width: 100%;
+  max-width: 558.578px;
   margin-bottom: 48px;
 `;
 
@@ -13,7 +14,8 @@ const Header = styled.div`
   display: flex;
   flex-flow: row wrap;
   height: 56px;
-  width: 558.578px;
+  width: 100%;
+  max-width: 558.578px;
   margin-bottom: 16px;
   align-items: center;
 `;
@@ -70,39 +72,41 @@ const ReadMore = styled.span`
   -webkit-font-smoothing: antialiased;
 `;
 
-const Shown = styled.span`
-  min-height: min-content;
-  max-height: 96px;
-  line-height: 24px;
+const Owner = styled.div`
+  display: flex;
+  flex-flow: column wrap;
+  width: 100%;
+  max-width: 526.578px;
+  margin-top: 48px;
+  margin-left: 32px;
 `;
 
-const Hidden = styled.span`
-  min-height: min-content;
-  line-height: 24px;
+const OwnerHeader = styled.div`
+  display: flex;
+  flex-flow: row wrap;
+  height: 56px;
+  width: 100%;
+  max-width: 526.578px;
+  margin-bottom: 16px;
+  align-items: center;
 `;
 
-const ModalReview = ({ review }) => {
-  const [showAll, setShowAll] = useState(false);
+const OwnerComment = styled.div`
+  display: flex;
+  flex-flow: row wrap;
+  min-height: min-content;
+  line-height: 24px;
+  font-size: 16px;
+  font-weight: 400;
+  margin-left: 68px;
+`;
 
-  const truncate = (str) => {
-    if (str.length > 180) {
-      return (
-        <Comment>
-          {showAll ? <Hidden>{str}</Hidden>
-            : (
-              <Shown>
-                {str.substring(0, 180)}
-                {'... '}
-                <ReadMore onClick={() => setShowAll(true)}>
-                  read more
-                </ReadMore>
-              </Shown>
-            )}
-        </Comment>
-      );
-    }
-    return str;
-  };
+const ModalReview = ({ review, searchText }) => {
+  const [showComment, setShowComment] = useState(false);
+  const [showOwnerComment, setShowOwnerComment] = useState(false);
+
+  const handleCommentClick = () => setShowComment(true);
+  const handleOwnerCommentClick = () => setShowOwnerComment(true);
 
   return (
     <Review>
@@ -118,8 +122,48 @@ const ModalReview = ({ review }) => {
         </NameDate>
       </Header>
       <Comment>
-        {truncate(review.comment)}
+        {review.comment.length <= 180 || showComment || (searchText && review.comment.lastIndexOf(searchText) > 180) ? <span dangerouslySetInnerHTML={{ __html: review.comment.replace(new RegExp(searchText, 'gi'), (match) => `<mark>${match}</mark>`) }} />
+          : (
+            <>
+              <span dangerouslySetInnerHTML={{ __html: review.comment.substring(0, 180).replace(new RegExp(searchText, 'gi'), (match) => `<mark>${match}</mark>`) }} />
+              {'... '}
+              <ReadMore onClick={handleCommentClick}>
+                read more
+              </ReadMore>
+            </>
+          )}
       </Comment>
+      {
+        review.ownerComment
+          ? (
+            <Owner>
+              <OwnerHeader>
+                <PictureWrapper href={review.ownerProfilePicture}>
+                  <Picture src={review.ownerProfilePicture} />
+                </PictureWrapper>
+                <NameDate>
+                  {`Response from ${review.ownerName}`}
+                  <Date>
+                    {review.ownerCommentDate}
+                  </Date>
+                </NameDate>
+              </OwnerHeader>
+              <OwnerComment>
+                {review.ownerComment.length <= 180 || showOwnerComment || (searchText && review.ownerComment.lastIndexOf(searchText) > 180) ? <span dangerouslySetInnerHTML={{ __html: review.comment.replace(new RegExp(searchText, 'gi'), (match) => `<mark>${match}</mark>`) }} />
+                  : (
+                    <>
+                      <span dangerouslySetInnerHTML={{ __html: review.comment.substring(0, 180).replace(new RegExp(searchText, 'gi'), (match) => `<mark>${match}</mark>`) }} />
+                      {'... '}
+                      <ReadMore onClick={handleOwnerCommentClick}>
+                        read more
+                      </ReadMore>
+                    </>
+                  )}
+              </OwnerComment>
+            </Owner>
+          )
+          : null
+      }
     </Review>
   );
 };
@@ -133,6 +177,10 @@ ModalReview.propTypes = {
     name: PropTypes.string.isRequired,
     date: PropTypes.string.isRequired,
     comment: PropTypes.string.isRequired,
+    ownerProfilePicture: PropTypes.string,
+    ownerName: PropTypes.string,
+    ownerCommentDate: PropTypes.string,
     ownerComment: PropTypes.string,
   }).isRequired,
+  searchText: PropTypes.string.isRequired,
 };

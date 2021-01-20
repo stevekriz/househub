@@ -1,8 +1,8 @@
 import React from 'react';
-import styled from 'styled-components';
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
 
-const RatingsContainer = styled.div`
+const Container = styled.div`
   display: flex;
   flex-flow: row wrap;
   flex: 1 1 auto;
@@ -55,7 +55,7 @@ const Number = styled.span`
 `;
 
 const Ratings = ({ ratings }) => (
-  <RatingsContainer>
+  <Container>
     {ratings.map((rating) => (
       <Column key={rating[0]}>
         <Category>
@@ -71,7 +71,7 @@ const Ratings = ({ ratings }) => (
         </Rating>
       </Column>
     ))}
-  </RatingsContainer>
+  </Container>
 );
 
 export default Ratings;
