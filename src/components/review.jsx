@@ -7,6 +7,9 @@ const Column = styled.div`
   flex-flow: column wrap;
   width: 50%;
   margin-bottom: 40px;
+  @media (max-width: 1128px) {
+    width: 100%;
+  }
 `;
 
 const Header = styled.div`
@@ -17,6 +20,9 @@ const Header = styled.div`
   width: 82%;
   margin-right: 18%;
   margin-bottom: 16px;
+  @media (max-width: 1128px) {
+    width: 100%;
+  }
 `;
 
 const PictureWrapper = styled.a`
@@ -49,6 +55,9 @@ const Comment = styled.div`
   width: 82%;
   margin-right: 18%;
   line-height: 24px;
+  @media (max-width: 1128px) {
+    width: 100%;
+  }
 `;
 
 const ReadMore = styled.span`

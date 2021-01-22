@@ -7,10 +7,7 @@ const Container = styled.div`
   flex-flow: row wrap;
   flex: 1 1 auto;
   align-items: center;
-  width: 100%;
   margin-bottom: 32px;
-  font-size: 22px;
-  font-weight: 600;
 `;
 
 const Star = styled.span`
@@ -19,10 +16,15 @@ const Star = styled.span`
   font-size: 15.64px;
 `;
 
+const Text = styled.span`
+  font-size: 22px;
+  font-weight: 600;
+`;
+
 const Header = ({ averageRating, reviewCount }) => (
   <Container>
     <Star><i className="fas fa-star" /></Star>
-    <span>{`${averageRating} (${reviewCount} reviews)`}</span>
+    <Text>{`${averageRating} (${reviewCount} reviews)`}</Text>
   </Container>
 );
 

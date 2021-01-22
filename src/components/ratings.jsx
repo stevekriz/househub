@@ -6,8 +6,10 @@ const Container = styled.div`
   display: flex;
   flex-flow: row wrap;
   flex: 1 1 auto;
-  width: 100%;
   margin-bottom: 24px;
+  @media (max-width: 730px) {
+    display: none;
+  }
 `;
 
 const Column = styled.div`
@@ -16,30 +18,40 @@ const Column = styled.div`
   flex: 1 1 auto;
   justify-content: space-between;
   width: 50%;
-  font-size: 16px;
-  font-weight: 400;
   margin-bottom: 16px;
 `;
 
 const Category = styled.div`
   display: flex;
   flex: 1 1 53.25%;
+  font-size: 16px;
+  font-weight: 400;
+  @media (max-width: 1128px) {
+    flex: 1 1 45.75%;
+  }
 `;
 const Rating = styled.div`
   display: flex;
-  flex: 1 0 26.5%;
+  flex: 1 1 26.5%;
   justify-content: flex-end;
   align-items: center;
   padding-left: 2.25%;
   margin-right: 18%;
+  @media (max-width: 1128px) {
+    flex: 1 1 34%;
+  }
 `;
 
 const RatingMeter = styled.div`
   display: flex;
+  flex: 1 1 auto;
   height: 4px;
-  width: 100%;
   margin-right: 10px;
   background: rgb(221, 221, 221);
+  border-bottom-left-radius: 2px;
+  border-bottom-right-radius: 2px;
+  border-top-left-radius: 2px;
+  border-top-right-radius: 2px;
 `;
 
 const RatingMeterFill = styled.div`
@@ -47,6 +59,10 @@ const RatingMeterFill = styled.div`
   height: 100%;
   width: ${(props) => props.width || 0}%;
   background: rgb(34, 34, 34);
+  border-bottom-left-radius: 2px;
+  border-bottom-right-radius: 2px;
+  border-top-left-radius: 2px;
+  border-top-right-radius: 2px;
 `;
 
 const Number = styled.span`

@@ -8,14 +8,13 @@ const Container = styled.div`
   display: flex;
   flex-flow: row wrap;
   flex: 1 1 auto;
-  width: 100%;
-  font-size: 16px;
-  font-weight: 400;
 `;
 
-const Reviews = ({ reviews }) => (
+const Reviews = ({ reviews, viewPortWidth }) => (
   <Container>
-    {reviews.slice(0, 6).map((review) => <Review key={review._id} review={review} />)}
+    {viewPortWidth > 730
+      ? reviews.slice(0, 6).map((review) => <Review key={review._id} review={review} />)
+      : reviews.slice(0, 3).map((review) => <Review key={review._id} review={review} />)}
   </Container>
 );
 
@@ -30,4 +29,5 @@ Reviews.propTypes = {
     ownerComment: PropTypes.string,
     profilePicture: PropTypes.string.isRequired,
   })).isRequired,
+  viewPortWidth: PropTypes.number.isRequired,
 };

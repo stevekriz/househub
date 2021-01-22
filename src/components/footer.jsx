@@ -21,6 +21,9 @@ const ShowAllReviewsButton = styled.div`
     transform: scale(0.96) !important;
     background-color: rgb(247, 247, 247);
   }
+  @media (max-width: 730px) {
+    width: 100%;
+  }
 `;
 
 const Footer = ({ reviewCount, openModal }) => {
@@ -30,7 +33,7 @@ const Footer = ({ reviewCount, openModal }) => {
 
   return (
     <div>
-      <ShowAllReviewsButton onClick={handleClick}>
+      <ShowAllReviewsButton id="showAll" onClick={handleClick}>
         {`Show all ${reviewCount} reviews`}
       </ShowAllReviewsButton>
     </div>

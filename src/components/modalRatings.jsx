@@ -4,11 +4,17 @@ import styled from 'styled-components';
 
 const RatingsContainer = styled.div`
   display: flex;
-  flex-flow: column wrap;
-  flex: 1 1 40%;
+  flex-flow: row wrap;
+  flex: 1 1 auto;
+  width: 40%;
   max-width: 312.328px;
   justify-content: space-between;
   align-items: center;
+  @media (max-width: 1128px) {
+    max-width: 100%;
+    width: 100%;
+    margin-bottom: 32px;
+  }
 `;
 
 const RatingContainer = styled.div`
@@ -16,10 +22,19 @@ const RatingContainer = styled.div`
   flex-flow: row wrap;
   flex: 1 1 auto;
   justify-content: space-between;
-  width: 100%;
+  width: 50%;
+  margin-right 16px;
   font-size: 14px;
   font-weight: 400;
   margin-bottom: 12px;
+  @media (max-width: 1128px) {
+    margin-right: 0;
+    width: calc(50% - 6px);
+    flex: none;
+  }
+  @media (max-width: 730px) {
+   width: 100%;
+  }
 `;
 
 const Category = styled.div`
@@ -41,6 +56,10 @@ const RatingMeter = styled.div`
   width: 100%;
   margin-right: 10px;
   background: rgb(221, 221, 221);
+  border-bottom-left-radius: 2px;
+  border-bottom-right-radius: 2px;
+  border-top-left-radius: 2px;
+  border-top-right-radius: 2px;
 `;
 
 const RatingMeterFill = styled.div`
@@ -48,6 +67,10 @@ const RatingMeterFill = styled.div`
   height: 100%;
   width: ${(props) => props.width || 0}%;
   background: rgb(34, 34, 34);
+  border-bottom-left-radius: 2px;
+  border-bottom-right-radius: 2px;
+  border-top-left-radius: 2px;
+  border-top-right-radius: 2px;
 `;
 
 const Number = styled.span`
@@ -59,9 +82,7 @@ const ModalRatings = ({ ratings }) => (
   <RatingsContainer>
     {ratings.map((rating) => (
       <RatingContainer key={rating[0]} rating={rating}>
-        <Category>
-          {rating[0]}
-        </Category>
+        <Category>{rating[0]}</Category>
         <Rating>
           <RatingMeter>
             <RatingMeterFill width={rating[1] * 20 || 0} />

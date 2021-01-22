@@ -5,12 +5,18 @@ import PropTypes from 'prop-types';
 const SearchContainer = styled.div`
   display: flex;
   flex-flow: row wrap;
-  flex: 1 1 60%;
-  justify-content: flex-end;
-  align-items: center;
+  flex: 1 1 auto;
+  width: 60%;
+  justify-content: flex-start;
+  align-items: flex-start;
   max-width: 558.578px;
+  margin-left: 98.040px;
   max-height: 44px;
-  margin-bottom: 24px;
+  @media (max-width: 1128px) {
+    max-width: 100%;
+    width: 100%;
+    margin-left: 0;
+  }
 `;
 
 const InputContainer = styled.div`
@@ -40,7 +46,6 @@ const InputContainer = styled.div`
   padding: 12px 12px 12px 16px;
   position: relative;
   text-size-adjust: 100%;
-  max-width: 558.578px;
   width: 100%;
   &:focus {
     outline: none !important;
@@ -157,7 +162,6 @@ const X2 = styled.span`
 const ModalBodyHeaderSearch = ({
   searchText,
   handleInputChange,
-  // handleEnterKeyDown,
 }) => {
   const textInput = useRef(null);
   const handleClick = () => {
@@ -168,17 +172,13 @@ const ModalBodyHeaderSearch = ({
     handleInputChange(e.target.value);
   };
 
-  // const handleKeyDown = (e) => {
-  //   handleEnterKeyDown(e);
-  // };
-
   const handleDelete = () => {
     handleInputChange('');
   };
 
   return (
     <SearchContainer>
-      <InputContainer onClick={handleClick}>
+      <InputContainer id="search" onClick={handleClick}>
         <InputArea>
           <MagnifyingGlass>
             <i className="fas fa-search" />
@@ -189,7 +189,6 @@ const ModalBodyHeaderSearch = ({
             placeholder="Search reviews"
             value={searchText}
             onChange={handleChange}
-            // onKeyDown={handleKeyDown}
           />
           { searchText
             ? (
@@ -209,7 +208,8 @@ const ModalBodyHeaderSearch = ({
 export default ModalBodyHeaderSearch;
 
 ModalBodyHeaderSearch.propTypes = {
-  searchText: PropTypes.string.isRequired,
+  searchText: PropTypes.string,
   handleInputChange: PropTypes.func.isRequired,
-  // handleEnterKeyDown: PropTypes.func.isRequired,
 };
+
+ModalBodyHeaderSearch.defaultProps = { searchText: '' };

@@ -12,21 +12,28 @@ const ReviewsContainer = styled.div`
   align-items: flex-start;
   margin-left: 98.040px;
   max-width: 558.578px;
+  margin-bottom: 72px;
+  -webkit-font-smoothing: antialiased;
+  @media (max-width: 1128px) {
+    max-width: 100%;
+    width: 100%;
+    margin-left: 0px;
+  }
 `;
 
-const ModalReviews = ({ reviews, searchText }) => {
-  const searchResults = searchText
+const ModalReviews = ({ reviews, delayedSearchText }) => {
+  const searchResults = delayedSearchText
     ? reviews.filter(
-      (review) => review.comment.toLowerCase().includes(searchText.toLowerCase())
+      (review) => review.comment.toLowerCase().includes(delayedSearchText.toLowerCase())
       || (review.ownerComment
-        && review.ownerComment.toLowerCase().includes(searchText.toLowerCase())),
+        && review.ownerComment.toLowerCase().includes(delayedSearchText.toLowerCase())),
     )
     : reviews;
 
   return (
     <ReviewsContainer>
       {searchResults.map((review) => (
-        <ModalReview key={review._id} review={review} searchText={searchText} />
+        <ModalReview key={review._id} review={review} delayedSearchText={delayedSearchText} />
       ))}
     </ReviewsContainer>
   );
@@ -36,24 +43,7 @@ export default ModalReviews;
 
 ModalReviews.propTypes = {
   reviews: PropTypes.arrayOf(PropTypes.object).isRequired,
-  // search: PropTypes.bool.isRequired,
-  searchText: PropTypes.string.isRequired,
+  delayedSearchText: PropTypes.string,
 };
 
-// {useFiltered
-//   ? filtered.map((review) => (
-//     <ModalReview key={review._id} review={review} />
-//   )) : reviews.map((review) => (
-//     <ModalReview key={review._id} review={review} />
-//   ))}
-
-// const searchResults = reviews.reviews.filter(
-//   (review) => review.comment.split(' ').some(
-//     (element) => element.toLowerCase() === searchText.toLowerCase(),
-//   ),
-// );
-// for (let i = 0; i < searchResults.length; i += 1) {
-// const newText =
-// searchResults[i].comment.replace(new RegExp(searchText, 'gi'),(match)=> `<mark>${match}</mark>`);
-//   searchResults[i].comment = newText;
-// }
+ModalReviews.defaultProps = { delayedSearchText: '' };

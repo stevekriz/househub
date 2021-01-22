@@ -1,3 +1,4 @@
+/* eslint-disable react/no-danger */
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
@@ -6,8 +7,10 @@ const Review = styled.div`
   display: flex;
   flex-flow: column wrap;
   width: 100%;
-  max-width: 558.578px;
   margin-bottom: 48px;
+  @media (max-width: 1128px) {
+    margin-bottom: 32px;
+  }
 `;
 
 const Header = styled.div`
@@ -15,20 +18,30 @@ const Header = styled.div`
   flex-flow: row wrap;
   height: 56px;
   width: 100%;
-  max-width: 558.578px;
   margin-bottom: 16px;
   align-items: center;
+  @media (max-width: 1128px) {
+    margin-bottom: 12px;
+  }
+  @media (max-width: 730px) {
+    height: 40px;
+  }
 `;
 
 const PictureWrapper = styled.a`
   cursor: pointer;
   height: 56px;
   width: 56px;
+  @media (max-width: 730px) {
+    height: 40px;
+    width: 40px;
+  }
 `;
 
 const Picture = styled.img`
   border-radius: 50%;
-  width: 56px;
+  height: 100%;
+  width: 100%;
   src: ${(props) => props.src || null}%;
 `;
 
@@ -48,16 +61,15 @@ const Date = styled.div`
 `;
 
 const Comment = styled.div`
-  display: flex;
-  flex-flow: row wrap;
   min-height: min-content;
   line-height: 24px;
   font-size: 16px;
   font-weight: 400;
+  -webkit-font-smoothing: antialiased;
 `;
 
 const ReadMore = styled.span`
-  display: inline-block;
+  display: inline;
   color: rgb(34, 34, 34);
   cursor: pointer;
   font-family: Circular, -apple-system, system-ui, Roboto, "Helvetica Neue", sans-serif;
@@ -79,6 +91,10 @@ const Owner = styled.div`
   max-width: 526.578px;
   margin-top: 48px;
   margin-left: 32px;
+  @media (max-width: 1128px) {
+    margin-top: 24px;
+    margin-left: 24px;
+  }
 `;
 
 const OwnerHeader = styled.div`
@@ -89,6 +105,9 @@ const OwnerHeader = styled.div`
   max-width: 526.578px;
   margin-bottom: 16px;
   align-items: center;
+  @media (max-width: 1128px) {
+    margin-bottom: 12px;
+  }
 `;
 
 const OwnerComment = styled.div`
@@ -99,9 +118,16 @@ const OwnerComment = styled.div`
   font-size: 16px;
   font-weight: 400;
   margin-left: 68px;
+  -webkit-font-smoothing: antialiased;
+  @media (max-width: 1128px) {
+    margin-left: 52px;
+  }
+  @media (max-width: 730px) {
+    margin-left: 52px;
+  }
 `;
 
-const ModalReview = ({ review, searchText }) => {
+const ModalReview = ({ review, delayedSearchText }) => {
   const [showComment, setShowComment] = useState(false);
   const [showOwnerComment, setShowOwnerComment] = useState(false);
 
@@ -122,10 +148,10 @@ const ModalReview = ({ review, searchText }) => {
         </NameDate>
       </Header>
       <Comment>
-        {review.comment.length <= 180 || showComment || (searchText && review.comment.lastIndexOf(searchText) > 180) ? <span dangerouslySetInnerHTML={{ __html: review.comment.replace(new RegExp(searchText, 'gi'), (match) => `<mark>${match}</mark>`) }} />
+        {review.comment.length <= 180 || showComment || (delayedSearchText && review.comment.lastIndexOf(delayedSearchText) > 180) ? <span dangerouslySetInnerHTML={{ __html: review.comment.replace(new RegExp(delayedSearchText, 'gi'), (match) => `<mark>${match}</mark>`) }} />
           : (
             <>
-              <span dangerouslySetInnerHTML={{ __html: review.comment.substring(0, 180).replace(new RegExp(searchText, 'gi'), (match) => `<mark>${match}</mark>`) }} />
+              <span dangerouslySetInnerHTML={{ __html: review.comment.substring(0, 180).replace(new RegExp(delayedSearchText, 'gi'), (match) => `<mark>${match}</mark>`) }} />
               {'... '}
               <ReadMore onClick={handleCommentClick}>
                 read more
@@ -149,10 +175,10 @@ const ModalReview = ({ review, searchText }) => {
                 </NameDate>
               </OwnerHeader>
               <OwnerComment>
-                {review.ownerComment.length <= 180 || showOwnerComment || (searchText && review.ownerComment.lastIndexOf(searchText) > 180) ? <span dangerouslySetInnerHTML={{ __html: review.comment.replace(new RegExp(searchText, 'gi'), (match) => `<mark>${match}</mark>`) }} />
+                {review.ownerComment.length <= 180 || showOwnerComment || (delayedSearchText && review.ownerComment.lastIndexOf(delayedSearchText) > 180) ? <span dangerouslySetInnerHTML={{ __html: review.ownerComment.replace(new RegExp(delayedSearchText, 'gi'), (match) => `<mark>${match}</mark>`) }} />
                   : (
                     <>
-                      <span dangerouslySetInnerHTML={{ __html: review.comment.substring(0, 180).replace(new RegExp(searchText, 'gi'), (match) => `<mark>${match}</mark>`) }} />
+                      <span dangerouslySetInnerHTML={{ __html: review.ownerComment.substring(0, 180).replace(new RegExp(delayedSearchText, 'gi'), (match) => `<mark>${match}</mark>`) }} />
                       {'... '}
                       <ReadMore onClick={handleOwnerCommentClick}>
                         read more
@@ -182,5 +208,7 @@ ModalReview.propTypes = {
     ownerCommentDate: PropTypes.string,
     ownerComment: PropTypes.string,
   }).isRequired,
-  searchText: PropTypes.string.isRequired,
+  delayedSearchText: PropTypes.string,
 };
+
+ModalReview.defaultProps = { delayedSearchText: '' };

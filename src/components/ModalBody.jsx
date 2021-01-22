@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
+import { debounce } from 'lodash';
 
 import ModalRatingsHeader from './ModalRatingsHeader';
 import ModalSearch from './ModalSearch';
@@ -15,9 +16,10 @@ const ScrollContainer = styled.div`
   height: 100%;
   overflow-x: auto;
   overflow-y: auto;
-  max-height: 1004px;
+  max-height: 100vh;
   padding: 24px;
   width: 100%;
+  -webkit-font-smoothing: antialiased;
 `;
 
 const Container = styled.div`
@@ -31,6 +33,7 @@ const Container = styled.div`
   width: 100%;
   margin-top: -24px;
   margin-right: 15px;
+  -webkit-font-smoothing: antialiased;
 `;
 
 const HeaderContainer = styled.div`
@@ -40,12 +43,10 @@ const HeaderContainer = styled.div`
   display: flex;
   flex-flow: row wrap;
   flex: 1 1 auto;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: flex-start;
-  max-width: 986px;
   width: 100%;
-  max-height: 44px;
-  margin-bottom: 24px;
+  padding-bottom: 24px;
   background-color: rgb(255, 255, 255);
 `;
 
@@ -57,20 +58,21 @@ const BodyContainer = styled.div`
   justify-content: flex-start;
   align-items: flex-start;
   width: 100%;
+  @media (max-width: 1128px) {
+    flex-flow: column wrap;
+  }
 `;
 
 const ModalBody = ({ reviews }) => {
   const [searchText, setSearchText] = useState('');
+  const [delayedSearchText, setDelayedSearchText] = useState('');
+
+  const delayedSearch = useRef(debounce((text) => setDelayedSearchText(text), 300)).current;
 
   const handleInputChange = (text) => {
     setSearchText(text);
+    delayedSearch(text);
   };
-
-  // const handleEnterKeyDown = (e) => {
-  //   if (e.key === 'Enter' && searchText) {
-  //     setSearch(true);
-  //   }
-  // };
 
   return (
     <ScrollContainer>
@@ -83,12 +85,11 @@ const ModalBody = ({ reviews }) => {
           <ModalSearch
             searchText={searchText}
             handleInputChange={handleInputChange}
-            // handleEnterKeyDown={handleEnterKeyDown}
           />
         </HeaderContainer>
         <BodyContainer>
           <ModalRatings ratings={reviews.ratings} />
-          <ModalReviews reviews={reviews.reviews} searchText={searchText} />
+          <ModalReviews reviews={reviews.reviews} delayedSearchText={delayedSearchText} />
         </BodyContainer>
       </Container>
     </ScrollContainer>

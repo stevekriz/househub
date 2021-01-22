@@ -5,18 +5,23 @@ import styled from 'styled-components';
 const Container = styled.div`
   display: flex;
   flex-flow: row wrap;
-  flex: 1 1 33%;
+  flex: 1 1 auto;
+  width: 40%;
   justify-content: flex-start;
+  max-width: 312.328px;
   align-items: center;
-  margin-right: 7%;
-  margin-bottom: 24px;
+  @media (max-width: 1128px) {
+    max-width: 100%;
+    width: 100%;
+    margin-bottom: 24px;
+  }
 `;
 
 const Star = styled.span`
   display: flex;
   align-items: center;
   color: rgb(255, 56, 92);
-  font-size: 22.76px;
+  font-size: 18.5px;
   padding-right: 8px;
 `;
 
@@ -29,6 +34,10 @@ const RatingHeader = styled.span`
   font-weight: 700;
   font-family: Circular, -apple-system, system-ui, Roboto, "Helvetica Neue", sans-serif;
   -webkit-font-smoothing: antialiased;
+  @media (max-width: 730px) {
+    font-size: 26px;
+    line-height: 31px;
+  }
 `;
 
 const ModalRatingsHeader = ({ averageRating, reviewCount }) => (

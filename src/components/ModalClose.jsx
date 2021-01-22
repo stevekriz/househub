@@ -5,6 +5,9 @@ import PropTypes from 'prop-types';
 const Container = styled.div`
   width: 100%;
   height: 72px;
+  @media (max-width: 730px) {
+    height: 48px;
+  }
 `;
 
 const Button = styled.div`
@@ -26,24 +29,29 @@ const Button = styled.div`
     transform: scale(0.96) !important;
     background-color: rgb(247, 247, 247);
   }
+  @media (max-width: 730px) {
+    top: 8px;
+  }
 `;
 
-const ModalHeader = ({ closeModal }) => {
+const ModalClose = ({ handleClose, viewPortWidth }) => {
   const handleClick = () => {
-    closeModal();
+    handleClose();
   };
 
   return (
     <Container>
-      <Button onClick={handleClick}>
-        <i className="fas fa-times" />
+      <Button id="close" onClick={handleClick}>
+        {viewPortWidth > 730 ? <i className="fas fa-times" />
+          : <i className="fas fa-chevron-left" />}
       </Button>
     </Container>
   );
 };
 
-export default ModalHeader;
+export default ModalClose;
 
-ModalHeader.propTypes = {
-  closeModal: PropTypes.func.isRequired,
+ModalClose.propTypes = {
+  handleClose: PropTypes.func.isRequired,
+  viewPortWidth: PropTypes.number.isRequired,
 };

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
@@ -13,15 +13,19 @@ const Backdrop = styled.div`
   left: 0;
   padding: 40px;
   background: rgb(34, 34, 34, 0.6);
+  display: ${(props) => props.show || 'none'};
+  @media (max-width: 730px) {
+    padding: 0;
+  }
 `;
 
 const ModalContainer = styled.div`
+  position: relative;
   display: flex;
   flex-flow: row wrap;
   justify-content: center;
-  position: relative;
   overflow-y: hidden;
-  max-height: 100%;
+  height: 100%;
   max-width: 1032px;
   border-top-right-radius: 12px;
   border-bottom-right-radius: 0;
@@ -30,21 +34,36 @@ const ModalContainer = styled.div`
   box-shadow: rgba(0, 0, 0, 0.28) 0 8px 28px 0;
   margin: 0 auto;
   background-color: white;
+  top: 100vh;
+  transition: top 0.2s ease-in-out;
+  @media (max-width: 730px) {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+  }
 `;
 
-const Modal = ({ reviews, closeModal }) => {
+const Modal = ({
+  displayModal, reviews, closeModal, viewPortWidth,
+}) => {
+  const ref = useRef(null);
+
   useEffect(() => {
-    document.body.style.overflow = 'hidden';
-    document.body.style.paddingRight = '15px';
+    const refCopy = ref.current;
+    if (refCopy && displayModal) {
+      refCopy.style.top = '50%';
+      refCopy.style.transform = 'translateY(calc(-50% - .5px)';
+      document.body.style.overflow = 'hidden';
+    }
 
     return () => {
       document.body.style.overflow = 'unset';
-      document.body.style.paddingRight = '0';
     };
-  }, []);
+  }, [ref, displayModal]);
 
-  const handleBackdropClick = () => {
-    closeModal();
+  const handleClose = () => {
+    ref.current.style.top = '200vh';
+    ref.current.style.transition = 'top 0.4s ease-in-out';
+    setTimeout(closeModal, 400);
   };
 
   const handleModalClick = (e) => {
@@ -52,9 +71,13 @@ const Modal = ({ reviews, closeModal }) => {
   };
 
   return (
-    <Backdrop onClick={handleBackdropClick}>
-      <ModalContainer onClick={handleModalClick}>
-        <ModalClose closeModal={closeModal} />
+    <Backdrop
+      id="backdrop"
+      show={displayModal ? 'block' : 'none'}
+      onClick={handleClose}
+    >
+      <ModalContainer id="modal" ref={ref} onClick={handleModalClick}>
+        <ModalClose handleClose={handleClose} viewPortWidth={viewPortWidth} />
         <ModalBody reviews={reviews} />
       </ModalContainer>
     </Backdrop>
@@ -64,6 +87,8 @@ const Modal = ({ reviews, closeModal }) => {
 export default Modal;
 
 Modal.propTypes = {
+  displayModal: PropTypes.bool.isRequired,
   reviews: PropTypes.objectOf(PropTypes.arrayOf).isRequired,
   closeModal: PropTypes.func.isRequired,
+  viewPortWidth: PropTypes.number.isRequired,
 };
