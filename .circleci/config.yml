@@ -17,8 +17,5 @@ jobs:
           paths:
             - /home/circleci/.npm
       - run:
-          name: Start Server
-          command: npm start
-      - run:
-          name: Run Tests
-          command: npm test
+          name: Start Server and Run Tests
+          command: npm start & npm test
