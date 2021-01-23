@@ -7,8 +7,8 @@ module.exports = {
   ],
   projects: [
     {
-      displayName: 'node',
-      testEnvironment: 'node',
+      displayName: 'dom',
+      testEnvironment: 'jsdom',
       snapshotSerializers: ['enzyme-to-json/serializer'],
       testMatch: ['**/__tests__/**/*.test.js?(x)'],
     },
