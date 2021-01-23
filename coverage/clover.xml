@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1611373783885" clover="3.2.0">
-  <project timestamp="1611373783885" name="All files">
-    <metrics statements="205" coveredstatements="191" conditionals="51" coveredconditionals="31" methods="53" coveredmethods="34" elements="309" coveredelements="256" complexity="0" loc="205" ncloc="205" packages="6" files="19" classes="19"/>
+<coverage generated="1611435515333" clover="3.2.0">
+  <project timestamp="1611435515333" name="All files">
+    <metrics statements="210" coveredstatements="195" conditionals="53" coveredconditionals="32" methods="53" coveredmethods="34" elements="316" coveredelements="261" complexity="0" loc="210" ncloc="210" packages="6" files="19" classes="19"/>
     <package name="database">
       <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       <file name="index.js" path="/Users/stevekriz/hr/reviews/database/index.js">
@@ -60,9 +60,9 @@
       </file>
     </package>
     <package name="src">
-      <metrics statements="25" coveredstatements="15" conditionals="2" coveredconditionals="1" methods="9" coveredmethods="1"/>
+      <metrics statements="26" coveredstatements="15" conditionals="2" coveredconditionals="1" methods="9" coveredmethods="1"/>
       <file name="app.jsx" path="/Users/stevekriz/hr/reviews/src/app.jsx">
-        <metrics statements="25" coveredstatements="15" conditionals="2" coveredconditionals="1" methods="9" coveredmethods="1"/>
+        <metrics statements="26" coveredstatements="15" conditionals="2" coveredconditionals="1" methods="9" coveredmethods="1"/>
         <line num="11" count="1" type="stmt"/>
         <line num="21" count="1" type="stmt"/>
         <line num="36" count="1" type="stmt"/>
@@ -73,25 +73,26 @@
         <line num="55" count="1" type="stmt"/>
         <line num="57" count="1" type="stmt"/>
         <line num="58" count="0" type="stmt"/>
-        <line num="60" count="0" type="stmt"/>
+        <line num="59" count="0" type="stmt"/>
         <line num="61" count="0" type="stmt"/>
-        <line num="63" count="0" type="stmt"/>
-        <line num="65" count="1" type="stmt"/>
-        <line num="67" count="1" type="stmt"/>
-        <line num="68" count="0" type="stmt"/>
+        <line num="62" count="0" type="stmt"/>
+        <line num="64" count="0" type="stmt"/>
+        <line num="66" count="1" type="stmt"/>
+        <line num="68" count="1" type="stmt"/>
         <line num="69" count="0" type="stmt"/>
         <line num="70" count="0" type="stmt"/>
-        <line num="72" count="0" type="stmt"/>
+        <line num="71" count="0" type="stmt"/>
         <line num="73" count="0" type="stmt"/>
-        <line num="77" count="1" type="stmt"/>
+        <line num="74" count="0" type="stmt"/>
         <line num="78" count="1" type="stmt"/>
-        <line num="80" count="1" type="cond" truecount="1" falsecount="1"/>
-        <line num="81" count="1" type="stmt"/>
-        <line num="84" count="0" type="stmt"/>
+        <line num="79" count="1" type="stmt"/>
+        <line num="81" count="1" type="cond" truecount="1" falsecount="1"/>
+        <line num="82" count="1" type="stmt"/>
+        <line num="85" count="0" type="stmt"/>
       </file>
     </package>
     <package name="src.components">
-      <metrics statements="150" coveredstatements="146" conditionals="47" coveredconditionals="28" methods="41" coveredmethods="30"/>
+      <metrics statements="154" coveredstatements="150" conditionals="49" coveredconditionals="29" methods="41" coveredmethods="30"/>
       <file name="Footer.jsx" path="/Users/stevekriz/hr/reviews/src/components/Footer.jsx">
         <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
         <line num="5" count="2" type="stmt"/>
@@ -149,28 +150,30 @@
         <line num="95" count="3" type="stmt"/>
       </file>
       <file name="ModalClose.jsx" path="/Users/stevekriz/hr/reviews/src/components/ModalClose.jsx">
-        <metrics statements="6" coveredstatements="6" conditionals="2" coveredconditionals="1" methods="2" coveredmethods="2"/>
+        <metrics statements="8" coveredstatements="8" conditionals="2" coveredconditionals="1" methods="2" coveredmethods="2"/>
         <line num="5" count="3" type="stmt"/>
         <line num="13" count="3" type="stmt"/>
         <line num="37" count="3" type="stmt"/>
-        <line num="38" count="6" type="stmt"/>
-        <line num="40" count="2" type="stmt"/>
-        <line num="52" count="3" type="stmt"/>
+        <line num="47" count="3" type="stmt"/>
+        <line num="54" count="3" type="stmt"/>
+        <line num="55" count="6" type="stmt"/>
+        <line num="57" count="2" type="stmt"/>
+        <line num="95" count="3" type="stmt"/>
       </file>
       <file name="ModalRatings.jsx" path="/Users/stevekriz/hr/reviews/src/components/ModalRatings.jsx">
         <metrics statements="12" coveredstatements="12" conditionals="4" coveredconditionals="2" methods="3" coveredmethods="3"/>
         <line num="5" count="4" type="stmt"/>
-        <line num="20" count="4" type="stmt"/>
-        <line num="40" count="4" type="stmt"/>
-        <line num="48" count="4" type="stmt"/>
-        <line num="60" count="4" type="stmt"/>
-        <line num="69" count="4" type="stmt"/>
-        <line num="72" count="12" type="cond" truecount="1" falsecount="1"/>
-        <line num="77" count="4" type="stmt"/>
-        <line num="82" count="4" type="stmt"/>
-        <line num="83" count="2" type="stmt"/>
-        <line num="85" count="12" type="stmt"/>
-        <line num="98" count="4" type="stmt"/>
+        <line num="23" count="4" type="stmt"/>
+        <line num="43" count="4" type="stmt"/>
+        <line num="51" count="4" type="stmt"/>
+        <line num="63" count="4" type="stmt"/>
+        <line num="72" count="4" type="stmt"/>
+        <line num="75" count="12" type="cond" truecount="1" falsecount="1"/>
+        <line num="80" count="4" type="stmt"/>
+        <line num="85" count="4" type="stmt"/>
+        <line num="86" count="2" type="stmt"/>
+        <line num="88" count="12" type="stmt"/>
+        <line num="101" count="4" type="stmt"/>
       </file>
       <file name="ModalRatingsHeader.jsx" path="/Users/stevekriz/hr/reviews/src/components/ModalRatingsHeader.jsx">
         <metrics statements="6" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
@@ -212,33 +215,35 @@
         <line num="211" count="5" type="stmt"/>
       </file>
       <file name="ModalReviews.jsx" path="/Users/stevekriz/hr/reviews/src/components/ModalReviews.jsx">
-        <metrics statements="8" coveredstatements="7" conditionals="5" coveredconditionals="1" methods="3" coveredmethods="2"/>
+        <metrics statements="9" coveredstatements="8" conditionals="7" coveredconditionals="2" methods="3" coveredmethods="2"/>
         <line num="7" count="4" type="stmt"/>
-        <line num="26" count="4" type="stmt"/>
-        <line num="27" count="2" type="cond" truecount="1" falsecount="1"/>
-        <line num="28" count="0" type="cond" truecount="0" falsecount="3"/>
-        <line num="34" count="2" type="stmt"/>
-        <line num="37" count="2" type="stmt"/>
-        <line num="45" count="4" type="stmt"/>
-        <line num="50" count="4" type="stmt"/>
+        <line num="28" count="4" type="stmt"/>
+        <line num="40" count="4" type="stmt"/>
+        <line num="41" count="2" type="cond" truecount="1" falsecount="1"/>
+        <line num="42" count="0" type="cond" truecount="0" falsecount="3"/>
+        <line num="48" count="2" type="stmt"/>
+        <line num="51" count="2" type="stmt"/>
+        <line num="60" count="4" type="stmt"/>
+        <line num="65" count="4" type="stmt"/>
       </file>
       <file name="ModalSearch.jsx" path="/Users/stevekriz/hr/reviews/src/components/ModalSearch.jsx">
-        <metrics statements="15" coveredstatements="15" conditionals="2" coveredconditionals="1" methods="4" coveredmethods="1"/>
+        <metrics statements="16" coveredstatements="16" conditionals="2" coveredconditionals="1" methods="4" coveredmethods="1"/>
         <line num="5" count="4" type="stmt"/>
         <line num="22" count="4" type="stmt"/>
-        <line num="55" count="4" type="stmt"/>
-        <line num="65" count="4" type="stmt"/>
-        <line num="72" count="4" type="stmt"/>
-        <line num="88" count="4" type="stmt"/>
-        <line num="107" count="4" type="stmt"/>
-        <line num="112" count="4" type="stmt"/>
-        <line num="113" count="2" type="stmt"/>
-        <line num="114" count="2" type="stmt"/>
-        <line num="115" count="2" type="stmt"/>
-        <line num="116" count="2" type="stmt"/>
-        <line num="118" count="2" type="stmt"/>
-        <line num="144" count="4" type="stmt"/>
-        <line num="149" count="4" type="stmt"/>
+        <line num="58" count="4" type="stmt"/>
+        <line num="68" count="4" type="stmt"/>
+        <line num="75" count="4" type="stmt"/>
+        <line num="85" count="4" type="stmt"/>
+        <line num="101" count="4" type="stmt"/>
+        <line num="120" count="4" type="stmt"/>
+        <line num="130" count="4" type="stmt"/>
+        <line num="131" count="2" type="stmt"/>
+        <line num="132" count="2" type="stmt"/>
+        <line num="133" count="2" type="stmt"/>
+        <line num="134" count="2" type="stmt"/>
+        <line num="136" count="2" type="stmt"/>
+        <line num="187" count="4" type="stmt"/>
+        <line num="192" count="4" type="stmt"/>
       </file>
       <file name="Ratings.jsx" path="/Users/stevekriz/hr/reviews/src/components/Ratings.jsx">
         <metrics statements="12" coveredstatements="12" conditionals="4" coveredconditionals="2" methods="3" coveredmethods="3"/>
