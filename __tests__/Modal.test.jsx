@@ -48,22 +48,30 @@ describe('Modal', () => {
   const closeModal = jest.fn();
 
   it('should wait 400ms before calling closeModal on close', () => {
-    act(() => render(<Modal
-      displayModal={displayModal}
-      reviews={reviews}
-      closeModal={closeModal}
-      viewPortWidth={1280}
-    />, container));
+    act(() => {
+      render(<Modal
+        displayModal={displayModal}
+        reviews={reviews}
+        closeModal={closeModal}
+        viewPortWidth={1280}
+      />, container);
+    });
 
     const backdrop = document.querySelector('#backdrop');
 
-    act(() => backdrop.dispatchEvent(new MouseEvent('click', { bubbles: true })));
+    act(() => {
+      backdrop.dispatchEvent(new MouseEvent('click', { bubbles: true }));
+    });
     expect(closeModal).not.toHaveBeenCalled();
 
-    act(() => jest.advanceTimersByTime(300));
+    act(() => {
+      jest.advanceTimersByTime(300);
+    });
     expect(closeModal).not.toHaveBeenCalled();
 
-    act(() => jest.advanceTimersByTime(200));
+    act(() => {
+      jest.advanceTimersByTime(200);
+    });
     expect(closeModal).toHaveBeenCalledTimes(1);
   });
 });
