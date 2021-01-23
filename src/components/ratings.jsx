@@ -1,6 +1,6 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
 const Container = styled.div`
   display: flex;
@@ -23,22 +23,24 @@ const Column = styled.div`
 
 const Category = styled.div`
   display: flex;
-  flex: 1 1 53.25%;
+  flex: 1 1 52.25%;
   font-size: 16px;
   font-weight: 400;
+  line-height: 20px;
   @media (max-width: 1128px) {
-    flex: 1 1 45.75%;
+    flex: 1 1 44.75%;
   }
 `;
 const Rating = styled.div`
   display: flex;
-  flex: 1 1 26.5%;
+  flex: 1 1 27.5%;
   justify-content: flex-end;
   align-items: center;
   padding-left: 2.25%;
   margin-right: 18%;
+  line-height: 20px;
   @media (max-width: 1128px) {
-    flex: 1 1 34%;
+    flex: 1 1 35%;
   }
 `;
 
@@ -74,16 +76,10 @@ const Ratings = ({ ratings }) => (
   <Container>
     {ratings.map((rating) => (
       <Column key={rating[0]}>
-        <Category>
-          {rating[0]}
-        </Category>
+        <Category>{rating[0]}</Category>
         <Rating>
-          <RatingMeter>
-            <RatingMeterFill width={rating[1] * 20 || 0} />
-          </RatingMeter>
-          <Number>
-            {rating[1]}
-          </Number>
+          <RatingMeter><RatingMeterFill width={rating[1] * 20 || 0} /></RatingMeter>
+          <Number>{rating[1]}</Number>
         </Rating>
       </Column>
     ))}

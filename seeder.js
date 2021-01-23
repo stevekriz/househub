@@ -21,9 +21,8 @@ for (let i = 1; i <= 100; i += 1) {
   };
 
   const lr = listing.ratings;
-  const sum = Number(lr[0][1]) + Number(lr[1][1])
-    + Number(lr[2][1]) + Number(lr[3][1]) + Number(lr[4][1])
-    + Number(lr[5][1]);
+  const sum = Number(lr[0][1]) + Number(lr[1][1]) + Number(lr[2][1])
+    + Number(lr[3][1]) + Number(lr[4][1]) + Number(lr[5][1]);
   const ratingCategories = 6;
 
   const average = (sum / ratingCategories).toFixed(2);
@@ -44,17 +43,34 @@ for (let i = 1; i <= 100; i += 1) {
     1: 'December',
   };
 
+  const sex = () => {
+    if (Math.random() < 0.5) {
+      return 1;
+    }
+    return 0;
+  };
+
+  const picture = (gender) => `https://airbnbfec.s3-us-west-1.amazonaws.com/${gender}/${Math.floor(Math.random() * (40 - 1 + 1) + 1)}.jpeg`;
+
+  const ownerGender = sex();
+  const ownerProfilePicture = picture(ownerGender);
+  const ownerName = faker.name.firstName(ownerGender);
+
   for (let j = 1; j <= listing.reviewCount; j += 1) {
     const date = `${j < 13 ? month[j] : 'January'} ${j < 13 ? 2020 : 2019}`;
-    const ownerComment = Math.random() < 0.1 ? faker.lorem.sentences() : null;
+    const gender = sex();
+    const name = faker.name.firstName(gender);
+    const profilePicture = picture(gender);
+    const ownerComment = Math.random() < 0.2 ? faker.lorem.sentences() : null;
+
     listing.reviews.push({
       _id: j,
-      profilePicture: `https://airbnbfec.s3-us-west-1.amazonaws.com/${Math.floor(Math.random() * (41 - 1 + 1) + 1)}.jpeg`,
-      name: faker.name.firstName(),
+      profilePicture,
+      name,
       date,
       comment: faker.lorem.sentences(),
-      ownerProfilePicture: `https://airbnbfec.s3-us-west-1.amazonaws.com/${Math.floor(Math.random() * (41 - 1 + 1) + 1)}.jpeg`,
-      ownerName: ownerComment ? faker.name.firstName() : null,
+      ownerProfilePicture: ownerComment ? ownerProfilePicture : null,
+      ownerName: ownerComment ? ownerName : null,
       ownerCommentDate: ownerComment ? date : null,
       ownerComment,
     });

@@ -10,24 +10,25 @@ const ReviewsContainer = styled.div`
   flex: 1 1 60%;
   justify-content: flex-start;
   align-items: flex-start;
-  margin-left: 98.040px;
   max-width: 558.578px;
   margin-bottom: 72px;
-  -webkit-font-smoothing: antialiased;
+  margin-left: 90.040px;
   @media (max-width: 1128px) {
-    max-width: 100%;
     width: 100%;
+    max-width: 100%;
     margin-left: 0px;
   }
+  @media (max-width: 730px) {
+    margin-bottom: 24px;
+   }
 `;
 
 const ModalReviews = ({ reviews, delayedSearchText }) => {
-  const searchResults = delayedSearchText
-    ? reviews.filter(
-      (review) => review.comment.toLowerCase().includes(delayedSearchText.toLowerCase())
+  const searchResults = delayedSearchText ? reviews.filter(
+    (review) => review.comment.toLowerCase().includes(delayedSearchText.toLowerCase())
       || (review.ownerComment
         && review.ownerComment.toLowerCase().includes(delayedSearchText.toLowerCase())),
-    )
+  )
     : reviews;
 
   return (

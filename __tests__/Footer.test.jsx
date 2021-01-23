@@ -20,17 +20,13 @@ describe('Footer', () => {
   const openModal = jest.fn();
 
   it('registers clicks and contains correct review count from props', () => {
-    act(() => {
-      render(<Footer reviewCount={20} openModal={openModal} />, container);
-    });
+    act(() => render(<Footer reviewCount={20} openModal={openModal} />, container));
 
     const button = document.querySelector('#showAll');
 
     expect(button.innerHTML).toBe('Show all 20 reviews');
 
-    act(() => {
-      button.dispatchEvent(new MouseEvent('click', { bubbles: true }));
-    });
+    act(() => button.dispatchEvent(new MouseEvent('click', { bubbles: true })));
 
     expect(openModal).toHaveBeenCalledTimes(1);
 

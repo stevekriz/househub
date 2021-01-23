@@ -1,15 +1,13 @@
-const ReviewsModel = require('../models/ReviewsModel');
+const get = require('../models/ReviewsModel');
 
-const getReviews = (req, res) => {
-  ReviewsModel.getReviews(req.params.id, (err, reviews) => {
+const getReviews = (req, res) => (
+  get(req.params.id, (err, reviews) => {
     if (err) {
       res.status(400).send(err);
     } else {
       res.status(200).send(reviews);
     }
-  });
-};
+  })
+);
 
-module.exports = {
-  getReviews,
-};
+module.exports = getReviews;

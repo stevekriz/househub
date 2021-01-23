@@ -20,16 +20,11 @@ describe('ModalClose', () => {
   const handleClose = jest.fn();
 
   it('registers clicks', () => {
-    act(() => {
-      render(<ModalClose handleClose={handleClose} viewPortWidth={1280} />, container);
-    });
+    act(() => render(<ModalClose handleClose={handleClose} viewPortWidth={1280} />, container));
 
     const button = document.querySelector('#close');
 
-    act(() => {
-      button.dispatchEvent(new MouseEvent('click', { bubbles: true }));
-    });
-
+    act(() => button.dispatchEvent(new MouseEvent('click', { bubbles: true })));
     expect(handleClose).toHaveBeenCalledTimes(1);
 
     act(() => {
@@ -37,7 +32,6 @@ describe('ModalClose', () => {
         button.dispatchEvent(new MouseEvent('click', { bubbles: true }));
       }
     });
-
     expect(handleClose).toHaveBeenCalledTimes(6);
   });
 });

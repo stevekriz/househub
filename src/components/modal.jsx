@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react';
-import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
 import ModalClose from './ModalClose';
 import ModalBody from './ModalBody';
@@ -21,20 +21,17 @@ const Backdrop = styled.div`
 
 const ModalContainer = styled.div`
   position: relative;
+  top: 100vh;
   display: flex;
   flex-flow: row wrap;
   justify-content: center;
   overflow-y: hidden;
   height: 100%;
   max-width: 1032px;
-  border-top-right-radius: 12px;
-  border-bottom-right-radius: 0;
-  border-bottom-left-radius: 12px;
-  border-top-left-radius: 12px;
-  box-shadow: rgba(0, 0, 0, 0.28) 0 8px 28px 0;
+  border-radius: 12px 12px 0 12px;
   margin: 0 auto;
+  box-shadow: rgba(0, 0, 0, 0.28) 0 8px 28px 0;
   background-color: white;
-  top: 100vh;
   transition: top 0.2s ease-in-out;
   @media (max-width: 730px) {
     border-top-left-radius: 0;
@@ -65,17 +62,10 @@ const Modal = ({
     ref.current.style.transition = 'top 0.4s ease-in-out';
     setTimeout(closeModal, 400);
   };
-
-  const handleModalClick = (e) => {
-    e.stopPropagation();
-  };
+  const handleModalClick = (e) => e.stopPropagation();
 
   return (
-    <Backdrop
-      id="backdrop"
-      show={displayModal ? 'block' : 'none'}
-      onClick={handleClose}
-    >
+    <Backdrop id="backdrop" show={displayModal ? 'block' : 'none'} onClick={handleClose}>
       <ModalContainer id="modal" ref={ref} onClick={handleModalClick}>
         <ModalClose handleClose={handleClose} viewPortWidth={viewPortWidth} />
         <ModalBody reviews={reviews} />

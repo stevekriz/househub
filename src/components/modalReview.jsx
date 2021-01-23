@@ -16,10 +16,10 @@ const Review = styled.div`
 const Header = styled.div`
   display: flex;
   flex-flow: row wrap;
+  align-items: center;
   height: 56px;
   width: 100%;
   margin-bottom: 16px;
-  align-items: center;
   @media (max-width: 1128px) {
     margin-bottom: 12px;
   }
@@ -29,9 +29,9 @@ const Header = styled.div`
 `;
 
 const PictureWrapper = styled.a`
-  cursor: pointer;
   height: 56px;
   width: 56px;
+  cursor: pointer;
   @media (max-width: 730px) {
     height: 40px;
     width: 40px;
@@ -39,25 +39,25 @@ const PictureWrapper = styled.a`
 `;
 
 const Picture = styled.img`
-  border-radius: 50%;
   height: 100%;
   width: 100%;
+  border-radius: 50%;
   src: ${(props) => props.src || null}%;
 `;
 
 const NameDate = styled.div`
-  color: rgb(34, 34, 34);
+  height: 40px;
   margin-left: 12px;
+  color: rgb(34, 34, 34);
   font-size: 16px;
   font-weight: 600;
-  height: 40px;
 `;
 
 const Date = styled.div`
+  color: rgb(113, 113, 113);
+  line-height: 20px;
   font-size: 14px;
   font-weight: 400;
-  line-height: 20px;
-  color: rgb(113, 113, 113);
 `;
 
 const Comment = styled.div`
@@ -65,23 +65,20 @@ const Comment = styled.div`
   line-height: 24px;
   font-size: 16px;
   font-weight: 400;
-  -webkit-font-smoothing: antialiased;
 `;
 
 const ReadMore = styled.span`
   display: inline;
-  color: rgb(34, 34, 34);
+  height: 24px;
+  width: 77.3594px;
   cursor: pointer;
-  font-family: Circular, -apple-system, system-ui, Roboto, "Helvetica Neue", sans-serif;
+  color: rgb(34, 34, 34);
+  line-height: 24px;
   font-size: 16px;
   font-weight: 600;
-  height: 24px;
-  line-height: 24px;
   text-decoration-color: rgb(34, 34, 34);
-  text-decoration-line: underline;
   text-decoration-style: solid;
-  width: 77.3594px;
-  -webkit-font-smoothing: antialiased;
+  text-decoration-line: underline;
 `;
 
 const Owner = styled.div`
@@ -100,11 +97,11 @@ const Owner = styled.div`
 const OwnerHeader = styled.div`
   display: flex;
   flex-flow: row wrap;
+  align-items: center;
   height: 56px;
   width: 100%;
   max-width: 526.578px;
   margin-bottom: 16px;
-  align-items: center;
   @media (max-width: 1128px) {
     margin-bottom: 12px;
   }
@@ -113,12 +110,11 @@ const OwnerHeader = styled.div`
 const OwnerComment = styled.div`
   display: flex;
   flex-flow: row wrap;
+  margin-left: 68px;
   min-height: min-content;
   line-height: 24px;
   font-size: 16px;
   font-weight: 400;
-  margin-left: 68px;
-  -webkit-font-smoothing: antialiased;
   @media (max-width: 1128px) {
     margin-left: 52px;
   }
@@ -134,6 +130,35 @@ const ModalReview = ({ review, delayedSearchText }) => {
   const handleCommentClick = () => setShowComment(true);
   const handleOwnerCommentClick = () => setShowOwnerComment(true);
 
+  const message = (text, user) => {
+    const whichState = user ? showComment : showOwnerComment;
+    const whichHandler = user ? handleCommentClick : handleOwnerCommentClick;
+    const render = text.length <= 180 || whichState
+    || (delayedSearchText && text.lastIndexOf(delayedSearchText) > 180)
+      ? (
+        <span dangerouslySetInnerHTML={{
+          __html: text.replace(
+            new RegExp(delayedSearchText, 'gi'), (match) => `<mark>${match}</mark>`,
+          ),
+        }}
+        />
+      )
+      : (
+        <>
+          <span dangerouslySetInnerHTML={{
+            __html: text.substring(0, 180).replace(
+              new RegExp(delayedSearchText, 'gi'), (match) => `<mark>${match}</mark>`,
+            ),
+          }}
+          />
+          {'... '}
+          <ReadMore onClick={whichHandler}>read more</ReadMore>
+        </>
+      );
+
+    return render;
+  };
+
   return (
     <Review>
       <Header>
@@ -142,54 +167,26 @@ const ModalReview = ({ review, delayedSearchText }) => {
         </PictureWrapper>
         <NameDate>
           {review.name}
-          <Date>
-            {review.date}
-          </Date>
+          <Date>{review.date}</Date>
         </NameDate>
       </Header>
-      <Comment>
-        {review.comment.length <= 180 || showComment || (delayedSearchText && review.comment.lastIndexOf(delayedSearchText) > 180) ? <span dangerouslySetInnerHTML={{ __html: review.comment.replace(new RegExp(delayedSearchText, 'gi'), (match) => `<mark>${match}</mark>`) }} />
-          : (
-            <>
-              <span dangerouslySetInnerHTML={{ __html: review.comment.substring(0, 180).replace(new RegExp(delayedSearchText, 'gi'), (match) => `<mark>${match}</mark>`) }} />
-              {'... '}
-              <ReadMore onClick={handleCommentClick}>
-                read more
-              </ReadMore>
-            </>
-          )}
-      </Comment>
-      {
-        review.ownerComment
-          ? (
-            <Owner>
-              <OwnerHeader>
-                <PictureWrapper href={review.ownerProfilePicture}>
-                  <Picture src={review.ownerProfilePicture} />
-                </PictureWrapper>
-                <NameDate>
-                  {`Response from ${review.ownerName}`}
-                  <Date>
-                    {review.ownerCommentDate}
-                  </Date>
-                </NameDate>
-              </OwnerHeader>
-              <OwnerComment>
-                {review.ownerComment.length <= 180 || showOwnerComment || (delayedSearchText && review.ownerComment.lastIndexOf(delayedSearchText) > 180) ? <span dangerouslySetInnerHTML={{ __html: review.ownerComment.replace(new RegExp(delayedSearchText, 'gi'), (match) => `<mark>${match}</mark>`) }} />
-                  : (
-                    <>
-                      <span dangerouslySetInnerHTML={{ __html: review.ownerComment.substring(0, 180).replace(new RegExp(delayedSearchText, 'gi'), (match) => `<mark>${match}</mark>`) }} />
-                      {'... '}
-                      <ReadMore onClick={handleOwnerCommentClick}>
-                        read more
-                      </ReadMore>
-                    </>
-                  )}
-              </OwnerComment>
-            </Owner>
-          )
-          : null
-      }
+      <Comment>{message(review.comment, true)}</Comment>
+      {review.ownerComment
+        ? (
+          <Owner>
+            <OwnerHeader>
+              <PictureWrapper href={review.ownerProfilePicture}>
+                <Picture src={review.ownerProfilePicture} />
+              </PictureWrapper>
+              <NameDate>
+                {`Response from ${review.ownerName}`}
+                <Date>{review.ownerCommentDate}</Date>
+              </NameDate>
+            </OwnerHeader>
+            <OwnerComment>{message(review.ownerComment)}</OwnerComment>
+          </Owner>
+        )
+        : null}
     </Review>
   );
 };

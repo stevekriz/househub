@@ -146,7 +146,11 @@
 <a name='L87'></a><a href='#L87'>87</a>
 <a name='L88'></a><a href='#L88'>88</a>
 <a name='L89'></a><a href='#L89'>89</a>
-<a name='L90'></a><a href='#L90'>90</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L90'></a><a href='#L90'>90</a>
+<a name='L91'></a><a href='#L91'>91</a>
+<a name='L92'></a><a href='#L92'>92</a>
+<a name='L93'></a><a href='#L93'>93</a>
+<a name='L94'></a><a href='#L94'>94</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -178,19 +182,25 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -202,6 +212,10 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -226,18 +240,12 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React from 'react';
-import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 &nbsp;
 const Container = styled.div`
   display: flex;
@@ -260,22 +268,24 @@ const Column = styled.div`
 &nbsp;
 const Category = styled.div`
   display: flex;
-  flex: 1 1 53.25%;
+  flex: 1 1 52.25%;
   font-size: 16px;
   font-weight: 400;
+  line-height: 20px;
   @media (max-width: 1128px) {
-    flex: 1 1 45.75%;
+    flex: 1 1 44.75%;
   }
 `;
 const Rating = styled.div`
   display: flex;
-  flex: 1 1 26.5%;
+  flex: 1 1 27.5%;
   justify-content: flex-end;
   align-items: center;
   padding-left: 2.25%;
   margin-right: 18%;
+  line-height: 20px;
   @media (max-width: 1128px) {
-    flex: 1 1 34%;
+    flex: 1 1 35%;
   }
 `;
 &nbsp;
@@ -285,6 +295,10 @@ const RatingMeter = styled.div`
   height: 4px;
   margin-right: 10px;
   background: rgb(221, 221, 221);
+  border-bottom-left-radius: 2px;
+  border-bottom-right-radius: 2px;
+  border-top-left-radius: 2px;
+  border-top-right-radius: 2px;
 `;
 &nbsp;
 const RatingMeterFill = styled.div`
@@ -292,6 +306,10 @@ const RatingMeterFill = styled.div`
   height: 100%;
   width: ${(props) =&gt; props.width || <span class="branch-1 cbranch-no" title="branch not covered" >0}</span>%;
   background: rgb(34, 34, 34);
+  border-bottom-left-radius: 2px;
+  border-bottom-right-radius: 2px;
+  border-top-left-radius: 2px;
+  border-top-right-radius: 2px;
 `;
 &nbsp;
 const Number = styled.span`
@@ -303,16 +321,10 @@ const Ratings = ({ ratings }) =&gt; (
   &lt;Container&gt;
     {ratings.map((rating) =&gt; (
       &lt;Column key={rating[0]}&gt;
-        &lt;Category&gt;
-          {rating[0]}
-        &lt;/Category&gt;
+        &lt;Category&gt;{rating[0]}&lt;/Category&gt;
         &lt;Rating&gt;
-          &lt;RatingMeter&gt;
-            &lt;RatingMeterFill width={rating[1] * 20 || <span class="branch-1 cbranch-no" title="branch not covered" >0}</span> /&gt;
-          &lt;/RatingMeter&gt;
-          &lt;Number&gt;
-            {rating[1]}
-          &lt;/Number&gt;
+          &lt;RatingMeter&gt;&lt;RatingMeterFill width={rating[1] * 20 || <span class="branch-1 cbranch-no" title="branch not covered" >0}</span> /&gt;&lt;/RatingMeter&gt;
+          &lt;Number&gt;{rating[1]}&lt;/Number&gt;
         &lt;/Rating&gt;
       &lt;/Column&gt;
     ))}
@@ -331,7 +343,7 @@ Ratings.propTypes = {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank">istanbul</a>
-                at Thu Jan 21 2021 14:00:02 GMT-0800 (Pacific Standard Time)
+                at Fri Jan 22 2021 19:49:43 GMT-0800 (Pacific Standard Time)
             </div>
         </div>
         <script src="../../prettify.js"></script>

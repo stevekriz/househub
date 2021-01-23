@@ -6,47 +6,38 @@ const SearchContainer = styled.div`
   display: flex;
   flex-flow: row wrap;
   flex: 1 1 auto;
-  width: 60%;
   justify-content: flex-start;
   align-items: flex-start;
+  width: 60%;
   max-width: 558.578px;
-  margin-left: 98.040px;
   max-height: 44px;
+  margin-left: 90.040px;
   @media (max-width: 1128px) {
-    max-width: 100%;
     width: 100%;
+    max-width: 100%;
     margin-left: 0;
   }
 `;
 
 const InputContainer = styled.div`
+  position: relative;
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  background-color: rgb(247, 247, 247);
-  border-radius: 100px;
-  border-color: rgb(34, 34, 34);
-  border-style: none;
-  border-width: 0;
-  border-image-outset: 0;
-  border-image-repeat: stretch;
-  border-image-slice: 100%;
-  border-image-source: none;
-  border-image-width: 1;
-  box-shadow: rgb(176, 176, 176) 0 0 0 1px inset;
-  box-sizing: border-box;
+  height: 44px;
+  width: 100%;
   color: rgb(34, 34, 34);
   cursor: text;
-  font-family: Circular, -apple-system, system-ui, Roboto, "Helvetica Neue", sans-serif;
   font-size: 14px;
   font-weight: 400;
-  height: 44px;
   line-height: 20.02px;
-  margin: 0;
-  padding: 12px 12px 12px 16px;
-  position: relative;
   text-size-adjust: 100%;
-  width: 100%;
+  background-color: rgb(247, 247, 247);
+  padding: 12px 12px 12px 16px;
+  box-sizing: border-box;
+  border-color: rgb(34, 34, 34);
+  border-radius: 100px;
+  box-shadow: rgb(176, 176, 176) 0 0 0 1px inset;
   &:focus {
     outline: none !important;
     box-shadow: rgb(34, 34, 34) 0 0 0 2px inset !important;
@@ -61,6 +52,16 @@ const InputContainer = styled.div`
   }
 `;
 
+const InputArea = styled.div`
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: flex-start;
+  align-item: center;
+  height: 20px;
+  width: 100%;
+  padding: 0;
+`;
+
 const MagnifyingGlass = styled.div`
   height: 16px;
   width: 16px;
@@ -68,79 +69,29 @@ const MagnifyingGlass = styled.div`
   margin-right: 8px;
 `;
 
-const InputArea = styled.div`
-  display: flex;
-  width: 100%;
-  height: 20px;
-  padding: 12px 0 12px 0;
-`;
-
 const Input = styled.input`
   display: flex;
-  appearance: none;
+  flex: 1 1 0;
+  height: 20px;
+  width: 100%;
+  border: none;
+  outline: none;
+  margin: 0 8px 0 0;
   background-color: rgba(0, 0, 0, 0);
-  border-color: rgb(34, 34, 34);
-  border-style: none;
-  border-width: 0;
-  border-image-outset: 0;
-  border-image-repeat: stretch;
-  border-image-slice: 100%;
-  border-image-source: none;
-  border-image-width: 1;
-  box-sizing: border-box;
   color: rgb(34, 34, 34);
   cursor: text;
-  display: block;
-  flex-basis: 0;
-  flex-grow: 1;
-  flex-shrink: 1;
-  font-family: Circular, -apple-system, system-ui, Roboto, "Helvetica Neue", sans-serif;
   font-size: 14px;
-  font-stretch: 100%;
-  font-style: normal;
-  font-variant-caps: normal;
-  font-variant-east-asian: normal;
-  font-variant-ligatures: normal;
-  font-variant-numeric: normal;
   font-weight: 400;
-  height: 20px;
-  letter-spacing: normal;
   line-height: 20px;
-  margin-bottom: 0;
-  margin-left: 0;
-  margin-right: 8px;
-  margin-top: 0;
-  min-height: 1px;
-  outline-color: rgb(34, 34, 34);
-  outline-style: none;
-  outline-width: 0;
-  padding-bottom: 0;
-  padding-left: 0;
-  padding-right: 0;
-  padding-top: 0;
-  text-align: start;
-  text-indent: 0;
-  text-overflow: ellipsis;
-  text-rendering: auto;
-  text-shadow: none;
-  text-size-adjust: 100%;
-  text-transform: none;
-  width: 100%;
-  word-spacing: 0;
-  writing-mode: horizontal-tb;
-  -webkit-box-direction: normal;
-  -webkit-font-smoothing: antialiased;
-  -webkit-rtl-ordering: logical;
-  -webkit-border-image: none;
 `;
 
 const DeleteButton = styled.div`
-  box-sizing: border-box;
   display: flex;
   justify-content: safe center;
   align-items: safe center;
   height: 20px;
   width: 20px;
+  box-sizing: border-box;
   border-radius: 50%;
   background-color: rgb(221, 221, 221) !important;
   color: rgb(113, 113, 113) !important;
@@ -154,35 +105,21 @@ const DeleteButton = styled.div`
 `;
 
 const X2 = styled.span`
-  box-sizing: border-box;
   display: flex;
   font-size: 12px;
 `;
 
-const ModalBodyHeaderSearch = ({
-  searchText,
-  handleInputChange,
-}) => {
+const ModalBodyHeaderSearch = ({ searchText, handleInputChange }) => {
   const textInput = useRef(null);
-  const handleClick = () => {
-    textInput.current.focus();
-  };
-
-  const handleChange = (e) => {
-    handleInputChange(e.target.value);
-  };
-
-  const handleDelete = () => {
-    handleInputChange('');
-  };
+  const handleClick = () => textInput.current.focus();
+  const handleChange = (e) => handleInputChange(e.target.value);
+  const handleDelete = () => handleInputChange('');
 
   return (
     <SearchContainer>
       <InputContainer id="search" onClick={handleClick}>
         <InputArea>
-          <MagnifyingGlass>
-            <i className="fas fa-search" />
-          </MagnifyingGlass>
+          <MagnifyingGlass><i className="fas fa-search" /></MagnifyingGlass>
           <Input
             ref={textInput}
             type="text"
@@ -190,14 +127,11 @@ const ModalBodyHeaderSearch = ({
             value={searchText}
             onChange={handleChange}
           />
-          { searchText
-            ? (
-              <DeleteButton onClick={handleDelete}>
-                <X2>
-                  <i className="fas fa-times" />
-                </X2>
-              </DeleteButton>
-            )
+          {searchText ? (
+            <DeleteButton onClick={handleDelete}>
+              <X2><i className="fas fa-times" /></X2>
+            </DeleteButton>
+          )
             : null}
         </InputArea>
       </InputContainer>

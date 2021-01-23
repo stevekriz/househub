@@ -154,12 +154,7 @@
 <a name='L95'></a><a href='#L95'>95</a>
 <a name='L96'></a><a href='#L96'>96</a>
 <a name='L97'></a><a href='#L97'>97</a>
-<a name='L98'></a><a href='#L98'>98</a>
-<a name='L99'></a><a href='#L99'>99</a>
-<a name='L100'></a><a href='#L100'>100</a>
-<a name='L101'></a><a href='#L101'>101</a>
-<a name='L102'></a><a href='#L102'>102</a>
-<a name='L103'></a><a href='#L103'>103</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L98'></a><a href='#L98'>98</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -170,21 +165,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -210,10 +190,23 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -235,9 +228,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -263,8 +253,8 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React, { useState, useRef } from 'react';
 import styled from 'styled-components';
-import PropTypes from 'prop-types';
 import { debounce } from 'lodash';
+import PropTypes from 'prop-types';
 &nbsp;
 import ModalRatingsHeader from './ModalRatingsHeader';
 import ModalSearch from './ModalSearch';
@@ -275,61 +265,59 @@ const ScrollContainer = styled.div`
   display: block;
   flex-flow: column wrap;
   flex: 1 1 auto;
-  box-sizing: border-box;
   height: 100%;
+  max-height: 100vh;
+  width: 100%;
   overflow-x: auto;
   overflow-y: auto;
-  max-height: 100vh;
   padding: 24px;
-  width: 100%;
-  -webkit-font-smoothing: antialiased;
+  box-sizing: border-box;
 `;
 &nbsp;
 const Container = styled.div`
-  box-sizing: border-box;
   display: flex;
   flex-flow: column wrap;
   flex: 1 1 auto;
   justify-content: flex-start;
   align-items: flex-start;
-  max-width: 986px;
   width: 100%;
+  max-width: 986px;
   margin-top: -24px;
   margin-right: 15px;
-  -webkit-font-smoothing: antialiased;
+  box-sizing: border-box;
 `;
 &nbsp;
 const HeaderContainer = styled.div`
   position: sticky;
   top: -24px;
-  z-index: 1;
   display: flex;
   flex-flow: row wrap;
   flex: 1 1 auto;
-  justify-content: flex-start;
+  justify-content: space-between;
   align-items: flex-start;
-  max-width: 986px;
   width: 100%;
-  max-height: 44px;
   padding-bottom: 24px;
   background-color: rgb(255, 255, 255);
 `;
 &nbsp;
 const BodyContainer = styled.div`
-  box-sizing: border-box;
   display: flex;
   flex-flow: row wrap;
   flex: 1 1 auto;
   justify-content: flex-start;
   align-items: flex-start;
   width: 100%;
+  box-sizing: border-box;
+  @media (max-width: 1128px) {
+    flex-flow: column wrap;
+  }
 `;
 &nbsp;
 const ModalBody = ({ reviews }) =&gt; {
   const [searchText, setSearchText] = useState('');
   const [delayedSearchText, setDelayedSearchText] = useState('');
 &nbsp;
-  const delayedSearch = useRef(debounce(<span class="fstat-no" title="function not covered" >(t</span>ext) =&gt; <span class="cstat-no" title="statement not covered" >setDelayedSearchText(text),</span> 300)).current;
+  const delayedSearch = useRef(debounce(<span class="fstat-no" title="function not covered" >(t</span>ext) =&gt; <span class="cstat-no" title="statement not covered" >setDelayedSearchText(text),</span> 200)).current;
 &nbsp;
   const handleInputChange = <span class="fstat-no" title="function not covered" >(t</span>ext) =&gt; {
 <span class="cstat-no" title="statement not covered" >    setSearchText(text);</span>
@@ -344,10 +332,7 @@ const ModalBody = ({ reviews }) =&gt; {
             averageRating={reviews.averageRating}
             reviewCount={reviews.reviewCount}
           /&gt;
-          &lt;ModalSearch
-            searchText={searchText}
-            handleInputChange={handleInputChange}
-          /&gt;
+          &lt;ModalSearch searchText={searchText} handleInputChange={handleInputChange} /&gt;
         &lt;/HeaderContainer&gt;
         &lt;BodyContainer&gt;
           &lt;ModalRatings ratings={reviews.ratings} /&gt;
@@ -370,7 +355,7 @@ ModalBody.propTypes = {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank">istanbul</a>
-                at Thu Jan 21 2021 14:00:02 GMT-0800 (Pacific Standard Time)
+                at Fri Jan 22 2021 19:49:43 GMT-0800 (Pacific Standard Time)
             </div>
         </div>
         <script src="../../prettify.js"></script>

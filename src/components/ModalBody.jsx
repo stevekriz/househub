@@ -1,7 +1,7 @@
 import React, { useState, useRef } from 'react';
 import styled from 'styled-components';
-import PropTypes from 'prop-types';
 import { debounce } from 'lodash';
+import PropTypes from 'prop-types';
 
 import ModalRatingsHeader from './ModalRatingsHeader';
 import ModalSearch from './ModalSearch';
@@ -12,38 +12,35 @@ const ScrollContainer = styled.div`
   display: block;
   flex-flow: column wrap;
   flex: 1 1 auto;
-  box-sizing: border-box;
   height: 100%;
+  max-height: 100vh;
+  width: 100%;
   overflow-x: auto;
   overflow-y: auto;
-  max-height: 100vh;
   padding: 24px;
-  width: 100%;
-  -webkit-font-smoothing: antialiased;
+  box-sizing: border-box;
 `;
 
 const Container = styled.div`
-  box-sizing: border-box;
   display: flex;
   flex-flow: column wrap;
   flex: 1 1 auto;
   justify-content: flex-start;
   align-items: flex-start;
-  max-width: 986px;
   width: 100%;
+  max-width: 986px;
   margin-top: -24px;
   margin-right: 15px;
-  -webkit-font-smoothing: antialiased;
+  box-sizing: border-box;
 `;
 
 const HeaderContainer = styled.div`
   position: sticky;
   top: -24px;
-  z-index: 1;
   display: flex;
   flex-flow: row wrap;
   flex: 1 1 auto;
-  justify-content: flex-start;
+  justify-content: space-between;
   align-items: flex-start;
   width: 100%;
   padding-bottom: 24px;
@@ -51,13 +48,13 @@ const HeaderContainer = styled.div`
 `;
 
 const BodyContainer = styled.div`
-  box-sizing: border-box;
   display: flex;
   flex-flow: row wrap;
   flex: 1 1 auto;
   justify-content: flex-start;
   align-items: flex-start;
   width: 100%;
+  box-sizing: border-box;
   @media (max-width: 1128px) {
     flex-flow: column wrap;
   }
@@ -67,7 +64,7 @@ const ModalBody = ({ reviews }) => {
   const [searchText, setSearchText] = useState('');
   const [delayedSearchText, setDelayedSearchText] = useState('');
 
-  const delayedSearch = useRef(debounce((text) => setDelayedSearchText(text), 300)).current;
+  const delayedSearch = useRef(debounce((text) => setDelayedSearchText(text), 200)).current;
 
   const handleInputChange = (text) => {
     setSearchText(text);
@@ -82,10 +79,7 @@ const ModalBody = ({ reviews }) => {
             averageRating={reviews.averageRating}
             reviewCount={reviews.reviewCount}
           />
-          <ModalSearch
-            searchText={searchText}
-            handleInputChange={handleInputChange}
-          />
+          <ModalSearch searchText={searchText} handleInputChange={handleInputChange} />
         </HeaderContainer>
         <BodyContainer>
           <ModalRatings ratings={reviews.ratings} />

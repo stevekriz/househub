@@ -11,12 +11,12 @@ const Container = styled.div`
 `;
 
 const Button = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
   position: absolute;
   top: 16px;
   left: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   height: 32px;
   width: 32px;
   border-radius: 50%;
@@ -26,8 +26,8 @@ const Button = styled.div`
     background-color: rgb(247, 247, 247);
   }
   &:active {
-    transform: scale(0.96) !important;
     background-color: rgb(247, 247, 247);
+    transform: scale(0.96) !important;
   }
   @media (max-width: 730px) {
     top: 8px;
@@ -35,9 +35,7 @@ const Button = styled.div`
 `;
 
 const ModalClose = ({ handleClose, viewPortWidth }) => {
-  const handleClick = () => {
-    handleClose();
-  };
+  const handleClick = () => handleClose();
 
   return (
     <Container>

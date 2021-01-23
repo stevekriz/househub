@@ -1,18 +1,18 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
 const Container = styled.div`
   display: flex;
   flex-flow: row wrap;
   flex: 1 1 auto;
-  width: 40%;
   justify-content: flex-start;
-  max-width: 312.328px;
   align-items: center;
+  width: 40%;
+  max-width: 320.328px;
   @media (max-width: 1128px) {
-    max-width: 100%;
     width: 100%;
+    max-width: 100%;
     margin-bottom: 24px;
   }
 `;
@@ -21,8 +21,11 @@ const Star = styled.span`
   display: flex;
   align-items: center;
   color: rgb(255, 56, 92);
-  font-size: 18.5px;
+  font-size: 22.76px;
   padding-right: 8px;
+  @media (max-width: 730px) {
+    font-size: 18.5px;
+  }
 `;
 
 const RatingHeader = styled.span`
@@ -33,7 +36,6 @@ const RatingHeader = styled.span`
   font-size: 32px;
   font-weight: 700;
   font-family: Circular, -apple-system, system-ui, Roboto, "Helvetica Neue", sans-serif;
-  -webkit-font-smoothing: antialiased;
   @media (max-width: 730px) {
     font-size: 26px;
     line-height: 31px;
@@ -42,12 +44,8 @@ const RatingHeader = styled.span`
 
 const ModalRatingsHeader = ({ averageRating, reviewCount }) => (
   <Container>
-    <Star>
-      <i className="fas fa-star" />
-    </Star>
-    <RatingHeader>
-      {`${averageRating} (${reviewCount} reviews)`}
-    </RatingHeader>
+    <Star><i className="fas fa-star" /></Star>
+    <RatingHeader>{`${averageRating} (${reviewCount} reviews)`}</RatingHeader>
   </Container>
 );
 

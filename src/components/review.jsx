@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
 const Column = styled.div`
   display: flex;
@@ -22,12 +22,20 @@ const Header = styled.div`
   margin-bottom: 16px;
   @media (max-width: 1128px) {
     width: 100%;
+    margin-bottom: 12px;
+  }
+  @media (max-width: 730px) {
+    height: 40px;
   }
 `;
 
 const PictureWrapper = styled.a`
   height: 56px;
   width: 56px;
+  @media (max-width: 730px) {
+    height: 40px;
+    width: 40px;
+  }
 `;
 
 const Picture = styled.img`
@@ -87,11 +95,8 @@ const Review = ({ review }) => {
         {review.comment.length <= 180 || showAll ? review.comment
           : (
             <>
-              {review.comment.substring(0, 180)}
-              {'... '}
-              <ReadMore onClick={handleClick}>
-                read more
-              </ReadMore>
+              {`${review.comment.substring(0, 180)}... `}
+              <ReadMore onClick={handleClick}>read more</ReadMore>
             </>
           )}
       </Comment>
