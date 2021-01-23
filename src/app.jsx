@@ -55,7 +55,8 @@ const App = () => {
   const [viewPortWidth, setViewPortWidth] = useState(1280);
 
   const getReviews = () => {
-    get('/api/reviews/5')
+    const random = Math.floor(Math.random() * (100 - 1 + 1) + 1);
+    get(`/api/reviews/${random}`)
       .then(({ data }) => {
         setReviews(data);
         setLoading(false);

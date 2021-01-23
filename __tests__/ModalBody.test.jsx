@@ -12,7 +12,7 @@ const reviews = {
     ['Accuracy', '5.0'],
     ['Communication', '1.8'],
     ['Location', '1.3'],
-    ['Check-In', '3.9'],
+    ['Check-in', '3.9'],
     ['Value', '0.8'],
   ],
   reviews: [{

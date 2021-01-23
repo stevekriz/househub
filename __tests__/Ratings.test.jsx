@@ -14,10 +14,10 @@ describe('Ratings', () => {
         ['Accuracy', '5.0'],
         ['Communication', '1.8'],
         ['Location', '1.3'],
-        ['Check-In', '3.9'],
+        ['Check-in', '3.9'],
         ['Value', '0.8'],
       ]}
       />,
-    ).text()).toEqual('Cleanliness0.2Accuracy5.0Communication1.8Location1.3Check-In3.9Value0.8');
+    ).text()).toEqual('Cleanliness0.2Accuracy5.0Communication1.8Location1.3Check-in3.9Value0.8');
   });
 });

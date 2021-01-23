@@ -10,12 +10,12 @@ for (let i = 1; i <= 100; i += 1) {
     averageRating: null,
     reviewCount: Math.floor(Math.random() * (50 - 10 + 1) + 10),
     ratings: [
-      ['Cleanliness', (Math.random() * 5).toFixed(1)],
-      ['Accuracy', (Math.random() * 5).toFixed(1)],
-      ['Communication', (Math.random() * 5).toFixed(1)],
-      ['Location', (Math.random() * 5).toFixed(1)],
-      ['Check-In', (Math.random() * 5).toFixed(1)],
-      ['Value', (Math.random() * 5).toFixed(1)],
+      ['Cleanliness', (Math.random() * (5.01 - 3) + 3).toFixed(1)],
+      ['Accuracy', (Math.random() * (5.01 - 3) + 3).toFixed(1)],
+      ['Communication', (Math.random() * (5.01 - 3) + 3).toFixed(1)],
+      ['Location', (Math.random() * (5.01 - 3) + 3).toFixed(1)],
+      ['Check-in', (Math.random() * (5.01 - 3) + 3).toFixed(1)],
+      ['Value', (Math.random() * (5.01 - 3) + 3).toFixed(1)],
     ],
     reviews: [],
   };
