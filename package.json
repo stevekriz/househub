@@ -6,7 +6,7 @@
   "scripts": {
     "coverage": "jest --coverage",
     "seed": "node seeder.js",
-    "start": "node server/server",
+    "start": "nodemon server/server",
     "test": "jest",
     "watch": "webpack --watch"
   },
