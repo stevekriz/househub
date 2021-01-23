@@ -13,7 +13,10 @@ const RatingsContainer = styled.div`
   @media (max-width: 1128px) {
     width: 100%;
     max-width: 100%;
-    margin-bottom: 32px;
+    margin-bottom: 24px;
+  }
+  @media (max-width: 730px) {
+    margin-bottom: 24px;
   }
 `;
 

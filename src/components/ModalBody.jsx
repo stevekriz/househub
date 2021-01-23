@@ -51,7 +51,7 @@ const BodyContainer = styled.div`
   display: flex;
   flex-flow: row wrap;
   flex: 1 1 auto;
-  justify-content: flex-start;
+  justify-content: space-between;
   align-items: flex-start;
   width: 100%;
   box-sizing: border-box;
