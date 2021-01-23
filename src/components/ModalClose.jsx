@@ -34,14 +34,57 @@ const Button = styled.div`
   }
 `;
 
+const XSVG = styled.svg`
+  display: block;
+  fill: none;
+  height: 16px;
+  width: 16px;
+  stroke: currentcolor;
+  stroke-width: 3;
+  overflow: visible;
+`;
+
+const ChevronSVG = styled.svg`
+  height: 16px;
+  width: 16px;
+  display: block;
+  fill: currentcolor;
+`;
+
 const ModalClose = ({ handleClose, viewPortWidth }) => {
   const handleClick = () => handleClose();
 
   return (
     <Container>
       <Button id="close" onClick={handleClick}>
-        {viewPortWidth > 730 ? <i className="fas fa-times" />
-          : <i className="fas fa-chevron-left" />}
+        {viewPortWidth > 730
+          ? (
+            <XSVG
+              viewBox="0 0 32 32"
+              xmlns="http://www.w3.org/2000/svg"
+              aria-hidden="true"
+              role="presentation"
+              focusable="false"
+            >
+              <path d="m6 6 20 20" />
+              <path d="m26 6-20 20" />
+            </XSVG>
+          )
+          : (
+            <ChevronSVG>
+              <svg
+                viewBox="0 0 18 18"
+                role="presentation"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <path
+                  d="m13.7 16.29a1 1 0 1 1 -1.42 1.41l-8-8a1 1 0 0 1 0-1.41l8-8a1 1 0 1 1 1.42 1.41l-7.29 7.29z"
+                  fillRule="evenodd"
+                />
+              </svg>
+            </ChevronSVG>
+          )}
       </Button>
     </Container>
   );

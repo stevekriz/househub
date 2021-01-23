@@ -85,7 +85,7 @@ const App = () => {
     <>
       <GlobalStyle />
       <AppContainer>
-        <ReviewsContainer>
+        <ReviewsContainer id="reviews">
           <Header averageRating={reviews.averageRating} reviewCount={reviews.reviewCount} />
           <Ratings ratings={reviews.ratings} />
           <Reviews reviews={reviews.reviews} viewPortWidth={viewPortWidth} />

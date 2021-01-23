@@ -38,11 +38,14 @@ const InputContainer = styled.div`
   border-color: rgb(34, 34, 34);
   border-radius: 100px;
   box-shadow: rgb(176, 176, 176) 0 0 0 1px inset;
+  stroke-width: 2px;
   &:focus {
+    stroke-width: 4px;
     outline: none !important;
     box-shadow: rgb(34, 34, 34) 0 0 0 2px inset !important;
   }
   &:focus-within {
+    stroke-width: 4px;
     outline: none !important;
     box-shadow: rgb(34, 34, 34) 0 0 0 2px inset !important;
   }
@@ -56,17 +59,27 @@ const InputArea = styled.div`
   display: flex;
   flex-flow: row wrap;
   justify-content: flex-start;
-  align-item: center;
+  align-items: center;
   height: 20px;
   width: 100%;
   padding: 0;
 `;
 
-const MagnifyingGlass = styled.div`
+const MagnifyingGlassContainer = styled.div`
   height: 16px;
   width: 16px;
   font-size: 16px;
   margin-right: 8px;
+`;
+
+const MagnifyingGlass = styled.svg`
+  display: block;
+  fill: none;
+  height: 16px;
+  width: 16px;
+  stroke: currentcolor;
+  // stroke-width: 2;
+  overflow: visible;
 `;
 
 const Input = styled.input`
@@ -104,9 +117,14 @@ const DeleteButton = styled.div`
   }
 `;
 
-const X2 = styled.span`
-  display: flex;
-  font-size: 12px;
+const DeleteSVG = styled.svg`
+  display: block;
+  fill: none;
+  height: 12px;
+  width: 12px;
+  stroke: currentcolor;
+  stroke-width: 5.33333;
+  overflow: visible;
 `;
 
 const ModalBodyHeaderSearch = ({ searchText, handleInputChange }) => {
@@ -119,7 +137,21 @@ const ModalBodyHeaderSearch = ({ searchText, handleInputChange }) => {
     <SearchContainer>
       <InputContainer id="search" onClick={handleClick}>
         <InputArea>
-          <MagnifyingGlass><i className="fas fa-search" /></MagnifyingGlass>
+          <MagnifyingGlassContainer>
+            <MagnifyingGlass
+              viewBox="0 0 32 32"
+              xmlns="http://www.w3.org/2000/svg"
+              aria-hidden="true"
+              role="presentation"
+              focusable="false"
+            >
+              <g fill="none">
+                <path
+                  d="m13 24c6.0751322 0 11-4.9248678 11-11 0-6.07513225-4.9248678-11-11-11-6.07513225 0-11 4.92486775-11 11 0 6.0751322 4.92486775 11 11 11zm8-3 9 9"
+                />
+              </g>
+            </MagnifyingGlass>
+          </MagnifyingGlassContainer>
           <Input
             ref={textInput}
             type="text"
@@ -129,7 +161,18 @@ const ModalBodyHeaderSearch = ({ searchText, handleInputChange }) => {
           />
           {searchText ? (
             <DeleteButton onClick={handleDelete}>
-              <X2><i className="fas fa-times" /></X2>
+              <DeleteSVG>
+                <svg
+                  viewBox="0 0 32 32"
+                  xmlns="http://www.w3.org/2000/svg"
+                  aria-label="Clear search"
+                  role="img"
+                  focusable="false"
+                >
+                  <path d="m6 6 20 20" />
+                  <path d="m26 6-20 20" />
+                </svg>
+              </DeleteSVG>
             </DeleteButton>
           )
             : null}
