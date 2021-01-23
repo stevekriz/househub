@@ -2,6 +2,9 @@ module.exports = {
   clearMocks: true,
   coverageDirectory: 'coverage',
   moduleFileExtensions: ['js', 'jsx'],
+  modulePaths: [
+    '<rootDir>',
+  ],
   projects: [
     {
       displayName: 'dom',
