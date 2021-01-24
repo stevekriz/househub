@@ -1,24 +1,33 @@
-import React, { useState, useEffect, Fragment } from 'react';
-import axios from 'axios';
+import React from 'react';
+import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
-const Reviews = () => {
-  const [reviews, setReviews] = useState([]);
+import Review from './Review';
 
-  const getReviews = () => {
-    axios.get('/api/reviews/1')
-      .then(({ data }) => setReviews(data));
-  };
+const Container = styled.div`
+  display: flex;
+  flex-flow: row wrap;
+  flex: 1 1 auto;
+`;
 
-  useEffect(() => {
-    getReviews();
-  }, []);
-
-  return (
-    <>
-      <h1>Reviews</h1>
-      <div>{reviews}</div>
-    </>
-  );
-};
+const Reviews = ({ reviews, viewPortWidth }) => (
+  <Container>
+    {viewPortWidth > 730
+      ? reviews.slice(0, 6).map((review) => <Review key={review._id} review={review} />)
+      : reviews.slice(0, 3).map((review) => <Review key={review._id} review={review} />)}
+  </Container>
+);
 
 export default Reviews;
+
+Reviews.propTypes = {
+  reviews: PropTypes.arrayOf(PropTypes.shape({
+    _id: PropTypes.number.isRequired,
+    comment: PropTypes.string.isRequired,
+    date: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    ownerComment: PropTypes.string,
+    profilePicture: PropTypes.string.isRequired,
+  })).isRequired,
+  viewPortWidth: PropTypes.number.isRequired,
+};

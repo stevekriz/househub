@@ -18,9 +18,9 @@
 
 1. Install dependencies, npm install.
 2. If you need to seed the database (i.e., database is empty), npm run seed.
-3. Run webpack build, npm run build.
-4. Run webpack watch, npm run watch.
-5. Run server, npm start. Open http://localhost:3000.
+3. Run webpack watch, npm run watch.
+4. Run server, npm start.
+5. Open localhost:3000, npm run open.
 
 ## Requirements
 
@@ -28,15 +28,3 @@ An `nvmrc` file is included if using [nvm](https://github.com/creationix/nvm).
 
 - Node 6.13.0
 - etc
-
-## Development
-
-### Installing Dependencies
-
-From within the root directory:
-
-```sh
-npm install -g webpack
-npm install
-```
-

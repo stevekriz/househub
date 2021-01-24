@@ -9,23 +9,8 @@ const reviewsSchema = new mongoose.Schema({
   _id: Number,
   averageRating: Number,
   reviewCount: Number,
-  cleanliness: Number,
-  accuracy: Number,
-  communication: Number,
-  location: Number,
-  checkIn: Number,
-  value: Number,
-  reviews:
-    [
-      {
-        _id: Number,
-        profilePicture: String,
-        userName: String,
-        date: Date,
-        comment: String,
-        ownerComment: String,
-      },
-    ],
+  ratings: Array,
+  reviews: Array,
 });
 
 const Review = mongoose.model('Review', reviewsSchema);

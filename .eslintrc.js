@@ -8,6 +8,7 @@ module.exports = {
   extends: [
     'plugin:react/recommended',
     'airbnb',
+    'airbnb/hooks',
   ],
   parserOptions: {
     ecmaFeatures: {
@@ -22,5 +23,4 @@ module.exports = {
   rules: {
     'no-underscore-dangle': ['error', { allow: ['_id'] }],
   },
-
 };
