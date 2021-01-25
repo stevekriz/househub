@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
-import styled from 'styled-components';
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
 
 const SearchContainer = styled.div`
   display: flex;

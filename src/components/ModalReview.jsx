@@ -1,7 +1,7 @@
 /* eslint-disable react/no-danger */
 import React, { useState } from 'react';
-import styled from 'styled-components';
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
 
 const Review = styled.div`
   display: flex;
