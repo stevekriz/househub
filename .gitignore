@@ -24,5 +24,4 @@ lib-cov
 build/
 dist/
 
-package-lock.json
 public/main.js
