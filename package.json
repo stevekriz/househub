@@ -5,7 +5,8 @@
   "private": true,
   "scripts": {
     "coverage": "jest --coverage",
-    "open": "open http://localhost:3000",
+    "circle": "node server/server",
+    "open": "open http://localhost:3000/1",
     "seed": "node seeder.js",
     "start": "nodemon server/server",
     "test": "jest",
