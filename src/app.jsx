@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import styled, { createGlobalStyle } from 'styled-components';
+import PropTypes from 'prop-types';
 import { get } from 'axios';
+import styled, { createGlobalStyle } from 'styled-components';
 
 import Header from './components/Header';
 import Ratings from './components/Ratings';
@@ -48,32 +49,31 @@ const ReviewsContainer = styled.div`
   }
 `;
 
-const App = () => {
+const App = ({ listingId }) => {
   const [isLoading, setLoading] = useState(true);
   const [reviews, setReviews] = useState({});
-  const [displayModal, setDisplayModal] = useState(false);
   const [viewPortWidth, setViewPortWidth] = useState(1280);
+  const [displayModal, setDisplayModal] = useState(false);
 
-  const getReviews = () => {
-    const random = Math.floor(Math.random() * (100 - 1 + 1) + 1);
-    get(`/api/reviews/${random}`)
+  useEffect(() => {
+    get(`/api/reviews/${listingId}`)
       .then(({ data }) => {
         setReviews(data);
         setLoading(false);
       })
       .catch((err) => { throw new Error(err); });
-  };
+  }, [listingId]);
+
   const updateViewPortWidth = () => setViewPortWidth(window.innerWidth);
 
   useEffect(() => {
-    getReviews();
     window.addEventListener('resize', updateViewPortWidth);
     updateViewPortWidth();
 
     return () => {
       window.removeEventListener('resize', updateViewPortWidth);
     };
-  }, [viewPortWidth]);
+  }, []);
 
   const openModal = () => setDisplayModal(true);
   const closeModal = () => setDisplayModal(false);
@@ -104,3 +104,7 @@ const App = () => {
 };
 
 export default App;
+
+App.propTypes = {
+  listingId: PropTypes.number.isRequired,
+};

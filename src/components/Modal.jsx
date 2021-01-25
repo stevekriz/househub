@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react';
-import styled from 'styled-components';
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
 
 import ModalClose from './ModalClose';
 import ModalBody from './ModalBody';
@@ -46,16 +46,17 @@ const Modal = ({
 
   useEffect(() => {
     const refCopy = ref.current;
+
     if (refCopy && displayModal) {
       refCopy.style.top = '50%';
-      refCopy.style.transform = 'translateY(calc(-50% - .5px)';
+      refCopy.style.transform = 'translateY(calc(-50%)';
       document.body.style.overflow = 'hidden';
     }
 
     return () => {
       document.body.style.overflow = 'unset';
     };
-  }, [ref, displayModal]);
+  }, [displayModal]);
 
   const handleClose = () => {
     ref.current.style.top = '200vh';

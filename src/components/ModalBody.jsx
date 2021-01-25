@@ -1,7 +1,7 @@
 import React, { useState, useRef } from 'react';
-import styled from 'styled-components';
-import { debounce } from 'lodash';
 import PropTypes from 'prop-types';
+import { debounce } from 'lodash';
+import styled from 'styled-components';
 
 import ModalRatingsHeader from './ModalRatingsHeader';
 import ModalSearch from './ModalSearch';
