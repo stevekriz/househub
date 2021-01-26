@@ -43,7 +43,6 @@ const ReviewsContainer = styled.div`
   box-sizing: border-box;
   border-top: 1px solid rgb(221, 221, 221);
   border-bottom: 1px solid rgb(221, 221, 221);
-  margin: 500px 0;
   @media (max-width: 730px) {
     padding: 32px 0;
   }
@@ -86,7 +85,7 @@ const App = ({ listingId }) => {
     <>
       <GlobalStyle />
       <AppContainer>
-        <ReviewsContainer id="reviews">
+        <ReviewsContainer>
           <Header averageRating={reviews.averageRating} reviewCount={reviews.reviewCount} />
           <Ratings ratings={reviews.ratings} />
           <Reviews reviews={reviews.reviews} viewPortWidth={viewPortWidth} />

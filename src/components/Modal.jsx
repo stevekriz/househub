@@ -6,6 +6,7 @@ import ModalClose from './ModalClose';
 import ModalBody from './ModalBody';
 
 const Backdrop = styled.div`
+  z-index: 4;
   position: fixed;
   top: 0;
   right: 0;
@@ -20,6 +21,7 @@ const Backdrop = styled.div`
 `;
 
 const ModalContainer = styled.div`
+  z-index: 5;
   position: relative;
   top: 100vh;
   display: flex;

@@ -4,17 +4,18 @@
   },
   "private": true,
   "scripts": {
-    "coverage": "jest --coverage",
+    "build": "webpack",
     "circle": "node server/server",
-    "open": "open http://localhost:3000/1",
+    "open": "open http://localhost:3000/",
     "seed": "node seeder.js",
-    "start": "nodemon server/server",
+    "start": "npm run open & nodemon server/server",
     "test": "jest",
     "watch": "webpack --watch"
   },
   "dependencies": {
     "axios": "^0.21.1",
     "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
     "enzyme": "^3.11.0",
     "enzyme-adapter-react-16": "^1.15.5",
     "express": "^4.17.1",
