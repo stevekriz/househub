@@ -1,6 +1,12 @@
 const mongoose = require('mongoose');
 
-mongoose.connect(process.env.CONNECTIONSTRING, {
+let string = process.env.CONNECTIONSTRING;
+
+if (process.env.NODE_ENV !== 'production') {
+  string = 'mongodb://localhost/fec';
+}
+
+mongoose.connect(string, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
