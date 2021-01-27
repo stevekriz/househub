@@ -1,16 +1,17 @@
 {
   "engines": {
-    "node": ">=6.13.0"
+    "node": ">=12.18.3"
   },
   "private": true,
   "scripts": {
     "build": "webpack",
-    "circle": "node server/server",
+    "circle": "node server/server.js",
     "open": "open http://localhost:3000/",
     "seed": "node seeder.js",
-    "start": "npm run open & nodemon server/server",
+    "start": "npm run open & nodemon server/server.js",
     "test": "jest",
-    "watch": "webpack --watch"
+    "watch": "webpack --watch",
+    "docker-start": "node seeder.js & node server/server.js"
   },
   "dependencies": {
     "axios": "^0.21.1",
