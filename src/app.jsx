@@ -27,10 +27,10 @@ const AppContainer = styled.div`
   margin: 48px 80px;
   color: rgb(34, 34, 34);
   @media (max-width: 1128px) {
-    margin: 0 40px;
+    margin: 48px 40px;
   }
   @media (max-width: 730px) {
-    margin: 0 24px;
+    margin: 32px 24px;
   }
 `;
 
