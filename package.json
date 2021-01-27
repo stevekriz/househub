@@ -11,7 +11,7 @@
     "start": "npm run open & nodemon server/server.js",
     "test": "jest",
     "watch": "webpack --watch",
-    "docker-start": "node seeder.js & node server/server.js"
+    "docker-start": "node seeder.js & webpack & node server/server.js"
   },
   "dependencies": {
     "axios": "^0.21.1",
