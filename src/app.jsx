@@ -24,7 +24,7 @@ const AppContainer = styled.div`
   flex-flow: column wrap;
   flex: 1 1 auto;
   align-items: center;
-  margin: 0 80px;
+  margin: 48px 80px;
   color: rgb(34, 34, 34);
   @media (max-width: 1128px) {
     margin: 0 40px;
