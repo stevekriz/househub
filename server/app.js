@@ -13,7 +13,8 @@ app.use(bodyParser.json());
 app.use(cors());
 
 app.get('/', (req, res) => res.redirect('/1'));
-app.use('/:id', express.static(path.join(__dirname, '../public/main.js')));
+app.use('/:id', express.static(path.join(__dirname, '../public')));
+app.use('/bundle', express.static(path.join(__dirname, '../public/main.js')));
 app.use('/api/reviews', routes);
 
 module.exports = app;
