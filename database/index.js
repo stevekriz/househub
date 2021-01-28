@@ -1,12 +1,8 @@
 const mongoose = require('mongoose');
 
-let string = process.env.CONNECTIONSTRING;
+const url = process.env.CONNECTIONSTRING || 'mongodb://localhost/fec';
 
-if (process.env.NODE_ENV !== 'production') {
-  string = 'mongodb://localhost/fec';
-}
-
-mongoose.connect(string, {
+mongoose.connect(url, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });

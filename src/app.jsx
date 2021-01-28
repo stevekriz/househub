@@ -91,12 +91,15 @@ const App = ({ listingId }) => {
           <Reviews reviews={reviews.reviews} viewPortWidth={viewPortWidth} />
           <Footer reviewCount={reviews.reviewCount} openModal={openModal} />
         </ReviewsContainer>
-        <Modal
-          displayModal={displayModal}
-          reviews={reviews}
-          closeModal={closeModal}
-          viewPortWidth={viewPortWidth}
-        />
+        {displayModal ? (
+          <Modal
+            displayModal={displayModal}
+            reviews={reviews}
+            closeModal={closeModal}
+            viewPortWidth={viewPortWidth}
+          />
+        )
+          : null}
       </AppContainer>
     </>
   );
