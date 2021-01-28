@@ -84,7 +84,7 @@ const Review = ({ review }) => {
     <Column key={review._id}>
       <Header>
         <PictureWrapper href={review.profilePicture}>
-          <Picture src={review.profilePicture} />
+          <Picture height="225px" width="225px" src={review.profilePicture} alt="profile picture" />
         </PictureWrapper>
         <NameDate>
           {review.name}

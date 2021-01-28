@@ -7,6 +7,7 @@ import Modal from '../src/components/Modal';
 jest.useFakeTimers();
 
 let container = null;
+
 beforeEach(() => {
   container = document.createElement('div');
   document.body.appendChild(container);

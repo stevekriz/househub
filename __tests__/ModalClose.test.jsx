@@ -5,6 +5,7 @@ import { act } from 'react-dom/test-utils';
 import ModalClose from '../src/components/ModalClose';
 
 let container = null;
+
 beforeEach(() => {
   container = document.createElement('div');
   document.body.appendChild(container);

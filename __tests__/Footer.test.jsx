@@ -5,6 +5,7 @@ import { act } from 'react-dom/test-utils';
 import Footer from '../src/components/Footer';
 
 let container = null;
+
 beforeEach(() => {
   container = document.createElement('div');
   document.body.appendChild(container);
@@ -37,7 +38,6 @@ describe('Footer', () => {
         button.dispatchEvent(new MouseEvent('click', { bubbles: true }));
       }
     });
-
     expect(openModal).toHaveBeenCalledTimes(6);
   });
 });

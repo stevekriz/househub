@@ -24,4 +24,10 @@ lib-cov
 build/
 dist/
 
+.vscode
 public/main.js
+public/main.js.br
+.eslintrc.js
+.eslintignore
+coverage/
+public/main.js.LICENSE.txt
