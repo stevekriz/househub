@@ -12,7 +12,7 @@ services:
    - ./:/code
 
  mongo:
-  image: mongo:4.4.1
+  image: mongo:4.4.3
   ports:
    - 27017:27017
   volumes:

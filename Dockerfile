@@ -1,4 +1,4 @@
-FROM node:12.18.3
+FROM node:14.15.4
 ENV NODE_ENV=production
 
 WORKDIR /app
@@ -9,4 +9,4 @@ RUN npm install --production
 
 COPY . .
 
-CMD [ "npm", "run", "docker-start" ]
+CMD [ "npm", "run", "docker" ]

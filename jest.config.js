@@ -9,7 +9,6 @@ module.exports = {
     {
       displayName: 'dom',
       testEnvironment: 'jsdom',
-      snapshotSerializers: ['enzyme-to-json/serializer'],
       testMatch: ['**/__tests__/**/*.test.js?(x)'],
     },
     {
@@ -20,11 +19,4 @@ module.exports = {
       ],
     },
   ],
-  setupFilesAfterEnv: ['jest-enzyme'],
-  testEnvironmentOptions: {
-    enzymeAdapter: 'react16',
-  },
-  transform: {
-    '\\.jsx$': 'babel-jest',
-  },
 };

@@ -163,7 +163,7 @@ const ModalReview = ({ review, delayedSearchText }) => {
     <Review>
       <Header>
         <PictureWrapper href={review.profilePicture}>
-          <Picture src={review.profilePicture} />
+          <Picture height="225px" width="225px" src={review.profilePicture} alt="profile picture" />
         </PictureWrapper>
         <NameDate>
           {review.name}
@@ -176,7 +176,7 @@ const ModalReview = ({ review, delayedSearchText }) => {
           <Owner>
             <OwnerHeader>
               <PictureWrapper href={review.ownerProfilePicture}>
-                <Picture src={review.ownerProfilePicture} />
+                <Picture height="225px" width="225px" src={review.ownerProfilePicture} alt="profile picture" />
               </PictureWrapper>
               <NameDate>
                 {`Response from ${review.ownerName}`}
