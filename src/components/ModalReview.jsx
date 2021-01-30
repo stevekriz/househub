@@ -63,7 +63,7 @@ const Date = styled.div`
 const Comment = styled.div`
   min-height: min-content;
   line-height: 24px;
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 400;
 `;
 
@@ -113,7 +113,7 @@ const OwnerComment = styled.div`
   margin-left: 68px;
   min-height: min-content;
   line-height: 24px;
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 400;
   @media (max-width: 1128px) {
     margin-left: 52px;
