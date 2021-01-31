@@ -61,24 +61,25 @@ const Date = styled.div`
 `;
 
 const Comment = styled.div`
-  min-height: min-content;
   line-height: 24px;
   font-size: 14px;
   font-weight: 400;
+  word-break: break-word;
 `;
 
 const ReadMore = styled.span`
   display: inline;
   height: 24px;
-  width: 77.3594px;
   cursor: pointer;
   color: rgb(34, 34, 34);
   line-height: 24px;
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 600;
   text-decoration-color: rgb(34, 34, 34);
   text-decoration-style: solid;
   text-decoration-line: underline;
+  word-break: break-word;
+  word-spacing: 0px;
 `;
 
 const Owner = styled.div`
@@ -105,13 +106,13 @@ const OwnerHeader = styled.div`
   @media (max-width: 1128px) {
     margin-bottom: 12px;
   }
+  @media (max-width: 730px) {
+    height: 40px;
+  }
 `;
 
 const OwnerComment = styled.div`
-  display: flex;
-  flex-flow: row wrap;
   margin-left: 68px;
-  min-height: min-content;
   line-height: 24px;
   font-size: 14px;
   font-weight: 400;
