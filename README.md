@@ -17,8 +17,8 @@
 
 ## Usage
 
-> npm run watch to build webpack and watch
 > npm run seed to seed the database
+> npm run watch to build webpack and watch
 > npm run start to start the server
 
 ## Requirements

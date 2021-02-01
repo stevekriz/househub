@@ -8,5 +8,8 @@ Enzyme.configure({ adapter: new Adapter() });
 
 describe('Search', () => {
   const handleInputChange = jest.fn();
-  it('should render the component', () => expect(shallow(<ModalSearch handleInputChange={handleInputChange} />).exists()).toBe(true));
+  it('should render the component',
+    () => expect(shallow(
+      <ModalSearch handleInputChange={handleInputChange} />,
+    ).exists()).toBe(true));
 });

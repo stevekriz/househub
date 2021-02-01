@@ -19,5 +19,6 @@ const review = {
 };
 
 describe('ModalReview', () => {
-  it('should render the component', () => expect(shallow(<ModalReview review={review} />).exists()).toBe(true));
+  it('should render the component',
+    () => expect(shallow(<ModalReview review={review} />).exists()).toBe(true));
 });
