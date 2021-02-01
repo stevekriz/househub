@@ -32,5 +32,6 @@ const reviews = {
 };
 
 describe('ModalBody', () => {
-  it('should render the component', () => expect(shallow(<ModalBody reviews={reviews} />).exists()).toBe(true));
+  it('should render the component',
+    () => expect(shallow(<ModalBody reviews={reviews} />).exists()).toBe(true));
 });

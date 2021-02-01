@@ -8,6 +8,8 @@ Enzyme.configure({ adapter: new Adapter() });
 
 describe('ModalRatingsHeader', () => {
   it('should render the averageRating and reviewCount passed in as props', () => {
-    expect(render(<ModalRatingsHeader averageRating={2.15} reviewCount={32} />).text()).toEqual('2.15 (32 reviews)');
+    expect(
+      render(<ModalRatingsHeader averageRating={2.15} reviewCount={32} />).text(),
+    ).toEqual('2.15 (32 reviews)');
   });
 });
