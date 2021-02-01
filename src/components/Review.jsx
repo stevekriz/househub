@@ -95,7 +95,8 @@ const Review = ({ review }) => {
         {review.comment.length <= 180 || showAll ? review.comment
           : (
             <>
-              {`${review.comment.substring(0, 180)}... `}
+              {review.comment[179] === ' ' ? review.comment.substring(0, 179) : review.comment.substring(0, 180)}
+              {'... '}
               <ReadMore onClick={handleClick}>read more</ReadMore>
             </>
           )}

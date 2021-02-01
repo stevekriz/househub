@@ -134,28 +134,42 @@ const ModalReview = ({ review, delayedSearchText }) => {
   const message = (text, user) => {
     const whichState = user ? showComment : showOwnerComment;
     const whichHandler = user ? handleCommentClick : handleOwnerCommentClick;
-    const render = text.length <= 180 || whichState
-    || (delayedSearchText && text.lastIndexOf(delayedSearchText) > 180)
-      ? (
-        <span dangerouslySetInnerHTML={{
-          __html: text.replace(
-            new RegExp(delayedSearchText, 'gi'), (match) => `<mark>${match}</mark>`,
-          ),
-        }}
-        />
-      )
-      : (
-        <>
+    let render;
+
+    if (delayedSearchText) {
+      render = text.length <= 180 || whichState
+      || (text.lastIndexOf(delayedSearchText) + text.length - 1) >= 180
+        ? (
           <span dangerouslySetInnerHTML={{
-            __html: text.substring(0, 180).replace(
+            __html: text.replace(
               new RegExp(delayedSearchText, 'gi'), (match) => `<mark>${match}</mark>`,
             ),
           }}
           />
-          {'... '}
-          <ReadMore onClick={whichHandler}>read more</ReadMore>
-        </>
-      );
+        )
+        : (
+          <>
+            <span dangerouslySetInnerHTML={{
+              __html: text.substring(0, 180).replace(
+                new RegExp(delayedSearchText, 'gi'), (match) => `<mark>${match}</mark>`,
+              ),
+            }}
+            />
+            {'... '}
+            <ReadMore onClick={whichHandler}>read more</ReadMore>
+          </>
+        );
+    } else {
+      render = text.length <= 180 || whichState
+        ? text
+        : (
+          <>
+            {text[179] === ' ' ? text.substring(0, 179) : text.substring(0, 180)}
+            {'... '}
+            <ReadMore onClick={whichHandler}>read more</ReadMore>
+          </>
+        );
+    }
 
     return render;
   };
@@ -184,7 +198,7 @@ const ModalReview = ({ review, delayedSearchText }) => {
                 <Date>{review.ownerCommentDate}</Date>
               </NameDate>
             </OwnerHeader>
-            <OwnerComment>{message(review.ownerComment)}</OwnerComment>
+            <OwnerComment>{message(review.ownerComment, false)}</OwnerComment>
           </Owner>
         )
         : null}
