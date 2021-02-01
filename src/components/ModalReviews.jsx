@@ -13,6 +13,7 @@ const ReviewsContainer = styled.div`
   max-width: 558.578px;
   margin-bottom: 72px;
   margin-left: 90.040px;
+  padding-right: 24px;
   @media (max-width: 1128px) {
     width: 100%;
     max-width: 100%;

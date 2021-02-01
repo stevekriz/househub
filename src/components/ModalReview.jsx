@@ -61,24 +61,25 @@ const Date = styled.div`
 `;
 
 const Comment = styled.div`
-  min-height: min-content;
   line-height: 24px;
   font-size: 14px;
   font-weight: 400;
+  word-break: break-word;
 `;
 
 const ReadMore = styled.span`
   display: inline;
   height: 24px;
-  width: 77.3594px;
   cursor: pointer;
   color: rgb(34, 34, 34);
   line-height: 24px;
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 600;
   text-decoration-color: rgb(34, 34, 34);
   text-decoration-style: solid;
   text-decoration-line: underline;
+  word-break: break-word;
+  word-spacing: 0px;
 `;
 
 const Owner = styled.div`
@@ -105,13 +106,13 @@ const OwnerHeader = styled.div`
   @media (max-width: 1128px) {
     margin-bottom: 12px;
   }
+  @media (max-width: 730px) {
+    height: 40px;
+  }
 `;
 
 const OwnerComment = styled.div`
-  display: flex;
-  flex-flow: row wrap;
   margin-left: 68px;
-  min-height: min-content;
   line-height: 24px;
   font-size: 14px;
   font-weight: 400;
@@ -133,28 +134,42 @@ const ModalReview = ({ review, delayedSearchText }) => {
   const message = (text, user) => {
     const whichState = user ? showComment : showOwnerComment;
     const whichHandler = user ? handleCommentClick : handleOwnerCommentClick;
-    const render = text.length <= 180 || whichState
-    || (delayedSearchText && text.lastIndexOf(delayedSearchText) > 180)
-      ? (
-        <span dangerouslySetInnerHTML={{
-          __html: text.replace(
-            new RegExp(delayedSearchText, 'gi'), (match) => `<mark>${match}</mark>`,
-          ),
-        }}
-        />
-      )
-      : (
-        <>
+    let render;
+
+    if (delayedSearchText) {
+      render = text.length <= 180 || whichState
+      || (text.lastIndexOf(delayedSearchText) + text.length - 1) >= 180
+        ? (
           <span dangerouslySetInnerHTML={{
-            __html: text.substring(0, 180).replace(
+            __html: text.replace(
               new RegExp(delayedSearchText, 'gi'), (match) => `<mark>${match}</mark>`,
             ),
           }}
           />
-          {'... '}
-          <ReadMore onClick={whichHandler}>read more</ReadMore>
-        </>
-      );
+        )
+        : (
+          <>
+            <span dangerouslySetInnerHTML={{
+              __html: text.substring(0, 180).replace(
+                new RegExp(delayedSearchText, 'gi'), (match) => `<mark>${match}</mark>`,
+              ),
+            }}
+            />
+            {'... '}
+            <ReadMore onClick={whichHandler}>read more</ReadMore>
+          </>
+        );
+    } else {
+      render = text.length <= 180 || whichState
+        ? text
+        : (
+          <>
+            {text[179] === ' ' ? text.substring(0, 179) : text.substring(0, 180)}
+            {'... '}
+            <ReadMore onClick={whichHandler}>read more</ReadMore>
+          </>
+        );
+    }
 
     return render;
   };
@@ -183,7 +198,7 @@ const ModalReview = ({ review, delayedSearchText }) => {
                 <Date>{review.ownerCommentDate}</Date>
               </NameDate>
             </OwnerHeader>
-            <OwnerComment>{message(review.ownerComment)}</OwnerComment>
+            <OwnerComment>{message(review.ownerComment, false)}</OwnerComment>
           </Owner>
         )
         : null}
