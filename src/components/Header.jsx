@@ -12,7 +12,7 @@ const Container = styled.div`
 
 const Star = styled.svg`
   margin-right: 8px;
-  fill: rgb(255, 56, 92);
+  fill: rgb(61,158,20);
   width: 16.94px;
 `;
 

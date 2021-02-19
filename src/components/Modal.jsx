@@ -51,7 +51,7 @@ const Modal = ({
 
     if (refCopy && displayModal) {
       refCopy.style.top = '50%';
-      refCopy.style.transform = 'translateY(calc(-50% + 1px)';
+      refCopy.style.transform = 'translateY(calc(-50% + 0.5px)';
       document.body.style.overflow = 'hidden';
     }
 

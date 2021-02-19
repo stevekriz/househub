@@ -20,7 +20,7 @@ const Container = styled.div`
 const Star = styled.svg`
   display: flex;
   align-items: center;
-  fill: rgb(255, 56, 92);
+  fill: rgb(61,158,20);
   width: 32.99px;
   padding-right: 8px;
   @media (max-width: 730px) {
