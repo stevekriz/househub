@@ -1,4 +1,18 @@
 {
+  "name": "househub_reviews",
+  "description": "> HouseHub is an application to reserve rental property",
+  "version": "1.0.0",
+  "main": "./src/index.jsx",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/The-Casuals/reviews.git"
+  },
+  "author": "Steve Kriz",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/The-Casuals/reviews/issues"
+  },
+  "homepage": "https://github.com/The-Casuals/reviews#readme",
   "engines": {
     "node": ">=14.15.4"
   },
