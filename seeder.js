@@ -50,7 +50,7 @@ for (let i = 1; i <= 100; i += 1) {
     return 0;
   };
 
-  const picture = (gender) => `https://airbnbfec.s3-us-west-1.amazonaws.com/${gender}/${Math.floor(Math.random() * (40 - 1 + 1) + 1)}.webp`;
+  const picture = (gender) => `../../public/assets/${gender}/${Math.floor(Math.random() * (40 - 1 + 1) + 1)}.webp`;
 
   const ownerGender = sex();
   const ownerProfilePicture = picture(ownerGender);

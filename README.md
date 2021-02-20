@@ -1,6 +1,35 @@
-# Project Name
+# Application to Reserve Rental Property
 
-> HouseHub is a space to rent houses.
+Snapshots of component at different breakpoints:
+
+  <p align="center">
+    <img src="Reviews.png" width="70%">
+  </p>
+
+  <p align="center">
+    <img src="Reviews 2.png" width="70%">
+  </p>
+
+  <p align="center">
+    <img src="Reviews 3.png" width="70%">
+  </p>
+
+  <p align="center">
+    <img src="Reviews 4.png" width="70%">
+  </p>
+
+  <p align="center">
+    <img src="Reviews 5.png" width="70%">
+  </p>
+
+  <p align="center">
+    <img src="Reviews 6.png" width="70%">
+  </p>
+
+Google LightHouse:
+<p align="center">
+  <img src="Lighthouse.png" width="70%">
+</p>
 
 ## Related Projects
 
@@ -12,23 +41,19 @@
 ## Table of Contents
 
 1. [Usage](#Usage)
-1. [Requirements](#requirements)
-1. [Development](#development)
+2. [Requirements](#requirements)
 
 ## Usage
 
-> npm run seed to seed the database
-> npm run watch to build webpack and watch
-> npm run start to start the server
+1. npm run seed: to seed the database
+2. npm run watch: to build webpack and watch
+3. npm start: to start the server
 
 ## Requirements
 
-An `nvmrc` file is included if using [nvm](https://github.com/creationix/nvm).
-
-- Node 14.15.4
-
-## Development
+- Node v14.15.4
+- MongoDB v4.4.3
 
 ### Installing Dependencies
 
-> npm i to install dependencies
+1. npm i: to install dependencies
