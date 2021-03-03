@@ -1,4 +1,4 @@
-# Application to Reserve Rental Property
+# A Web Application to Reserve Rental Property
 
 Snapshots of component at different breakpoints:
 
