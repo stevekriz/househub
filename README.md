@@ -3,32 +3,32 @@
 Snapshots of component at different breakpoints:
 
   <p align="center">
-    <img src="Reviews.png" width="70%">
+    <img src="./snippets/Reviews.png" width="70%">
   </p>
 
   <p align="center">
-    <img src="Reviews 2.png" width="70%">
+    <img src="./snippets/Reviews 2.png" width="70%">
   </p>
 
   <p align="center">
-    <img src="Reviews 3.png" width="70%">
+    <img src="./snippets/Reviews 3.png" width="70%">
   </p>
 
   <p align="center">
-    <img src="Reviews 4.png" width="70%">
+    <img src="./snippets/Reviews 4.png" width="70%">
   </p>
 
   <p align="center">
-    <img src="Reviews 5.png" width="70%">
+    <img src="./snippets/Reviews 5.png" width="70%">
   </p>
 
   <p align="center">
-    <img src="Reviews 6.png" width="70%">
+    <img src="./snippets/Reviews 6.png" width="70%">
   </p>
 
 Google LightHouse:
 <p align="center">
-  <img src="Lighthouse.png" width="70%">
+  <img src="./snippets/Lighthouse.png" width="70%">
 </p>
 
 ## Related Projects
