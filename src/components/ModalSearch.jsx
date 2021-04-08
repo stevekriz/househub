@@ -1,6 +1,6 @@
-import React, { useRef } from 'react';
-import PropTypes from 'prop-types';
-import styled from 'styled-components';
+import React, { useRef } from "react";
+import PropTypes from "prop-types";
+import styled from "styled-components";
 
 const SearchContainer = styled.div`
   display: flex;
@@ -11,7 +11,7 @@ const SearchContainer = styled.div`
   width: 60%;
   max-width: 558.578px;
   max-height: 44px;
-  margin-left: 90.040px;
+  margin-left: 90.04px;
   @media (max-width: 1128px) {
     width: 100%;
     max-width: 100%;
@@ -131,7 +131,7 @@ const ModalBodyHeaderSearch = ({ searchText, handleInputChange }) => {
   const textInput = useRef(null);
   const handleClick = () => textInput.current.focus();
   const handleChange = (e) => handleInputChange(e.target.value);
-  const handleDelete = () => handleInputChange('');
+  const handleDelete = () => handleInputChange("");
 
   return (
     <SearchContainer>
@@ -146,9 +146,7 @@ const ModalBodyHeaderSearch = ({ searchText, handleInputChange }) => {
               focusable="false"
             >
               <g fill="none">
-                <path
-                  d="m13 24c6.0751322 0 11-4.9248678 11-11 0-6.07513225-4.9248678-11-11-11-6.07513225 0-11 4.92486775-11 11 0 6.0751322 4.92486775 11 11 11zm8-3 9 9"
-                />
+                <path d="m13 24c6.0751322 0 11-4.9248678 11-11 0-6.07513225-4.9248678-11-11-11-6.07513225 0-11 4.92486775-11 11 0 6.0751322 4.92486775 11 11 11zm8-3 9 9" />
               </g>
             </MagnifyingGlass>
           </MagnifyingGlassContainer>
@@ -174,8 +172,7 @@ const ModalBodyHeaderSearch = ({ searchText, handleInputChange }) => {
                 </svg>
               </DeleteSVG>
             </DeleteButton>
-          )
-            : null}
+          ) : null}
         </InputArea>
       </InputContainer>
     </SearchContainer>
@@ -189,4 +186,4 @@ ModalBodyHeaderSearch.propTypes = {
   handleInputChange: PropTypes.func.isRequired,
 };
 
-ModalBodyHeaderSearch.defaultProps = { searchText: '' };
+ModalBodyHeaderSearch.defaultProps = { searchText: "" };

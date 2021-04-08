@@ -1,7 +1,7 @@
 /* eslint-disable react/no-danger */
-import React, { useState } from 'react';
-import PropTypes from 'prop-types';
-import styled from 'styled-components';
+import React, { useState } from "react";
+import PropTypes from "prop-types";
+import styled from "styled-components";
 
 const Review = styled.div`
   display: flex;
@@ -137,35 +137,44 @@ const ModalReview = ({ review, delayedSearchText }) => {
     let render;
 
     if (delayedSearchText) {
-      render = text.length <= 180 || whichState
-      || (text.lastIndexOf(delayedSearchText) + text.length - 1) >= 180
-        ? (
-          <span dangerouslySetInnerHTML={{
-            __html: text.replace(
-              new RegExp(delayedSearchText, 'gi'), (match) => `<mark>${match}</mark>`,
-            ),
-          }}
-          />
-        )
-        : (
-          <>
-            <span dangerouslySetInnerHTML={{
-              __html: text.substring(0, 180).replace(
-                new RegExp(delayedSearchText, 'gi'), (match) => `<mark>${match}</mark>`,
+      render =
+        text.length <= 180 ||
+        whichState ||
+        text.lastIndexOf(delayedSearchText) + text.length - 1 >= 180 ? (
+          <span
+            dangerouslySetInnerHTML={{
+              __html: text.replace(
+                new RegExp(delayedSearchText, "gi"),
+                (match) => `<mark>${match}</mark>`
               ),
             }}
+          />
+        ) : (
+          <>
+            <span
+              dangerouslySetInnerHTML={{
+                __html: text
+                  .substring(0, 180)
+                  .replace(
+                    new RegExp(delayedSearchText, "gi"),
+                    (match) => `<mark>${match}</mark>`
+                  ),
+              }}
             />
-            {'... '}
+            {"... "}
             <ReadMore onClick={whichHandler}>read more</ReadMore>
           </>
         );
     } else {
-      render = text.length <= 180 || whichState
-        ? text
-        : (
+      render =
+        text.length <= 180 || whichState ? (
+          text
+        ) : (
           <>
-            {text[179] === ' ' ? text.substring(0, 179) : text.substring(0, 180)}
-            {'... '}
+            {text[179] === " "
+              ? text.substring(0, 179)
+              : text.substring(0, 180)}
+            {"... "}
             <ReadMore onClick={whichHandler}>read more</ReadMore>
           </>
         );
@@ -178,7 +187,12 @@ const ModalReview = ({ review, delayedSearchText }) => {
     <Review>
       <Header>
         <PictureWrapper href={review.profilePicture}>
-          <Picture height="225px" width="225px" src={review.profilePicture} alt="profile picture" />
+          <Picture
+            height="225px"
+            width="225px"
+            src={review.profilePicture}
+            alt="profile picture"
+          />
         </PictureWrapper>
         <NameDate>
           {review.name}
@@ -186,22 +200,25 @@ const ModalReview = ({ review, delayedSearchText }) => {
         </NameDate>
       </Header>
       <Comment>{message(review.comment, true)}</Comment>
-      {review.ownerComment
-        ? (
-          <Owner>
-            <OwnerHeader>
-              <PictureWrapper href={review.ownerProfilePicture}>
-                <Picture height="225px" width="225px" src={review.ownerProfilePicture} alt="profile picture" />
-              </PictureWrapper>
-              <NameDate>
-                {`Response from ${review.ownerName}`}
-                <Date>{review.ownerCommentDate}</Date>
-              </NameDate>
-            </OwnerHeader>
-            <OwnerComment>{message(review.ownerComment, false)}</OwnerComment>
-          </Owner>
-        )
-        : null}
+      {review.ownerComment ? (
+        <Owner>
+          <OwnerHeader>
+            <PictureWrapper href={review.ownerProfilePicture}>
+              <Picture
+                height="225px"
+                width="225px"
+                src={review.ownerProfilePicture}
+                alt="profile picture"
+              />
+            </PictureWrapper>
+            <NameDate>
+              {`Response from ${review.ownerName}`}
+              <Date>{review.ownerCommentDate}</Date>
+            </NameDate>
+          </OwnerHeader>
+          <OwnerComment>{message(review.ownerComment, false)}</OwnerComment>
+        </Owner>
+      ) : null}
     </Review>
   );
 };
@@ -223,4 +240,4 @@ ModalReview.propTypes = {
   delayedSearchText: PropTypes.string,
 };
 
-ModalReview.defaultProps = { delayedSearchText: '' };
+ModalReview.defaultProps = { delayedSearchText: "" };

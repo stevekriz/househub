@@ -1,6 +1,6 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
-const url = process.env.CONNECTIONSTRING || 'mongodb://localhost/fec';
+const url = process.env.CONNECTIONSTRING || "mongodb://localhost/fec";
 
 mongoose.connect(url, {
   useNewUrlParser: true,
@@ -15,7 +15,7 @@ const reviewsSchema = new mongoose.Schema({
   reviews: Array,
 });
 
-const Review = mongoose.model('Review', reviewsSchema);
+const Review = mongoose.model("Review", reviewsSchema);
 
 module.exports = {
   connection: mongoose.connection,

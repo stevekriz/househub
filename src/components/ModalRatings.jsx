@@ -1,6 +1,6 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import styled from 'styled-components';
+import React from "react";
+import PropTypes from "prop-types";
+import styled from "styled-components";
 
 const RatingsContainer = styled.div`
   display: flex;
@@ -46,7 +46,7 @@ const Category = styled.div`
   line-height: 20.02px;
   @media (max-width: 730px) {
     flex: 1 0 54.25%;
-   }
+  }
 `;
 const Rating = styled.div`
   display: flex;
@@ -57,7 +57,7 @@ const Rating = styled.div`
   @media (max-width: 730px) {
     flex: 1 0 41.5%;
     padding-left: 12px;
-   }
+  }
 `;
 
 const RatingMeter = styled.div`
@@ -88,7 +88,9 @@ const ModalRatings = ({ ratings }) => (
       <RatingContainer key={rating[0]} rating={rating}>
         <Category>{rating[0]}</Category>
         <Rating>
-          <RatingMeter><RatingMeterFill width={rating[1] * 20 || 0} /></RatingMeter>
+          <RatingMeter>
+            <RatingMeterFill width={rating[1] * 20 || 0} />
+          </RatingMeter>
           <Number>{rating[1]}</Number>
         </Rating>
       </RatingContainer>

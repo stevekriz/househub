@@ -1,6 +1,6 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import styled from 'styled-components';
+import React from "react";
+import PropTypes from "prop-types";
+import styled from "styled-components";
 
 const Container = styled.div`
   display: flex;
@@ -12,7 +12,7 @@ const Container = styled.div`
 
 const Star = styled.svg`
   margin-right: 8px;
-  fill: rgb(61,158,20);
+  fill: rgb(61, 158, 20);
   width: 16.94px;
 `;
 

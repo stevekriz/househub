@@ -1,6 +1,6 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import styled from 'styled-components';
+import React from "react";
+import PropTypes from "prop-types";
+import styled from "styled-components";
 
 const Container = styled.div`
   display: flex;
@@ -20,7 +20,7 @@ const Container = styled.div`
 const Star = styled.svg`
   display: flex;
   align-items: center;
-  fill: rgb(61,158,20);
+  fill: rgb(61, 158, 20);
   width: 32.99px;
   padding-right: 8px;
   @media (max-width: 730px) {
@@ -35,7 +35,8 @@ const RatingHeader = styled.span`
   align-items: center;
   font-size: 32px;
   font-weight: 700;
-  font-family: Circular, -apple-system, system-ui, Roboto, "Helvetica Neue", sans-serif;
+  font-family: Circular, -apple-system, system-ui, Roboto, "Helvetica Neue",
+    sans-serif;
   @media (max-width: 730px) {
     font-size: 26px;
     line-height: 31px;

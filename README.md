@@ -27,16 +27,17 @@ Snapshots of component at different breakpoints:
   </p>
 
 Google LightHouse:
+
 <p align="center">
   <img src="./snippets/Lighthouse.png" width="70%">
 </p>
 
 ## Related Projects
 
-  - https://github.com/The-Casuals/photo_gallery
-  - https://github.com/The-Casuals/casual-checkout-service
-  - https://github.com/The-Casuals/reviews
-  - https://github.com/The-Casuals/photo_carousel
+- https://github.com/The-Casuals/photo_gallery
+- https://github.com/The-Casuals/casual-checkout-service
+- https://github.com/The-Casuals/reviews
+- https://github.com/The-Casuals/photo_carousel
 
 ## Table of Contents
 

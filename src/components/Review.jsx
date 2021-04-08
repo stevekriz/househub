@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
-import PropTypes from 'prop-types';
-import styled from 'styled-components';
+import React, { useState } from "react";
+import PropTypes from "prop-types";
+import styled from "styled-components";
 
 const Column = styled.div`
   display: flex;
@@ -84,7 +84,12 @@ const Review = ({ review }) => {
     <Column key={review._id}>
       <Header>
         <PictureWrapper href={review.profilePicture}>
-          <Picture height="225px" width="225px" src={review.profilePicture} alt="profile picture" />
+          <Picture
+            height="225px"
+            width="225px"
+            src={review.profilePicture}
+            alt="profile picture"
+          />
         </PictureWrapper>
         <NameDate>
           {review.name}
@@ -92,14 +97,17 @@ const Review = ({ review }) => {
         </NameDate>
       </Header>
       <Comment>
-        {review.comment.length <= 180 || showAll ? review.comment
-          : (
-            <>
-              {review.comment[179] === ' ' ? review.comment.substring(0, 179) : review.comment.substring(0, 180)}
-              {'... '}
-              <ReadMore onClick={handleClick}>read more</ReadMore>
-            </>
-          )}
+        {review.comment.length <= 180 || showAll ? (
+          review.comment
+        ) : (
+          <>
+            {review.comment[179] === " "
+              ? review.comment.substring(0, 179)
+              : review.comment.substring(0, 180)}
+            {"... "}
+            <ReadMore onClick={handleClick}>read more</ReadMore>
+          </>
+        )}
       </Comment>
     </Column>
   );

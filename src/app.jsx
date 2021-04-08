@@ -1,13 +1,13 @@
-import React, { useState, useEffect } from 'react';
-import PropTypes from 'prop-types';
-import { get } from 'axios';
-import styled, { createGlobalStyle } from 'styled-components';
+import React, { useState, useEffect } from "react";
+import PropTypes from "prop-types";
+import { get } from "axios";
+import styled, { createGlobalStyle } from "styled-components";
 
-import Header from './components/Header';
-import Ratings from './components/Ratings';
-import Reviews from './components/Reviews';
-import Footer from './components/Footer';
-import Modal from './components/Modal';
+import Header from "./components/Header";
+import Ratings from "./components/Ratings";
+import Reviews from "./components/Reviews";
+import Footer from "./components/Footer";
+import Modal from "./components/Modal";
 
 const GlobalStyle = createGlobalStyle`
   * {
@@ -60,17 +60,19 @@ const App = ({ listingId }) => {
         setReviews(data);
         setLoading(false);
       })
-      .catch((err) => { throw new Error(err); });
+      .catch((err) => {
+        throw new Error(err);
+      });
   }, [listingId]);
 
   const updateViewPortWidth = () => setViewPortWidth(window.innerWidth);
 
   useEffect(() => {
-    window.addEventListener('resize', updateViewPortWidth);
+    window.addEventListener("resize", updateViewPortWidth);
     updateViewPortWidth();
 
     return () => {
-      window.removeEventListener('resize', updateViewPortWidth);
+      window.removeEventListener("resize", updateViewPortWidth);
     };
   }, []);
 
@@ -86,7 +88,10 @@ const App = ({ listingId }) => {
       <GlobalStyle />
       <AppContainer>
         <ReviewsContainer>
-          <Header averageRating={reviews.averageRating} reviewCount={reviews.reviewCount} />
+          <Header
+            averageRating={reviews.averageRating}
+            reviewCount={reviews.reviewCount}
+          />
           <Ratings ratings={reviews.ratings} />
           <Reviews reviews={reviews.reviews} viewPortWidth={viewPortWidth} />
           <Footer reviewCount={reviews.reviewCount} openModal={openModal} />
@@ -98,8 +103,7 @@ const App = ({ listingId }) => {
             closeModal={closeModal}
             viewPortWidth={viewPortWidth}
           />
-        )
-          : null}
+        ) : null}
       </AppContainer>
     </>
   );

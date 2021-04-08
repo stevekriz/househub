@@ -1,6 +1,6 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import styled from 'styled-components';
+import React from "react";
+import PropTypes from "prop-types";
+import styled from "styled-components";
 
 const Container = styled.div`
   display: flex;
@@ -78,7 +78,9 @@ const Ratings = ({ ratings }) => (
       <Column key={rating[0]}>
         <Category>{rating[0]}</Category>
         <Rating>
-          <RatingMeter><RatingMeterFill width={rating[1] * 20 || 0} /></RatingMeter>
+          <RatingMeter>
+            <RatingMeterFill width={rating[1] * 20 || 0} />
+          </RatingMeter>
           <Number>{rating[1]}</Number>
         </Rating>
       </Column>
