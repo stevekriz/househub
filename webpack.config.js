@@ -1,11 +1,11 @@
-const path = require("path");
+const path = require('path');
 
 module.exports = {
-  mode: "production",
-  entry: "./src/index.jsx",
+  mode: 'production',
+  entry: './src/index.jsx',
   output: {
-    filename: "main.js",
-    path: path.resolve(__dirname, "public"),
+    filename: 'main.js',
+    path: path.resolve(__dirname, 'public'),
   },
   module: {
     rules: [
@@ -13,15 +13,15 @@ module.exports = {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
         use: {
-          loader: "babel-loader",
+          loader: 'babel-loader',
           options: {
-            presets: ["@babel/preset-env", "@babel/preset-react"],
+            presets: ['@babel/preset-env', '@babel/preset-react'],
           },
         },
       },
     ],
   },
   resolve: {
-    extensions: ["*", ".js", ".jsx"],
+    extensions: ['*', '.js', '.jsx'],
   },
 };

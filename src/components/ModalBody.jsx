@@ -1,12 +1,12 @@
-import React, { useState, useRef } from "react";
-import PropTypes from "prop-types";
-import debounce from "lodash.debounce";
-import styled from "styled-components";
+import React, { useState, useRef } from 'react';
+import PropTypes from 'prop-types';
+import debounce from 'lodash.debounce';
+import styled from 'styled-components';
 
-import ModalRatingsHeader from "./ModalRatingsHeader";
-import ModalSearch from "./ModalSearch";
-import ModalRatings from "./ModalRatings";
-import ModalReviews from "./ModalReviews";
+import ModalRatingsHeader from './ModalRatingsHeader';
+import ModalSearch from './ModalSearch';
+import ModalRatings from './ModalRatings';
+import ModalReviews from './ModalReviews';
 
 const ScrollContainer = styled.div`
   display: block;
@@ -61,14 +61,14 @@ const BodyContainer = styled.div`
 `;
 
 const ModalBody = ({ reviews }) => {
-  const [searchText, setSearchText] = useState("");
-  const [delayedSearchText, setDelayedSearchText] = useState("");
+  const [searchText, setSearchText] = useState('');
+  const [delayedSearchText, setDelayedSearchText] = useState('');
 
   const delayedSearch = useRef(
-    debounce((text) => setDelayedSearchText(text), 200)
+    debounce(text => setDelayedSearchText(text), 200)
   ).current;
 
-  const handleInputChange = (text) => {
+  const handleInputChange = text => {
     setSearchText(text);
     delayedSearch(text);
   };

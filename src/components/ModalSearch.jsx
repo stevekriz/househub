@@ -1,6 +1,6 @@
-import React, { useRef } from "react";
-import PropTypes from "prop-types";
-import styled from "styled-components";
+import React, { useRef } from 'react';
+import PropTypes from 'prop-types';
+import styled from 'styled-components';
 
 const SearchContainer = styled.div`
   display: flex;
@@ -130,30 +130,30 @@ const DeleteSVG = styled.svg`
 const ModalBodyHeaderSearch = ({ searchText, handleInputChange }) => {
   const textInput = useRef(null);
   const handleClick = () => textInput.current.focus();
-  const handleChange = (e) => handleInputChange(e.target.value);
-  const handleDelete = () => handleInputChange("");
+  const handleChange = e => handleInputChange(e.target.value);
+  const handleDelete = () => handleInputChange('');
 
   return (
     <SearchContainer>
-      <InputContainer id="search" onClick={handleClick}>
+      <InputContainer id='search' onClick={handleClick}>
         <InputArea>
           <MagnifyingGlassContainer>
             <MagnifyingGlass
-              viewBox="0 0 32 32"
-              xmlns="http://www.w3.org/2000/svg"
-              aria-hidden="true"
-              role="presentation"
-              focusable="false"
+              viewBox='0 0 32 32'
+              xmlns='http://www.w3.org/2000/svg'
+              aria-hidden='true'
+              role='presentation'
+              focusable='false'
             >
-              <g fill="none">
-                <path d="m13 24c6.0751322 0 11-4.9248678 11-11 0-6.07513225-4.9248678-11-11-11-6.07513225 0-11 4.92486775-11 11 0 6.0751322 4.92486775 11 11 11zm8-3 9 9" />
+              <g fill='none'>
+                <path d='m13 24c6.0751322 0 11-4.9248678 11-11 0-6.07513225-4.9248678-11-11-11-6.07513225 0-11 4.92486775-11 11 0 6.0751322 4.92486775 11 11 11zm8-3 9 9' />
               </g>
             </MagnifyingGlass>
           </MagnifyingGlassContainer>
           <Input
             ref={textInput}
-            type="text"
-            placeholder="Search reviews"
+            type='text'
+            placeholder='Search reviews'
             value={searchText}
             onChange={handleChange}
           />
@@ -161,14 +161,14 @@ const ModalBodyHeaderSearch = ({ searchText, handleInputChange }) => {
             <DeleteButton onClick={handleDelete}>
               <DeleteSVG>
                 <svg
-                  viewBox="0 0 32 32"
-                  xmlns="http://www.w3.org/2000/svg"
-                  aria-label="Clear search"
-                  role="img"
-                  focusable="false"
+                  viewBox='0 0 32 32'
+                  xmlns='http://www.w3.org/2000/svg'
+                  aria-label='Clear search'
+                  role='img'
+                  focusable='false'
                 >
-                  <path d="m6 6 20 20" />
-                  <path d="m26 6-20 20" />
+                  <path d='m6 6 20 20' />
+                  <path d='m26 6-20 20' />
                 </svg>
               </DeleteSVG>
             </DeleteButton>
@@ -186,4 +186,4 @@ ModalBodyHeaderSearch.propTypes = {
   handleInputChange: PropTypes.func.isRequired,
 };
 
-ModalBodyHeaderSearch.defaultProps = { searchText: "" };
+ModalBodyHeaderSearch.defaultProps = { searchText: '' };

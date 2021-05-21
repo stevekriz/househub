@@ -1,6 +1,7 @@
-const faker = require("faker");
+const faker = require('faker');
 
-const db = require("./database/index.js");
+const db = require('./database/index.js');
+db.connection.dropDatabase();
 
 const seed = [];
 
@@ -10,12 +11,12 @@ for (let i = 1; i <= 100; i += 1) {
     averageRating: null,
     reviewCount: Math.floor(Math.random() * (50 - 10 + 1) + 10),
     ratings: [
-      ["Cleanliness", (Math.random() * (5.01 - 3) + 3).toFixed(1)],
-      ["Accuracy", (Math.random() * (5.01 - 3) + 3).toFixed(1)],
-      ["Communication", (Math.random() * (5.01 - 3) + 3).toFixed(1)],
-      ["Location", (Math.random() * (5.01 - 3) + 3).toFixed(1)],
-      ["Check-in", (Math.random() * (5.01 - 3) + 3).toFixed(1)],
-      ["Value", (Math.random() * (5.01 - 3) + 3).toFixed(1)],
+      ['Cleanliness', (Math.random() * (5.01 - 3) + 3).toFixed(1)],
+      ['Accuracy', (Math.random() * (5.01 - 3) + 3).toFixed(1)],
+      ['Communication', (Math.random() * (5.01 - 3) + 3).toFixed(1)],
+      ['Location', (Math.random() * (5.01 - 3) + 3).toFixed(1)],
+      ['Check-in', (Math.random() * (5.01 - 3) + 3).toFixed(1)],
+      ['Value', (Math.random() * (5.01 - 3) + 3).toFixed(1)],
     ],
     reviews: [],
   };
@@ -34,18 +35,18 @@ for (let i = 1; i <= 100; i += 1) {
   listing.averageRating = average;
 
   const month = {
-    12: "January",
-    11: "February",
-    10: "March",
-    9: "April",
-    8: "May",
-    7: "June",
-    6: "July",
-    5: "August",
-    4: "September",
-    3: "October",
-    2: "November",
-    1: "December",
+    12: 'January',
+    11: 'February',
+    10: 'March',
+    9: 'April',
+    8: 'May',
+    7: 'June',
+    6: 'July',
+    5: 'August',
+    4: 'September',
+    3: 'October',
+    2: 'November',
+    1: 'December',
   };
 
   const sex = () => {
@@ -55,17 +56,15 @@ for (let i = 1; i <= 100; i += 1) {
     return 0;
   };
 
-  const picture = (gender) =>
-    `../../public/assets/${gender}/${Math.floor(
-      Math.random() * (40 - 1 + 1) + 1
-    )}.webp`;
+  const picture = gender =>
+    `assets/${gender}/${Math.floor(Math.random() * (40 - 1 + 1) + 1)}.webp`;
 
   const ownerGender = sex();
   const ownerProfilePicture = picture(ownerGender);
   const ownerName = faker.name.firstName(ownerGender);
 
   for (let j = 1; j <= listing.reviewCount; j += 1) {
-    const date = `${j < 13 ? month[j] : "January"} ${j < 13 ? 2020 : 2019}`;
+    const date = `${j < 13 ? month[j] : 'January'} ${j < 13 ? 2020 : 2019}`;
     const gender = sex();
     const name = faker.name.firstName(gender);
     const profilePicture = picture(gender);
@@ -87,7 +86,7 @@ for (let i = 1; i <= 100; i += 1) {
   seed.push(listing);
 }
 
-db.Review.insertMany(seed, (err) => {
+db.Review.insertMany(seed, err => {
   if (err) {
     throw new Error(err);
   } else {

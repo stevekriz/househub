@@ -1,6 +1,6 @@
-import React from "react";
-import PropTypes from "prop-types";
-import styled from "styled-components";
+import React from 'react';
+import PropTypes from 'prop-types';
+import styled from 'styled-components';
 
 const RatingsContainer = styled.div`
   display: flex;
@@ -72,7 +72,7 @@ const RatingMeter = styled.div`
 const RatingMeterFill = styled.div`
   display: flex;
   height: 100%;
-  width: ${(props) => props.width || 0}%;
+  width: ${props => props.width || 0}%;
   border-radius: 2px;
   background: rgb(34, 34, 34);
 `;
@@ -84,7 +84,7 @@ const Number = styled.span`
 
 const ModalRatings = ({ ratings }) => (
   <RatingsContainer>
-    {ratings.map((rating) => (
+    {ratings.map(rating => (
       <RatingContainer key={rating[0]} rating={rating}>
         <Category>{rating[0]}</Category>
         <Rating>

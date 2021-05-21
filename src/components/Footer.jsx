@@ -1,6 +1,6 @@
-import React from "react";
-import PropTypes from "prop-types";
-import styled from "styled-components";
+import React from 'react';
+import PropTypes from 'prop-types';
+import styled from 'styled-components';
 
 const ShowAllReviewsButton = styled.div`
   display: flex;
@@ -30,7 +30,7 @@ const Footer = ({ reviewCount, openModal }) => {
   const handleClick = () => openModal();
 
   return (
-    <ShowAllReviewsButton id="showAll" onClick={handleClick}>
+    <ShowAllReviewsButton id='showAll' onClick={handleClick}>
       {`Show all ${reviewCount} reviews`}
     </ShowAllReviewsButton>
   );

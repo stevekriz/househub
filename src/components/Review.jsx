@@ -1,6 +1,6 @@
-import React, { useState } from "react";
-import PropTypes from "prop-types";
-import styled from "styled-components";
+import React, { useState } from 'react';
+import PropTypes from 'prop-types';
+import styled from 'styled-components';
 
 const Column = styled.div`
   display: flex;
@@ -42,7 +42,7 @@ const Picture = styled.img`
   height: 100%;
   width: 100%;
   border-radius: 50%;
-  src: ${(props) => props.src || null}%;
+  src: ${props => props.src || null}%;
 `;
 
 const NameDate = styled.div`
@@ -85,10 +85,10 @@ const Review = ({ review }) => {
       <Header>
         <PictureWrapper href={review.profilePicture}>
           <Picture
-            height="225px"
-            width="225px"
+            height='225px'
+            width='225px'
             src={review.profilePicture}
-            alt="profile picture"
+            alt='profile picture'
           />
         </PictureWrapper>
         <NameDate>
@@ -101,10 +101,10 @@ const Review = ({ review }) => {
           review.comment
         ) : (
           <>
-            {review.comment[179] === " "
+            {review.comment[179] === ' '
               ? review.comment.substring(0, 179)
               : review.comment.substring(0, 180)}
-            {"... "}
+            {'... '}
             <ReadMore onClick={handleClick}>read more</ReadMore>
           </>
         )}

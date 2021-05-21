@@ -1,13 +1,13 @@
-import React from "react";
-import { render, unmountComponentAtNode } from "react-dom";
-import { act } from "react-dom/test-utils";
+import React from 'react';
+import { render, unmountComponentAtNode } from 'react-dom';
+import { act } from 'react-dom/test-utils';
 
-import ModalClose from "../src/components/ModalClose";
+import ModalClose from '../src/components/ModalClose';
 
 let container = null;
 
 beforeEach(() => {
-  container = document.createElement("div");
+  container = document.createElement('div');
   document.body.appendChild(container);
 });
 
@@ -17,10 +17,10 @@ afterEach(() => {
   container = null;
 });
 
-describe("ModalClose", () => {
+describe('ModalClose', () => {
   const handleClose = jest.fn();
 
-  it("registers clicks", () => {
+  it('registers clicks', () => {
     act(() => {
       render(
         <ModalClose handleClose={handleClose} viewPortWidth={1280} />,
@@ -28,16 +28,16 @@ describe("ModalClose", () => {
       );
     });
 
-    const button = document.querySelector("#close");
+    const button = document.querySelector('#close');
 
     act(() => {
-      button.dispatchEvent(new MouseEvent("click", { bubbles: true }));
+      button.dispatchEvent(new MouseEvent('click', { bubbles: true }));
     });
     expect(handleClose).toHaveBeenCalledTimes(1);
 
     act(() => {
       for (let i = 0; i < 5; i += 1) {
-        button.dispatchEvent(new MouseEvent("click", { bubbles: true }));
+        button.dispatchEvent(new MouseEvent('click', { bubbles: true }));
       }
     });
     expect(handleClose).toHaveBeenCalledTimes(6);

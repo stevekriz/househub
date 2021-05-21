@@ -12,7 +12,7 @@ const ReviewsContainer = styled.div`
   align-items: flex-start;
   max-width: 558.578px;
   margin-bottom: 72px;
-  margin-left: 90.040px;
+  margin-left: 90.04px;
   padding-right: 24px;
   @media (max-width: 1128px) {
     width: 100%;
@@ -23,7 +23,7 @@ const ReviewsContainer = styled.div`
   @media (max-width: 730px) {
     margin-top: 8px;
     margin-bottom: 24px;
-   }
+  }
 `;
 
 const NoResults = styled.div`
@@ -39,19 +39,32 @@ const NoResults = styled.div`
 `;
 
 const ModalReviews = ({ reviews, delayedSearchText }) => {
-  const searchResults = delayedSearchText ? reviews.filter(
-    (review) => review.comment.toLowerCase().includes(delayedSearchText.toLowerCase())
-      || (review.ownerComment
-        && review.ownerComment.toLowerCase().includes(delayedSearchText.toLowerCase())),
-  )
+  const searchResults = delayedSearchText
+    ? reviews.filter(
+        review =>
+          review.comment
+            .toLowerCase()
+            .includes(delayedSearchText.toLowerCase()) ||
+          (review.ownerComment &&
+            review.ownerComment
+              .toLowerCase()
+              .includes(delayedSearchText.toLowerCase()))
+      )
     : reviews;
 
   return (
     <ReviewsContainer>
-      {searchResults.length ? searchResults.map((review) => (
-        <ModalReview key={review._id} review={review} delayedSearchText={delayedSearchText} />
-      ))
-        : <NoResults>{`There are no results for '${delayedSearchText}'`}</NoResults>}
+      {searchResults.length ? (
+        searchResults.map(review => (
+          <ModalReview
+            key={review._id}
+            review={review}
+            delayedSearchText={delayedSearchText}
+          />
+        ))
+      ) : (
+        <NoResults>{`There are no results for '${delayedSearchText}'`}</NoResults>
+      )}
     </ReviewsContainer>
   );
 };

@@ -1,4 +1,4 @@
-const get = require("../models/ReviewsModel.js");
+const get = require('../models/ReviewsModel.js');
 
 const getReviews = (req, res) =>
   get(req.params.id, (err, reviews) => {

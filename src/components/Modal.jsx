@@ -1,9 +1,9 @@
-import React, { useEffect, useRef } from "react";
-import PropTypes from "prop-types";
-import styled from "styled-components";
+import React, { useEffect, useRef } from 'react';
+import PropTypes from 'prop-types';
+import styled from 'styled-components';
 
-import ModalClose from "./ModalClose";
-import ModalBody from "./ModalBody";
+import ModalClose from './ModalClose';
+import ModalBody from './ModalBody';
 
 const Backdrop = styled.div`
   z-index: 4;
@@ -14,7 +14,7 @@ const Backdrop = styled.div`
   left: 0;
   padding: 40px;
   background: rgb(34, 34, 34, 0.6);
-  display: ${(props) => props.show || "none"};
+  display: ${props => props.show || 'none'};
   @media (max-width: 730px) {
     padding: 0;
   }
@@ -48,30 +48,30 @@ const Modal = ({ displayModal, reviews, closeModal, viewPortWidth }) => {
     const refCopy = ref.current;
 
     if (refCopy && displayModal) {
-      refCopy.style.top = "50%";
-      refCopy.style.transform = "translateY(calc(-50% + 0.5px)";
-      document.body.style.overflow = "hidden";
+      refCopy.style.top = '50%';
+      refCopy.style.transform = 'translateY(calc(-50% + 0.5px)';
+      document.body.style.overflow = 'hidden';
     }
 
     return () => {
-      document.body.style.overflow = "unset";
+      document.body.style.overflow = 'unset';
     };
   }, [displayModal]);
 
   const handleClose = () => {
-    ref.current.style.top = "200vh";
-    ref.current.style.transition = "top 0.4s ease-in-out";
+    ref.current.style.top = '200vh';
+    ref.current.style.transition = 'top 0.4s ease-in-out';
     setTimeout(closeModal, 400);
   };
-  const handleModalClick = (e) => e.stopPropagation();
+  const handleModalClick = e => e.stopPropagation();
 
   return (
     <Backdrop
-      id="backdrop"
-      show={displayModal ? "block" : "none"}
+      id='backdrop'
+      show={displayModal ? 'block' : 'none'}
       onClick={handleClose}
     >
-      <ModalContainer id="modal" ref={ref} onClick={handleModalClick}>
+      <ModalContainer id='modal' ref={ref} onClick={handleModalClick}>
         <ModalClose handleClose={handleClose} viewPortWidth={viewPortWidth} />
         <ModalBody reviews={reviews} />
       </ModalContainer>

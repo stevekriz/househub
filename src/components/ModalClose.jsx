@@ -1,6 +1,6 @@
-import React from "react";
-import PropTypes from "prop-types";
-import styled from "styled-components";
+import React from 'react';
+import PropTypes from 'prop-types';
+import styled from 'styled-components';
 
 const Container = styled.div`
   width: 100%;
@@ -56,29 +56,29 @@ const ModalClose = ({ handleClose, viewPortWidth }) => {
 
   return (
     <Container>
-      <Button id="close" onClick={handleClick}>
+      <Button id='close' onClick={handleClick}>
         {viewPortWidth > 730 ? (
           <XSVG
-            viewBox="0 0 32 32"
-            xmlns="http://www.w3.org/2000/svg"
-            aria-hidden="true"
-            role="presentation"
-            focusable="false"
+            viewBox='0 0 32 32'
+            xmlns='http://www.w3.org/2000/svg'
+            aria-hidden='true'
+            role='presentation'
+            focusable='false'
           >
-            <path d="m6 6 20 20" />
-            <path d="m26 6-20 20" />
+            <path d='m6 6 20 20' />
+            <path d='m26 6-20 20' />
           </XSVG>
         ) : (
           <ChevronSVG>
             <svg
-              viewBox="0 0 18 18"
-              role="presentation"
-              aria-hidden="true"
-              focusable="false"
+              viewBox='0 0 18 18'
+              role='presentation'
+              aria-hidden='true'
+              focusable='false'
             >
               <path
-                d="m13.7 16.29a1 1 0 1 1 -1.42 1.41l-8-8a1 1 0 0 1 0-1.41l8-8a1 1 0 1 1 1.42 1.41l-7.29 7.29z"
-                fillRule="evenodd"
+                d='m13.7 16.29a1 1 0 1 1 -1.42 1.41l-8-8a1 1 0 0 1 0-1.41l8-8a1 1 0 1 1 1.42 1.41l-7.29 7.29z'
+                fillRule='evenodd'
               />
             </svg>
           </ChevronSVG>

@@ -1,8 +1,8 @@
-import React from "react";
-import PropTypes from "prop-types";
-import styled from "styled-components";
+import React from 'react';
+import PropTypes from 'prop-types';
+import styled from 'styled-components';
 
-import Review from "./Review";
+import Review from './Review';
 
 const Container = styled.div`
   display: flex;
@@ -15,10 +15,10 @@ const Reviews = ({ reviews, viewPortWidth }) => (
     {viewPortWidth > 730
       ? reviews
           .slice(0, 6)
-          .map((review) => <Review key={review._id} review={review} />)
+          .map(review => <Review key={review._id} review={review} />)
       : reviews
           .slice(0, 3)
-          .map((review) => <Review key={review._id} review={review} />)}
+          .map(review => <Review key={review._id} review={review} />)}
   </Container>
 );
 

@@ -1,7 +1,7 @@
 /* eslint-disable react/no-danger */
-import React, { useState } from "react";
-import PropTypes from "prop-types";
-import styled from "styled-components";
+import React, { useState } from 'react';
+import PropTypes from 'prop-types';
+import styled from 'styled-components';
 
 const Review = styled.div`
   display: flex;
@@ -42,7 +42,7 @@ const Picture = styled.img`
   height: 100%;
   width: 100%;
   border-radius: 50%;
-  src: ${(props) => props.src || null}%;
+  src: ${props => props.src || null}%;
 `;
 
 const NameDate = styled.div`
@@ -144,8 +144,8 @@ const ModalReview = ({ review, delayedSearchText }) => {
           <span
             dangerouslySetInnerHTML={{
               __html: text.replace(
-                new RegExp(delayedSearchText, "gi"),
-                (match) => `<mark>${match}</mark>`
+                new RegExp(delayedSearchText, 'gi'),
+                match => `<mark>${match}</mark>`
               ),
             }}
           />
@@ -156,12 +156,12 @@ const ModalReview = ({ review, delayedSearchText }) => {
                 __html: text
                   .substring(0, 180)
                   .replace(
-                    new RegExp(delayedSearchText, "gi"),
-                    (match) => `<mark>${match}</mark>`
+                    new RegExp(delayedSearchText, 'gi'),
+                    match => `<mark>${match}</mark>`
                   ),
               }}
             />
-            {"... "}
+            {'... '}
             <ReadMore onClick={whichHandler}>read more</ReadMore>
           </>
         );
@@ -171,10 +171,10 @@ const ModalReview = ({ review, delayedSearchText }) => {
           text
         ) : (
           <>
-            {text[179] === " "
+            {text[179] === ' '
               ? text.substring(0, 179)
               : text.substring(0, 180)}
-            {"... "}
+            {'... '}
             <ReadMore onClick={whichHandler}>read more</ReadMore>
           </>
         );
@@ -188,10 +188,10 @@ const ModalReview = ({ review, delayedSearchText }) => {
       <Header>
         <PictureWrapper href={review.profilePicture}>
           <Picture
-            height="225px"
-            width="225px"
+            height='225px'
+            width='225px'
             src={review.profilePicture}
-            alt="profile picture"
+            alt='profile picture'
           />
         </PictureWrapper>
         <NameDate>
@@ -205,10 +205,10 @@ const ModalReview = ({ review, delayedSearchText }) => {
           <OwnerHeader>
             <PictureWrapper href={review.ownerProfilePicture}>
               <Picture
-                height="225px"
-                width="225px"
+                height='225px'
+                width='225px'
                 src={review.ownerProfilePicture}
-                alt="profile picture"
+                alt='profile picture'
               />
             </PictureWrapper>
             <NameDate>
@@ -240,4 +240,4 @@ ModalReview.propTypes = {
   delayedSearchText: PropTypes.string,
 };
 
-ModalReview.defaultProps = { delayedSearchText: "" };
+ModalReview.defaultProps = { delayedSearchText: '' };
