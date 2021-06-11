@@ -80,7 +80,7 @@ const App = ({ listingId }) => {
   const closeModal = () => setDisplayModal(false);
 
   if (isLoading) {
-    return <AppContainer>Loading...</AppContainer>;
+    return <AppContainer>Loading... </AppContainer>;
   }
 
   return (
