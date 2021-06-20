@@ -63,7 +63,6 @@ const Modal = ({ displayModal, reviews, closeModal, viewPortWidth }) => {
     ref.current.style.transition = 'top 0.4s ease-in-out';
     setTimeout(closeModal, 400);
   };
-  const handleModalClick = e => e.stopPropagation();
 
   return (
     <Backdrop
@@ -71,7 +70,7 @@ const Modal = ({ displayModal, reviews, closeModal, viewPortWidth }) => {
       show={displayModal ? 'block' : 'none'}
       onClick={handleClose}
     >
-      <ModalContainer id='modal' ref={ref} onClick={handleModalClick}>
+      <ModalContainer id='modal' ref={ref} onClick={e => e.stopPropagation()}>
         <ModalClose handleClose={handleClose} viewPortWidth={viewPortWidth} />
         <ModalBody reviews={reviews} />
       </ModalContainer>

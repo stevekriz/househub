@@ -26,15 +26,11 @@ const ShowAllReviewsButton = styled.div`
   }
 `;
 
-const Footer = ({ reviewCount, openModal }) => {
-  const handleClick = () => openModal();
-
-  return (
-    <ShowAllReviewsButton id='showAll' onClick={handleClick}>
-      {`Show all ${reviewCount} reviews`}
-    </ShowAllReviewsButton>
-  );
-};
+const Footer = ({ reviewCount, openModal }) => (
+  <ShowAllReviewsButton id='showAll' onClick={() => openModal()}>
+    {`Show all ${reviewCount} reviews`}
+  </ShowAllReviewsButton>
+);
 
 export default Footer;
 

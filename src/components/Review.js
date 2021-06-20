@@ -78,8 +78,6 @@ const ReadMore = styled.span`
 const Review = ({ review }) => {
   const [showAll, setShowAll] = useState(false);
 
-  const handleClick = () => setShowAll(true);
-
   return (
     <Column key={review._id}>
       <Header>
@@ -105,7 +103,7 @@ const Review = ({ review }) => {
               ? review.comment.substring(0, 179)
               : review.comment.substring(0, 180)}
             {'... '}
-            <ReadMore onClick={handleClick}>read more</ReadMore>
+            <ReadMore onClick={() => setShowAll(true)}>read more</ReadMore>
           </>
         )}
       </Comment>

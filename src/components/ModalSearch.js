@@ -78,7 +78,7 @@ const MagnifyingGlass = styled.svg`
   height: 16px;
   width: 16px;
   stroke: currentcolor;
-  // stroke-width: 2;
+  stroke-width: 2;
   overflow: visible;
 `;
 
@@ -129,13 +129,10 @@ const DeleteSVG = styled.svg`
 
 const ModalBodyHeaderSearch = ({ searchText, handleInputChange }) => {
   const textInput = useRef(null);
-  const handleClick = () => textInput.current.focus();
-  const handleChange = e => handleInputChange(e.target.value);
-  const handleDelete = () => handleInputChange('');
 
   return (
     <SearchContainer>
-      <InputContainer id='search' onClick={handleClick}>
+      <InputContainer id='search' onClick={() => textInput.current.focus()}>
         <InputArea>
           <MagnifyingGlassContainer>
             <MagnifyingGlass
@@ -155,10 +152,10 @@ const ModalBodyHeaderSearch = ({ searchText, handleInputChange }) => {
             type='text'
             placeholder='Search reviews'
             value={searchText}
-            onChange={handleChange}
+            onChange={e => handleInputChange(e.target.value)}
           />
           {searchText ? (
-            <DeleteButton onClick={handleDelete}>
+            <DeleteButton onClick={() => handleInputChange('')}>
               <DeleteSVG>
                 <svg
                   viewBox='0 0 32 32'
