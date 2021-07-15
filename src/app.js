@@ -60,7 +60,7 @@ const App = ({ listingId }) => {
         setReviews(data);
         setLoading(false);
       })
-      .catch(err => {
+      .catch((err) => {
         throw new Error(err);
       });
   }, [listingId]);

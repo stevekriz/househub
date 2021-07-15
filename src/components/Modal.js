@@ -14,7 +14,7 @@ const Backdrop = styled.div`
   left: 0;
   padding: 40px;
   background: rgb(34, 34, 34, 0.6);
-  display: ${props => props.show || 'none'};
+  display: ${(props) => props.show || 'none'};
   @media (max-width: 730px) {
     padding: 0;
   }
@@ -70,7 +70,7 @@ const Modal = ({ displayModal, reviews, closeModal, viewPortWidth }) => {
       show={displayModal ? 'block' : 'none'}
       onClick={handleClose}
     >
-      <ModalContainer id='modal' ref={ref} onClick={e => e.stopPropagation()}>
+      <ModalContainer id='modal' ref={ref} onClick={(e) => e.stopPropagation()}>
         <ModalClose handleClose={handleClose} viewPortWidth={viewPortWidth} />
         <ModalBody reviews={reviews} />
       </ModalContainer>

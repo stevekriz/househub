@@ -56,7 +56,7 @@ for (let i = 1; i <= 100; i += 1) {
     return 0;
   };
 
-  const picture = gender =>
+  const picture = (gender) =>
     `assets/${gender}/${Math.floor(Math.random() * (40 - 1 + 1) + 1)}.webp`;
 
   const ownerGender = sex();
@@ -86,7 +86,7 @@ for (let i = 1; i <= 100; i += 1) {
   seed.push(listing);
 }
 
-db.Review.insertMany(seed, err => {
+db.Review.insertMany(seed, (err) => {
   if (err) {
     throw new Error(err);
   } else {

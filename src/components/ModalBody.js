@@ -65,10 +65,10 @@ const ModalBody = ({ reviews }) => {
   const [delayedSearchText, setDelayedSearchText] = useState('');
 
   const delayedSearch = useRef(
-    debounce(text => setDelayedSearchText(text), 200)
+    debounce((text) => setDelayedSearchText(text), 200)
   ).current;
 
-  const handleInputChange = text => {
+  const handleInputChange = (text) => {
     setSearchText(text);
     delayedSearch(text);
   };

@@ -152,7 +152,7 @@ const ModalBodyHeaderSearch = ({ searchText, handleInputChange }) => {
             type='text'
             placeholder='Search reviews'
             value={searchText}
-            onChange={e => handleInputChange(e.target.value)}
+            onChange={(e) => handleInputChange(e.target.value)}
           />
           {searchText ? (
             <DeleteButton onClick={() => handleInputChange('')}>

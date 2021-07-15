@@ -42,7 +42,7 @@ const Picture = styled.img`
   height: 100%;
   width: 100%;
   border-radius: 50%;
-  src: ${props => props.src || null}%;
+  src: ${(props) => props.src || null}%;
 `;
 
 const NameDate = styled.div`
@@ -145,7 +145,7 @@ const ModalReview = ({ review, delayedSearchText }) => {
             dangerouslySetInnerHTML={{
               __html: text.replace(
                 new RegExp(delayedSearchText, 'gi'),
-                match => `<mark>${match}</mark>`
+                (match) => `<mark>${match}</mark>`
               ),
             }}
           />
@@ -157,7 +157,7 @@ const ModalReview = ({ review, delayedSearchText }) => {
                   .substring(0, 180)
                   .replace(
                     new RegExp(delayedSearchText, 'gi'),
-                    match => `<mark>${match}</mark>`
+                    (match) => `<mark>${match}</mark>`
                   ),
               }}
             />

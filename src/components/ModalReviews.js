@@ -41,7 +41,7 @@ const NoResults = styled.div`
 const ModalReviews = ({ reviews, delayedSearchText }) => {
   const searchResults = delayedSearchText
     ? reviews.filter(
-        review =>
+        (review) =>
           review.comment
             .toLowerCase()
             .includes(delayedSearchText.toLowerCase()) ||
@@ -55,7 +55,7 @@ const ModalReviews = ({ reviews, delayedSearchText }) => {
   return (
     <ReviewsContainer>
       {searchResults.length ? (
-        searchResults.map(review => (
+        searchResults.map((review) => (
           <ModalReview
             key={review._id}
             review={review}

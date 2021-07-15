@@ -59,7 +59,7 @@ const RatingMeter = styled.div`
 const RatingMeterFill = styled.div`
   display: flex;
   height: 100%;
-  width: ${props => props.width || 0}%;
+  width: ${(props) => props.width || 0}%;
   background: rgb(34, 34, 34);
   border-bottom-left-radius: 2px;
   border-bottom-right-radius: 2px;
@@ -74,7 +74,7 @@ const Number = styled.span`
 
 const Ratings = ({ ratings }) => (
   <Container>
-    {ratings.map(rating => (
+    {ratings.map((rating) => (
       <Column key={rating[0]}>
         <Category>{rating[0]}</Category>
         <Rating>
