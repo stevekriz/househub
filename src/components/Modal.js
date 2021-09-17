@@ -49,7 +49,7 @@ const Modal = ({ displayModal, reviews, closeModal, viewPortWidth }) => {
 
     if (refCopy && displayModal) {
       refCopy.style.top = '50%';
-      refCopy.style.transform = 'translateY(calc(-50% + 0.5px)';
+      refCopy.style.transform = 'translateY(calc(-50%)';
       document.body.style.overflow = 'hidden';
     }
 
